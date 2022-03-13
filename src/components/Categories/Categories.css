@@ -1,0 +1,8 @@
+.category-list {
+  justify-content: space-around;
+}
+
+.categories {
+  grid-area: category;
+  border-bottom: 1px solid var(--text-color100);
+}

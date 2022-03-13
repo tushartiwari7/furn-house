@@ -1,0 +1,21 @@
+
+.btn-login,.hamburger {
+  /*  transparent by default */
+  background: white; 
+}
+.btn-login:hover,.hamburger:hover {
+  /* primary color by default */
+  border-color: white; 
+}
+
+.input {
+  background: white;
+}
+
+.hamburger {
+  display: none;
+}
+
+.white {
+  color: white;
+}

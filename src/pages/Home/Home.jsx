@@ -1,11 +1,12 @@
-import { Banner, Categories, Header } from "../../components";
+import { Banner, Categories, FeaturedProducts,OurServices } from "../../components";
 
 export const Home = () => {
   return (
     <>
-    <Header />
     <Categories />
     <Banner />
+    <FeaturedProducts />
+    <OurServices />
     </>
   );
 };

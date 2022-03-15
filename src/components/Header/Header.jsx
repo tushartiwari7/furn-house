@@ -1,16 +1,15 @@
 import React from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom';
+import {BsCart,BsHeart} from "react-icons/bs";
 
 export const Header = () => {
   return (
     <header className="full-width p-sm flex header fs-l">
       <div className="flex flex-center">
-        <button id="hamburger" className="btn btn-float btn-outline-primary hamburger mx-xs rounded-circle flex flex-center">
-          <i className="mx-xs bi bi-list"></i>
-        </button>
-        <a className="list white flex flex-center" href="/">
+        <Link className="list white flex flex-center" to="/">
           Furn House
-        </a>
+        </Link>
       </div>
     <div className="searchbar flex flex-center">
       <input
@@ -20,16 +19,15 @@ export const Header = () => {
       />
     </div>
     <div className="flex flex-center">
-      <i className="bi bi-search search-icon mx-xs"></i>
-      <a  href="/pages/login.html" className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s">
+      <Link  to="/login" className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s flex flex-center">
         Login
-      </a>
-      <a href="/pages/wishlist.html" className="list white">
-        <i className="bi bi-heart mx-xs"></i>
-      </a>
-      <a href="/pages/cart.html" className="list white">
-        <i className="bi bi-cart mx-xs"></i>
-      </a>
+      </Link>
+      <Link to="/wishlist" className="list white btn btn-icon flex flex-center">
+        <BsHeart />
+      </Link>
+      <Link to="/cart" className="list white btn btn-icon flex flex-center">
+        <BsCart />
+      </Link>
     </div>
     </header>
   )

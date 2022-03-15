@@ -1,0 +1,20 @@
+.product-page {
+  grid-template-columns: 25rem 1fr;
+  
+}
+
+.product-page .card-feedback {
+  /* margin: 3px 6px;   */
+}
+
+
+.product-page .card {
+  width: 100%;
+}
+
+.product-list {
+  overflow-y: scroll;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+  align-content: baseline;
+}

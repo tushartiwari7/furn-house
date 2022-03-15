@@ -1,0 +1,45 @@
+.btn-icon {
+  width: 4rem;
+  height: 4rem;
+  align-self: center;
+}
+
+.btn-icon > svg {
+  vertical-align: bottom;
+}
+
+.btn-cart {
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card-img {
+  aspect-ratio: 1;  
+}
+.card-content {
+  color: var(--text-color500);
+}
+
+.card:hover .card-content {
+  background: rgba(255,255,255,0.5);
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    width: 20rem;
+  }
+  .card-description {
+    display: none;
+  }
+  .card-feedback{
+    margin: 3px 6px;
+  }
+  .btn-cart,.card-content {
+    font-size: small;
+  }
+}

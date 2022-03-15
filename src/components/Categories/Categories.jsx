@@ -23,7 +23,7 @@ export const Categories = () => {
       <ul className="list category-list fs-s flex full-width">
         {categories.map(({ _id, categoryName }) => (
           <Link
-            to={`/products?category=${_id}`}
+            to={`/products?categoryName=${categoryName}`}
             key={_id}
             className="list-item transition p-xs fw-light"
           >

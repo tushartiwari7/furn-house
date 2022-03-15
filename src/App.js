@@ -2,10 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MockMan from "mockman-js";
 import { Home } from "./pages";
+import { Header } from "./components";
 
 const App = () => {
   return (
     <div className="App">
+    <Header />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/mockman" element={<MockMan />} />

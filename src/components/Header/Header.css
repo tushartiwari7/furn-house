@@ -12,10 +12,20 @@
   background: white;
 }
 
-.hamburger {
-  display: none;
+.searchbar {
+  width: 40vw;
+}
+
+.searchbar > input {
+  width: 100%;
 }
 
 .white {
   color: white;
+}
+
+@media (max-width: 640px) {
+  .searchbar {
+    display: none;
+  }
 }

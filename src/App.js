@@ -4,7 +4,6 @@ import MockMan from "mockman-js";
 import { Home } from "./pages";
 
 const App = () => {
-  console.log(process);
   return (
     <div className="App">
     <Routes>

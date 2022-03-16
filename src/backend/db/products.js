@@ -68,12 +68,13 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Linea Sliding Door Wardrobe",
-    sub_title: "2 Door, Rustic Almond",
-    offer_price: "57490",
-    ing: "https://www.godrejinterio.com/imagestore/B2C/56121403SD00032/56121403SD00032_01_803x602.png",
-    price: "65000",
-    description: "The sliding wardrobe is a versatile piece of furniture that can be used for a variety of purposes.",
-    categoryName: "Wardrobes",
+    title: "Vertex L Shape LH Sofa",
+    sub_title: "Fabric + Syn Leather, Dark Grey",
+    offer_price: "71499", 
+    img: "https://www.godrejinterio.com/imagestore/B2C/56101502SD01662/56101502SD01662_01_803x602.png",
+    price: "76900",
+    description: "The high back sofa offers firm lumbar support which facilities comfortable upright or casual seating.",
+    categoryName: "Sofas",
   }
+  
 ];

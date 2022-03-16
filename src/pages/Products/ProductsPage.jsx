@@ -1,12 +1,8 @@
-// import { useSearchParams } from "react-router-dom";
 import { Filters, ProductCard } from "../../components";
 import './ProductsPage.css';
 import { useProducts } from "../../context";
 
 export const ProductsPage = () => {
-  // const [params] = useSearchParams();
-  // const paramVal = params.get("categoryName");
-  // console.log(paramVal);
   const products = useProducts();
 
   return (

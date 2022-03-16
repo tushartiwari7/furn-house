@@ -1,23 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
 import "./Categories.css";
 import { Link } from "react-router-dom";
+import { useProductCategory } from "../../context";
 
 export const Categories = () => {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get("/api/categories");
-        setCategories(response.data.categories);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
+  const categories = useProductCategory();
   return (
     <div className="full-width p-sm flex flex-center fs-l categories">
       <ul className="list category-list fs-s flex full-width">

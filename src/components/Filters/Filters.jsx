@@ -1,6 +1,9 @@
 import React from "react";
-
+import {v4 as uuid} from "uuid";
+import { useProductCategory } from "../../context";
 export const Filters = () => {
+  const categories = useProductCategory();
+  console.log(categories);
   return (
     <aside className="sidebar p-sm" id="sidebar">
       <h5 className="my-md h4">Filter by Price</h5>
@@ -26,63 +29,27 @@ export const Filters = () => {
       </ul>
       <h5 className="my-md h4">Category</h5>
       <ul className="list m-md flex flex-col">
-        <div className="my-xs pointer">
-          <input type="checkbox" id="armora" name="armora" />
-          <label htmlFor="armora" className="mx-sm fs-s">
-            Armora
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="checkbox" id="lexus" name="lexus" />
-          <label htmlFor="lexus" className="mx-sm fs-s">
-            Lexus
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="checkbox" id="crystal" name="crystal" />
-          <label htmlFor="crystal" className="mx-sm fs-s">
-            Crystal
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="checkbox" id="Kook" name="Kook" />
-          <label htmlFor="Kook" className="mx-sm fs-s">
-            Kook
-          </label>
-        </div>
+        {categories.map(({ _id, categoryName }) => {
+          return (
+            <div key={_id} className="my-xs pointer">
+              <input type="checkbox" id={_id} name={categoryName} value={categoryName} />
+              <label htmlFor={_id} className="mx-sm fs-s">
+                {categoryName}
+              </label>
+            </div>
+          );
+        })}
       </ul>
       <h5 className="my-md h4">Rating</h5>
       <ul className="list m-md flex flex-col">
-        <div className="my-xs  pointer">
-          <input type="radio" id="5star" name="rating" />
-          <label htmlFor="5star" className="mx-sm fs-s">
-            5 Star or above
+        {[5,4,3,2,1].map(i => {
+          return <div key={uuid()} className="my-xs pointer">
+          <input type="radio" id={`${i}star`} name="rating" />
+          <label htmlFor={`${i}star`} className="mx-sm fs-s pointer">
+            {i} Star {i===5 ? "only" : `or above`}
           </label>
         </div>
-        <div className="my-xs pointer">
-          <input type="radio" id="4Star" name="rating" />
-          <label htmlFor="4Star" className="mx-sm fs-s">
-            4 Star or above
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="radio" id="3Star" name="rating" />
-          <label htmlFor="3Star" className="mx-sm fs-s">
-            3 Star or above
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="radio" id="2Star" name="rating" />
-          <label htmlFor="2Star" className="mx-sm fs-s">
-            2 Star or above
-          </label>
-        </div>
-        <div className="my-xs pointer">
-          <input type="radio" id="1Star" name="rating" />
-          <label htmlFor="1Star" className="mx-sm fs-s">
-            1 Star or above
-          </label>
-        </div>
+        })}
       </ul>
     </aside>
   );

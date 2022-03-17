@@ -7,14 +7,12 @@
   cursor: pointer;
 }
 
-
 .product-page .card {
   width: 100%;
 }
 
 .product-list {
-  overflow-y: scroll;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 2rem;
   align-content: baseline;
 }

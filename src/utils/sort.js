@@ -1,12 +1,10 @@
 export const sort  = (products,filters) => {
   const {sort} = filters;
   switch (sort) {
-    case "increasing":
-      return [...products].sort((a,b) => a.price - b.price);
-
-    case "decreasing":
-      return [...products].sort((a,b) => b.price - a.price);
-
+    case "INCREASING":
+      return [...products].sort((a,b) => Number(a.offer_price) - Number(b.offer_price));
+    case "DECREASING":
+      return [...products].sort((a,b) => Number(b.offer_price) - Number(a.offer_price));
     default:
       return products;
   }

@@ -1,9 +1,9 @@
 import { Filters, ProductCard } from "../../components";
-import './ProductsPage.css';
 import { useProducts } from "../../context";
+import './ProductsPage.css';
 
 export const ProductsPage = () => {
-  const products = useProducts();
+  const {products} = useProducts();
 
   return (
     <div className="grid product-page">

@@ -15,10 +15,14 @@
 }
 
 .card-img {
-  aspect-ratio: 1;  
+  aspect-ratio: 1; 
+  object-fit: contain; 
 }
 .card-content {
   color: var(--text-color500);
+}
+.card-description {
+  height: 7rem;
 }
 
 .card:hover .card-content {

@@ -13,19 +13,11 @@ import {
   ratingFilter,
   categoryFilter,
 } from "../../utils";
-import { reducerFn } from "./ProductReducer";
+import { reducerFn,initialFilters } from "./ProductReducer";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-
-  const initialFilters = {
-    sort: "",
-    priceFilterValue: 150000,
-    ratingFilterValue: null,
-    selectedCategory: [],
-  };
-
   const [state, dispatch] = useReducer(reducerFn, initialFilters);
 
   useEffect(() => {

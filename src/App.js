@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MockMan from "mockman-js";
-import { Home, ProductsPage } from "./pages";
+import { Home, ProductsPage,Login } from "./pages";
 import { Header } from "./components";
 
 const App = () => {
@@ -11,6 +11,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/mockman" element={<MockMan />} />
     </Routes>
     </div>

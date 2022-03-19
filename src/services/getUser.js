@@ -5,6 +5,7 @@ export const  getUser = async (email,password) => {
     const {data,status} = await axios.post("/api/auth/login",{email,password});
     return {data,status};
   } catch (error) {
-    console.error("LOGGING IN FAILED",error);
+    console.error("no user availaible With this Mail Id",error);
+    return error;
   }
 }

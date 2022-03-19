@@ -12,16 +12,12 @@ export const Login = () => {
     const [email, password] = e.target.elements;
 
     (async () => {
-      try {
-        const { data, status } = await getUser(email.value, password.value);
-        if (status === 200) {
-          localStorage.setItem("token", JSON.stringify(data.encodedToken));
-          setUser({ ...data.foundUser, isLoggedIn: true });
-          navigator("/products", { replace: true });
-        } else console.error("EMAIL OR PASSWORD IS INCORRECT", data);
-      } catch (err) {
-        console.log("FAILED TO UPDATE USER", err);
-      }
+      const { data, status } = await getUser(email.value, password.value);
+      if (status === 200) {
+        localStorage.setItem("token", JSON.stringify(data.encodedToken));
+        setUser({ ...data.foundUser, isLoggedIn: true });
+        navigator("/products", { replace: true });
+      } else console.error("EMAIL OR PASSWORD IS INCORRECT", data);
     })();
   };
 

@@ -1,6 +1,6 @@
-.login-page {
+.auth-page {
   height: 85vh;
 }
-.login-card {
+.auth-card {
   width: max(35%, 300px);
 }

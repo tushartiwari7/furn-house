@@ -7,7 +7,7 @@ export const Login = () => {
   const { setUser } = useUser();
   const navigator = useNavigate();
 
-  const formHandler = (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
     const [email, password] = e.target.elements;
 
@@ -23,8 +23,8 @@ export const Login = () => {
 
   return (
     <>
-      <main className="flex flex-center login-page">
-        <form className="card login-card p-sm" onSubmit={formHandler}>
+      <main className="flex flex-center auth-page">
+        <form className="card auth-card p-sm" onSubmit={loginHandler}>
           <div className="h3  text-center fw-semibold m-xs">LOGIN</div>
           <div className="m-xs">
             <label className="fs-s">Email</label>

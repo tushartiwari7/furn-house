@@ -10,11 +10,10 @@ export const Signup = () => {
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    console.log(e.target.elements);
     const [firstName, lastName, email, password] = e.target.elements;
 
     (async () => {
-      const { data, status } = await postNewUser(
+      const { data } = await postNewUser(
         firstName.value,
         lastName.value,
         email.value,
@@ -26,7 +25,6 @@ export const Signup = () => {
       delete createdUser.password;
       setUser({ ...createdUser, isLoggedIn: true });
       navigator("/products", { replace: true });
-      console.log({ data, status });
     })();
   };
 

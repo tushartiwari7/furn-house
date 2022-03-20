@@ -7,3 +7,7 @@ a {
 .ubuntu {
   font-family: 'Ubuntu', sans-serif;
 }
+
+.App {
+  height: 100vh;
+}

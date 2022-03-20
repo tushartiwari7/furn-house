@@ -137,12 +137,6 @@ export const updateCartItemHandler = function (schema, request) {
     this.db.users.update({ _id: userId }, { cart: userCart });
     return new Response(200, {}, { cart: userCart });
   } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
+    return new Response(500, {}, { error });
   }
 };

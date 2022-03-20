@@ -6,3 +6,12 @@
   grid-area: category;
   border-bottom: 1px solid var(--text-color100);
 }
+.list-item {
+  width: 100%;
+  text-align: center;
+  border-left: 1px solid var(--text-color100);
+}
+
+.list-item:hover {
+  background-color: var(--primary100);
+}

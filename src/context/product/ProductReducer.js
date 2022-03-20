@@ -3,6 +3,7 @@ export const initialFilters = {
   priceFilterValue: 150000,
   ratingFilterValue: null,
   selectedCategory: {},
+  searchQuery: ""
 };
 
 export const reducerFn = (state, action) => {
@@ -38,6 +39,12 @@ export const reducerFn = (state, action) => {
           [action.payload]: true,
         }
       };
+
+    case "PRODUCTS_SEARCH":
+      return {
+        ...state,
+        searchQuery: action.payload
+      }
 
     case "RESET_FILTERS":
       return initialFilters;

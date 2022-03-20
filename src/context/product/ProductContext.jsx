@@ -12,6 +12,7 @@ import {
   priceFilter,
   ratingFilter,
   categoryFilter,
+  productSearchFilter
 } from "../../utils";
 import { reducerFn,initialFilters } from "./ProductReducer";
 const ProductContext = createContext();
@@ -32,7 +33,8 @@ export const ProductProvider = ({ children }) => {
     sort,
     priceFilter,
     ratingFilter,
-    categoryFilter
+    categoryFilter,
+    productSearchFilter
   )(products);
   return (
     <ProductContext.Provider

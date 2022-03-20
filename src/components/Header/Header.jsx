@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsCart, BsHeart, BsPersonCircle } from "react-icons/bs";
 import { useUser, useProducts } from "../../context";
 
@@ -8,11 +8,12 @@ export const Header = () => {
   const { user } = useUser();
   const { dispatch } = useProducts();
   const navigator = useNavigate();
+  const location = useLocation();
 
   const onSearch = (e) => {
-   if(window.location.pathname !== '/products')
+   if(location.pathname !== '/products')
       navigator("/products");
-    return dispatch({ type: "PRODUCTS_SEARCH", payload: e.target.value });
+    dispatch({ type: "PRODUCTS_SEARCH", payload: e.target.value });
   };
 
   return (
@@ -35,7 +36,7 @@ export const Header = () => {
           {!user.isLoggedIn && (
             <Link
               to="/login"
-              className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s flex flex-center"
+              className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s flex flex-center rounded-s"
             >
               Login
             </Link>

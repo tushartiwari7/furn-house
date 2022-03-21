@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProductCard.css";
 import { BsStarFill, BsCart2, BsHeart, BsHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -16,6 +17,7 @@ export const ProductCard = (product) => {
     _id,
   } = product;
   const { user, setUser } = useUser();
+
   const isInCart =
     user.isLoggedIn && user.cart.find((item) => item._id === _id);
   const isInWishlist =
@@ -36,12 +38,12 @@ export const ProductCard = (product) => {
       alert("Please Login to add items to Wishlist");
       return navigator("/login");
     }
-    const { wishlist } = await addToWishList(product._id);
+    const { wishlist } = await addToWishList(product);
     setUser((user) => ({ ...user, wishlist }));
   };
 
   const deleteFromWishListHandler = async () => {
-    const { wishlist } = await deleteFromWishList(product);
+    const { wishlist } = await deleteFromWishList(product._id);
     setUser((user) => ({ ...user, wishlist }));
   };
 

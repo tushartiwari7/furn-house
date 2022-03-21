@@ -9,7 +9,6 @@ export const deleteFromWishList = async (productId) => {
       url: `/api/user/wishlist/${productId}`,
       headers: { authorization: token },
     });
-    console.log(data, status);
     return { wishlist: data.wishlist, status };
   } catch (error) {
     console.error(error);

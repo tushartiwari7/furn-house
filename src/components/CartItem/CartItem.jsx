@@ -1,4 +1,5 @@
 import React from "react";
+import { BsPlus, BsDash } from "react-icons/bs";
 
 export const CartItem = () => {
   return (
@@ -21,8 +22,8 @@ export const CartItem = () => {
           </h3>
           <h3 className="discount h4">15% off</h3>
           <div className="cart-form-qty my-xs">
-            <button className="btn rounded-circle btn-outline-primary fs-lg">
-              -
+            <button className="btn rounded-circle btn-outline-primary">
+              <BsDash className="react-icon pos-rel" />
             </button>
             <input
               className="text-center rounded-circle mx-xs"
@@ -31,7 +32,7 @@ export const CartItem = () => {
               min={1}
             />
             <button className="btn rounded-circle btn-outline-primary">
-              +
+              <BsPlus className="react-icon pos-rel" />
             </button>
           </div>
           <div className="flex flex-row mx-sm cart-btns">

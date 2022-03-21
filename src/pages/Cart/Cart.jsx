@@ -2,24 +2,26 @@ import "./Cart.css";
 import { CartItem } from "../../components";
 import { useUser } from "../../context";
 import { Link } from "react-router-dom";
+import { getCartSummary } from "../../utils";
+
 export const Cart = () => {
   const {
     user: { cart, isLoggedIn },
   } = useUser();
+
+  const { items, total, discount, gst } = getCartSummary(cart ?? []);
   return (
     <>
       <main
         className={`main flex cart-page  ${!cart?.length && "flex-center"}`}
       >
         {isLoggedIn ? (
-          cart?.length ? (
+          cart.length ? (
             <>
               <section className="cart-items flex flex-col px-xs">
                 <h2 className="cart-title h3 ubuntu p-xs">
-                  Your Cart{" "}
-                  <span className="fs-m fw-regular px-xs">
-                    {cart.length} items
-                  </span>
+                  Your Cart
+                  <span className="fs-m fw-regular px-xs">{items} items</span>
                 </h2>
                 {cart.length &&
                   cart.map((product) => (
@@ -30,36 +32,32 @@ export const Cart = () => {
                 <h2 className="cart-title h3 ubuntu p-xs">Cart Summary</h2>
 
                 <section className="card p-sm flex checkout">
-                  <p className="h4 py-xs">Price Details</p>
-                  <hr className="hr" />
+                  <p className="h4 py-xs">Price Breakup</p>
                   <p className="spread flex fs-s my-xs">
-                    Price-
-                    <span> &#8377;22999 </span>
+                    Cart Total -<span> &#8377;{total} </span>
                   </p>
                   <p className="spread flex fs-s my-xs">
                     GST - (18%)
-                    <span> &#8377;4140 </span>
+                    <span> &#8377;{gst} </span>
                   </p>
                   <p className="spread flex fs-s my-xs">
                     Delivery Charges
-                    <span> &#8377;499 </span>
+                    <span> {total > 10000 ? "Free" : `₹${499}`} </span>
                   </p>
                   <p className="spread flex fs-s my-xs">
-                    Discount (-20% off)
-                    <span className="discount"> -&#8377;5500 </span>
+                    Product Discount
+                    <span className="discount"> -&#8377;{discount} </span>
                   </p>
                   <hr className="hr" />
-                  <p className="spread flex h4 py-xs my-xs">
+                  <p className="spread flex h4 py-xs my-xs ubuntu total-amount">
                     Total Amount
-                    <span> &#8377;22139 </span>
+                    <span className="h2 ubuntu"> &#8377;{total} </span>
                   </p>
-
                   <p className="spread flex fs-s my-xs">
-                    You will save &#8377;5500 on this order.
+                    You will save &#8377;{discount} on this order.
                   </p>
                   <button className="btn btn-success rounded-s fs-s px-sm py-xs">
                     Place Order
-                    <i className="bi bi-right"></i>
                   </button>
                 </section>
               </section>

@@ -43,11 +43,13 @@
 .fill-height {
   height: -webkit-fill-available;
 }
-
 .price {
   margin-top: 10px;
 }
 .react-icon {
   vertical-align: middle;
   top: -1px;
+}
+.total-amount {
+  align-items: flex-end;
 }

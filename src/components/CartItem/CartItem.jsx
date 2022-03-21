@@ -1,10 +1,7 @@
 import React from "react";
 import { BsPlus, BsDash } from "react-icons/bs";
-import {
-  getDiscountPercentage,
-  updateCartQty,
-  deleteCartItem,
-} from "../../services";
+import { updateCartQty, deleteCartItem } from "../../services";
+import { getDiscountPercentage } from "../../utils";
 getDiscountPercentage;
 import { useUser } from "../../context";
 

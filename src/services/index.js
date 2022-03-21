@@ -5,3 +5,5 @@ export { postNewUser } from "./postNewUser";
 export { addToCart } from "./addToCart";
 export { updateCartQty } from "./updateCartQty";
 export { deleteCartItem } from "./deleteCartItem";
+export { addToWishList } from "./addToWishList";
+export { deleteFromWishList } from "./deleteFromWishList";

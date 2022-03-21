@@ -1,8 +1,7 @@
 import React from "react";
 import { BsPlus, BsDash } from "react-icons/bs";
-import { updateCartQty, deleteCartItem } from "../../services";
+import { updateCartQty, deleteCartItem, addToWishList } from "../../services";
 import { getDiscountPercentage } from "../../utils";
-getDiscountPercentage;
 import { useUser } from "../../context";
 
 export const CartItem = (product) => {
@@ -17,6 +16,14 @@ export const CartItem = (product) => {
     const { cart } = await deleteCartItem(product._id);
     setUser((user) => ({ ...user, cart }));
   };
+
+  const addToWishListHandler = async () => {
+    const { wishlist } = await addToWishList(product);
+    setUser((user) => ({ ...user, wishlist }));
+  };
+
+  const moveToWishlistHandler = async () =>
+    await Promise.all(deleteItemHandler(), addToWishListHandler());
 
   return (
     <section className="card my-sm">
@@ -67,7 +74,10 @@ export const CartItem = (product) => {
             </button>
           </div>
           <div className="flex flex-row mx-sm cart-btns">
-            <button className="btn btn-outline-primary rounded-s px-sm py-xs mx-xs">
+            <button
+              className="btn btn-outline-primary rounded-s px-sm py-xs mx-xs"
+              onClick={moveToWishlistHandler}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 19 16"

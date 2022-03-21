@@ -25,7 +25,6 @@
 
 .card-content {
   padding-top: 20px;
-  width: unset;
   flex-grow: 1;
 }
 .cart-form-qty > *{

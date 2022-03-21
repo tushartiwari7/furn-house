@@ -1,6 +1,9 @@
 .cart-btns {
   margin-left: auto;
 }
+.cart-empty {
+  margin: auto;
+}
 .cart-page {
   width: 70%;
   margin: 5rem auto;
@@ -37,10 +40,16 @@
 .left {
   left: -2px;
 }
+.fill-height {
+  height: -webkit-fill-available;
+}
 .price {
   margin-top: 10px;
 }
 .react-icon {
   vertical-align: middle;
   top: -1px;
+}
+.total-amount {
+  align-items: flex-end;
 }

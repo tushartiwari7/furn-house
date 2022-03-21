@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./FeaturedProducts.css";
-import {Card} from '../';
+import { Card } from "../";
 export const FeaturedProducts = () => {
+  const [featuredproducts, setFeaturedProducts] = useState([]);
 
-const [featuredproducts, setFeaturedProducts] = useState([]);
-  
   useEffect(() => {
     (async () => {
       try {
@@ -13,7 +12,7 @@ const [featuredproducts, setFeaturedProducts] = useState([]);
         const featProducts = await response.data.products.slice(0, 3);
         setFeaturedProducts(featProducts);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     })();
   }, []);

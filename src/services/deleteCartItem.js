@@ -1,16 +1,17 @@
 import axios from "axios";
-export const addToCart = async (product) => {
+
+export const deleteCartItem = async (productID) => {
   const token = localStorage.getItem("token").slice(1, -1);
+
   try {
     const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/cart`,
+      method: "DELETE",
+      url: `/api/user/cart/${productID}`,
       headers: { authorization: token },
-      data: { product },
     });
     return { cart: data.cart, status };
-  } catch (err) {
-    alert("Something went wrong: Add To Cart Failed");
-    return err;
+  } catch (error) {
+    console.error(error);
+    return error;
   }
 };

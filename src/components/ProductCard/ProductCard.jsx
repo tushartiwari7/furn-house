@@ -22,8 +22,7 @@ export const ProductCard = (product) => {
 
   const cartHandler = async () => {
     if (!user.isLoggedIn) return alert("Please Login to add items to cart");
-    const { cart, status } = await addToCart(product);
-    console.log(cart, status);
+    const { cart } = await addToCart(product);
     setUser((user) => ({ ...user, cart }));
   };
 

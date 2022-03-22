@@ -1,7 +1,6 @@
 const calculateGST = (price) => Math.round(price * 0.18);
 
 export const getCartSummary = (cart) => {
-  console.log(cart);
   return cart.reduce(
     (acc, item) => {
       const discount =

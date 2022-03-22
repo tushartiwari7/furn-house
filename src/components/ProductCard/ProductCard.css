@@ -29,6 +29,9 @@
   background: rgba(255,255,255,0.5);
 }
 
+.product-card {
+  width: 25rem;
+}
 .strikethrough {
   text-decoration: line-through;
 }

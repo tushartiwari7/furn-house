@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./FeaturedProducts.css";
-import { Card } from "../";
+import { useProducts } from "../../context";
+import { ProductCard } from "../ProductCard/ProductCard";
+
 export const FeaturedProducts = () => {
-  const [featuredproducts, setFeaturedProducts] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get("/api/products");
-        const featProducts = await response.data.products.slice(0, 3);
-        setFeaturedProducts(featProducts);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
+  const { products } = useProducts();
   return (
     <section className="m-lg">
       <h3 className="h2 ubuntu text-center mx-md my-lg">Trending Products</h3>
       <section className="featured-products-wrapper flex wrap">
-        {featuredproducts.map((product) => (
-          <Card key={product._id} {...product} />
-        ))}
+        {products
+          .filter((product) => Number(product.rating) === 5)
+          .splice(0, 3)
+          .map((product) => (
+            <ProductCard key={product._id} {...product} />
+          ))}
       </section>
     </section>
   );

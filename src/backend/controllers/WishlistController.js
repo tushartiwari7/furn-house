@@ -9,7 +9,7 @@ import { formatDate, requiresAuth } from "../utils/authUtils";
 
 /**
  * This handler handles getting items to user's wishlist.
- * send GET Request at /api/user/wishlist
+ * send GET Request at /api/user/wishlist.
  * */
 
 export const getWishlistItemsHandler = function (schema, request) {

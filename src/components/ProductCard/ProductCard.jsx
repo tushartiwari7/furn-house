@@ -1,9 +1,10 @@
 import React from "react";
-import { BsStarFill, BsCart2, BsHeart } from "react-icons/bs";
+import "./ProductCard.css";
+import { BsStarFill, BsCart2, BsHeart, BsHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useUser } from "../../context";
-import { addToCart } from "../../services";
+import { addToCart, addToWishList, deleteFromWishList } from "../../services";
 export const ProductCard = (product) => {
   const {
     img,
@@ -16,14 +17,34 @@ export const ProductCard = (product) => {
     _id,
   } = product;
   const { user, setUser } = useUser();
+
   const isInCart =
-    user.isLoggedIn && user.cart.find((item) => item._id === _id);
+    user.isLoggedIn && user.cart.some((item) => item._id === _id);
+  const isInWishlist =
+    user.isLoggedIn && user.wishlist.some((item) => item._id === _id);
   const navigator = useNavigate();
 
   const cartHandler = async () => {
-    if (!user.isLoggedIn) return alert("Please Login to add items to cart");
+    if (!user.isLoggedIn) {
+      alert("Please Login to add items to cart");
+      return navigator("/login");
+    }
     const { cart } = await addToCart(product);
     setUser((user) => ({ ...user, cart }));
+  };
+
+  const addToWishListHandler = async () => {
+    if (!user.isLoggedIn) {
+      alert("Please Login to add items to Wishlist");
+      return navigator("/login");
+    }
+    const { wishlist } = await addToWishList(product);
+    setUser((user) => ({ ...user, wishlist }));
+  };
+
+  const deleteFromWishListHandler = async () => {
+    const { wishlist } = await deleteFromWishList(product._id);
+    setUser((user) => ({ ...user, wishlist }));
   };
 
   const goToCart = () => {
@@ -31,7 +52,7 @@ export const ProductCard = (product) => {
   };
 
   return (
-    <section className="card ">
+    <section className="card product-card">
       <div className="flex flex-col pos-rel">
         <img className="card-img" src={img} alt={title} />
         <div className="card-content flex flex-col p-sm pos-abs fs-m">
@@ -66,8 +87,13 @@ export const ProductCard = (product) => {
           {isInCart ? "GO TO CART" : "ADD TO CART"}
           <BsCart2 className="fs-m" />
         </button>
-        <button className="btn btn-icon rounded-circle favorite btn-outline-secondary p-xs ">
-          <BsHeart />
+        <button
+          className="btn btn-icon rounded-circle favorite btn-outline-secondary p-xs"
+          onClick={
+            isInWishlist ? deleteFromWishListHandler : addToWishListHandler
+          }
+        >
+          {isInWishlist ? <BsHeartFill /> : <BsHeart />}
         </button>
       </div>
     </section>

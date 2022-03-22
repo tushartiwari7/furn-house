@@ -19,9 +19,9 @@ export const ProductCard = (product) => {
   const { user, setUser } = useUser();
 
   const isInCart =
-    user.isLoggedIn && user.cart.find((item) => item._id === _id);
+    user.isLoggedIn && user.cart.some((item) => item._id === _id);
   const isInWishlist =
-    user.isLoggedIn && user.wishlist.find((item) => item._id === _id);
+    user.isLoggedIn && user.wishlist.some((item) => item._id === _id);
   const navigator = useNavigate();
 
   const cartHandler = async () => {

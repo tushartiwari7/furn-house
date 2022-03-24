@@ -15,18 +15,23 @@
 }
 
 .card-img {
-  aspect-ratio: 1; 
-  object-fit: contain; 
+  aspect-ratio: 1;
+  object-fit: contain;
 }
 .card-content {
   color: var(--text-color500);
 }
+
+.card-content:hover {
+  backdrop-filter: none;
+}
+
 .card-description {
   height: 7rem;
 }
 
 .card:hover .card-content {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .product-card {
@@ -43,10 +48,11 @@
   .card-description {
     display: none;
   }
-  .card-feedback{
+  .card-feedback {
     margin: 3px 6px;
   }
-  .btn-cart,.card-content {
+  .btn-cart,
+  .card-content {
     font-size: small;
   }
 }

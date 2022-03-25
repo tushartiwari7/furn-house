@@ -6,3 +6,4 @@ export { categoryFilter } from "./categoryFilter";
 export { productSearchFilter } from "./productSearchFilter";
 export { getCartSummary } from "../utils/getCartSummary";
 export { getDiscountPercentage } from "../utils/getDiscountPercentage";
+export { getDate } from "../utils/getDate";

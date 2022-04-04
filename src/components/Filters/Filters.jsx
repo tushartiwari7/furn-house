@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useProductCategory, useProducts } from "../../context";
+import toast from "react-hot-toast";
+import { BsGraphDown, BsDiamondHalf, BsStar } from "react-icons/bs";
 export const Filters = () => {
- 
   const categories = useProductCategory();
   const [params] = useSearchParams();
   const isCategoryParam = params.get("categoryName");
@@ -15,10 +16,8 @@ export const Filters = () => {
   useEffect(() => {
     if (isCategoryParam)
       dispatch({ type: "SET_CATEGORY", payload: isCategoryParam });
-    return ()=>{      
-      // if user navigates to any other route  other than /products this cleanup should work
-      dispatch({type: "RESET_FILTERS"});
-    }
+    // if user navigates to any other route  other than /products this cleanup should work
+    return () => dispatch({ type: "RESET_FILTERS" });
   }, []);
 
   const {
@@ -30,31 +29,54 @@ export const Filters = () => {
     dispatch,
   } = useProducts();
 
-  const onSortIncrease = () =>
+  const onSortIncrease = () => {
+    toast(`Sorting in Low to High order.`, { icon: "🚀" });
     dispatch({ type: "SORT", payload: "INCREASING" });
-
-  const onSortDecrease = () =>
+  };
+  const onSortDecrease = () => {
+    toast(`Sorting in High to Low order.`, { icon: <BsGraphDown /> });
     dispatch({ type: "SORT", payload: "DECREASING" });
-
-  const onPriceFilterChange = (e) =>
+  };
+  const onPriceFilterChange = (e) => {
+    toast(`Showing Products less than ${e.target.value}.`, {
+      icon: <BsDiamondHalf />,
+    });
     dispatch({ type: "PRICE_FILTER", payload: e.target.value });
-
-  const onRatingFilterChange = (rating) =>
+  };
+  const onRatingFilterChange = (rating) => {
+    toast(
+      rating === 1
+        ? `Rating Filter Resetted`
+        : `Showing ${rating} Star ${
+            rating === 5 ? "only" : "or above"
+          } products`,
+      {
+        icon: <BsStar />,
+      }
+    );
     dispatch({ type: "RATING_FILTER", payload: rating });
-
-  const onResetBtnClick = () => 
-    dispatch({type: "RESET_FILTERS"});
+  };
+  const onResetBtnClick = () => {
+    toast("Resetted All Filters", { icon: "✨" });
+    dispatch({ type: "RESET_FILTERS" });
+  };
 
   return (
     <form className="sidebar p-sm" id="sidebar">
-      <button className="btn btn-outline-error p-xs rounded-s" type="reset" onClick={onResetBtnClick} >Reset Filters</button>
+      <button
+        className="btn btn-outline-error p-xs rounded-s"
+        type="reset"
+        onClick={onResetBtnClick}
+      >
+        Reset Filters
+      </button>
       <h5 className="my-md h4">Filter by Price</h5>
       <ul className="list m-md flex flex-col">
-        <div className="my-xs  pointer">
+        <div className="my-xs pointer">
           <input
             type="range"
             min="5000"
-            max="150000"
+            max="110000"
             step="5000"
             defaultValue={priceFilterValue}
             onChange={onPriceFilterChange}

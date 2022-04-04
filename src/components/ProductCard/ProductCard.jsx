@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useUser } from "../../context";
 import { addToCart, addToWishList, deleteFromWishList } from "../../services";
+import toast from "react-hot-toast";
 export const ProductCard = (product) => {
   const {
     img,
@@ -26,23 +27,26 @@ export const ProductCard = (product) => {
 
   const cartHandler = async () => {
     if (!user.isLoggedIn) {
-      alert("Please Login to add items to cart");
+      toast("Please Login to add items to cart", { icon: <BsCart2 /> });
       return navigator("/login");
     }
+    toast.success("Item added to Cart");
     const { cart } = await addToCart(product);
     setUser((user) => ({ ...user, cart }));
   };
 
   const addToWishListHandler = async () => {
     if (!user.isLoggedIn) {
-      alert("Please Login to add items to Wishlist");
+      toast("Please Login to add items to Wishlist", { icon: <BsHeartFill /> });
       return navigator("/login");
     }
+    toast.success("Item added to Wishlist");
     const { wishlist } = await addToWishList(product);
     setUser((user) => ({ ...user, wishlist }));
   };
 
   const deleteFromWishListHandler = async () => {
+    toast.success("Item removed from Wishlist");
     const { wishlist } = await deleteFromWishList(product._id);
     setUser((user) => ({ ...user, wishlist }));
   };
@@ -56,7 +60,7 @@ export const ProductCard = (product) => {
       <div className="flex flex-col pos-rel">
         <img className="card-img" src={img} alt={title} />
         <div className="card-content flex flex-col p-sm pos-abs fs-m">
-          <h3 className="card-title">{title}</h3>
+          <h3 className="h3 ubuntu">{title}</h3>
           <label className="card-author">{sub_title}</label>
         </div>
       </div>

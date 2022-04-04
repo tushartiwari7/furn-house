@@ -5,9 +5,14 @@ a {
 }
 
 .ubuntu {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .App {
   height: 100vh;
+}
+
+div.toast {
+  background: #1a1a1a; /* var(--text-color); */
+  color: aliceblue; /* var(--bg-primary)*/
 }

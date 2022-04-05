@@ -1,9 +1,11 @@
+import toast from "react-hot-toast";
+
 export const initialFilters = {
   sort: "",
-  priceFilterValue: 150000,
+  priceFilterValue: 110000,
   ratingFilterValue: null,
   selectedCategory: {},
-  searchQuery: ""
+  searchQuery: "",
 };
 
 export const reducerFn = (state, action) => {
@@ -24,27 +26,28 @@ export const reducerFn = (state, action) => {
         ratingFilterValue: action.payload,
       };
     case "SET_CATEGORY":
-      if (state.selectedCategory[action.payload])  {
-        const categoryCopy = {...state.selectedCategory};
+      toast("Updated Selected Categories");
+      if (state.selectedCategory[action.payload]) {
+        const categoryCopy = { ...state.selectedCategory };
         delete categoryCopy[action.payload];
         return {
           ...state,
-          selectedCategory: categoryCopy
-        }
+          selectedCategory: categoryCopy,
+        };
       }
       return {
         ...state,
         selectedCategory: {
           ...state.selectedCategory,
           [action.payload]: true,
-        }
+        },
       };
 
     case "PRODUCTS_SEARCH":
       return {
         ...state,
-        searchQuery: action.payload
-      }
+        searchQuery: action.payload,
+      };
 
     case "RESET_FILTERS":
       return initialFilters;

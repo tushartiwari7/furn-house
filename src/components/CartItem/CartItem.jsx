@@ -43,7 +43,7 @@ export const CartItem = (product) => {
           />
         </div>
         <div className="card-content card-horizontal flex flex-col p-xs fs-m">
-          <h3 className="card-title fw-semibold">{product.title}</h3>
+          <h3 className="fw-semibold">{product.title}</h3>
           <label className="card-author fw-regular">{product.sub_title}</label>
           <h3 className="h3 price">
             ₹{product.offer_price}{" "}

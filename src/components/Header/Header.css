@@ -1,15 +1,23 @@
-
-.btn-login,.hamburger {
+.btn-login,
+.hamburger {
   /*  transparent by default */
-  background: white; 
+  background: white;
 }
-.btn-login:hover,.hamburger:hover {
+.btn-login:hover,
+.hamburger:hover {
   /* primary color by default */
-  border-color: white; 
+  border-color: white;
+}
+
+.icon {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .input {
   background: white;
+  padding-right: 4rem;
 }
 
 .searchbar {

@@ -9,8 +9,13 @@ export const Login = () => {
 
   const loginHandler = (e) => {
     e.preventDefault();
-    const [email, password] = e.target.elements;
-
+    const [email, password] =
+      e.target.id === "login-with-test-credentials"
+        ? [
+            { value: process.env.REACT_APP_TEST_EMAIL },
+            { value: process.env.REACT_APP_TEST_PASSWORD },
+          ]
+        : e.target.elements;
     (async () => {
       const { data, status } = await getUser(email.value, password.value);
       if (status === 200) {
@@ -24,7 +29,11 @@ export const Login = () => {
   return (
     <>
       <main className="flex flex-center auth-page">
-        <form className="card auth-card p-sm" onSubmit={loginHandler}>
+        <form
+          className="card auth-card p-sm"
+          onSubmit={loginHandler}
+          id="login-form"
+        >
           <div className="h3  text-center fw-semibold m-xs">LOGIN</div>
           <div className="m-xs">
             <label className="fs-s">Email</label>
@@ -63,8 +72,17 @@ export const Login = () => {
           <button
             type="submit"
             className="btn btn-primary py-xs px-sm m-xs fs-m"
+            id="login"
           >
             Login
+          </button>
+          <button
+            type="submit"
+            className="btn btn-warning p-xs m-xs fs-m "
+            id="login-with-test-credentials"
+            onClick={loginHandler}
+          >
+            Login with Test Credentials
           </button>
           <Link
             className="btn btn-outline-primary fs-s list py-xs px-sm m-xs"

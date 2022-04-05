@@ -11,6 +11,7 @@ import {
   Profile,
 } from "./pages";
 import { Header } from "./components";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -26,6 +27,10 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/mockman" element={<MockMan />} />
       </Routes>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{ className: "fs-m toast" }}
+      />
     </div>
   );
 };

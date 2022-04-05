@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsCart, BsHeart, BsPersonCircle } from "react-icons/bs";
+import { BsCart, BsHeart, BsPersonCircle, BsSearch } from "react-icons/bs";
 import { useUser, useProducts } from "../../context";
 
 export const Header = () => {
@@ -11,8 +11,7 @@ export const Header = () => {
   const location = useLocation();
 
   const onSearch = (e) => {
-   if(location.pathname !== '/products')
-      navigator("/products");
+    if (location.pathname !== "/products") navigator("/products");
     dispatch({ type: "PRODUCTS_SEARCH", payload: e.target.value });
   };
 
@@ -24,13 +23,14 @@ export const Header = () => {
             Furn House
           </Link>
         </div>
-        <div className="searchbar flex flex-center">
+        <div className="searchbar flex flex-center pos-rel">
           <input
             type="text"
             className="input px-sm py-xs rounded-s"
             placeholder="What are you looking for?"
             onChange={onSearch}
           />
+          <BsSearch className="icon pos-abs" color="var(--primary)" />
         </div>
         <div className="flex flex-center">
           {!user.isLoggedIn && (

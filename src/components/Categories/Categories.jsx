@@ -12,7 +12,7 @@ export const Categories = () => {
           key={_id}
           className={`category pos-rel ${idx === 3 ? "category-special" : ""}`}
         >
-          <img src={img} />
+          <img src={img} alt={categoryName} />
           <div className="pos-abs category-content flex">
             <h3 className="h2">{categoryName}</h3>
             <p className="fs-m">{description}</p>

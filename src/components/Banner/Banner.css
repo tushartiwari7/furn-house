@@ -1,3 +1,41 @@
+.banner {
+  background: var(--secondary);
+}
+
+.banner-content {
+  width: 40%;
+}
+.banner-video {
+  width: 60%;
+}
+
+.banner .title {
+  font-size: 3.6rem;
+  border: none;
+  margin: 0;
+}
+.banner .title,
+.banner .subtitle {
+  color: var(--text-color);
+}
+
+.banner video {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
 .banner-img {
   object-fit: fill;
+}
+
+@media only screen and (max-width: 880px) {
+  .banner {
+    flex-direction: column-reverse;
+  }
+
+  .banner-content,
+  .banner-video {
+    width: 100%;
+  }
 }

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import MockMan from "mockman-js";
 import {
@@ -14,8 +14,14 @@ import { Header } from "./components";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
+  const location = useLocation();
+
   return (
-    <div className="App full-height">
+    <div
+      className={`App full-height grid ${
+        location.pathname === "/" ? "homepage" : ""
+      }`}
+    >
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +33,9 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/mockman" element={<MockMan />} />
       </Routes>
+      <footer className="fs-m">
+        {new Date().getFullYear()} &copy; All rights reserved.
+      </footer>
       <Toaster
         position="bottom-right"
         toastOptions={{ className: "fs-m toast" }}

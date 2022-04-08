@@ -1,49 +1,50 @@
 import React from "react";
 import "./OurServices.css";
-import { BsTruck, BsTrophy, BsShieldCheck, BsCashCoin } from "react-icons/bs";
 import { v4 } from "uuid";
 
 export const OurServices = () => {
   const services = [
     {
-      Logo: BsTruck,
-      title: "Free Delivery Above Rs4999",
-      id: v4()
+      icon: "https://www.godrejinterio.com/imagestore/B2C/EspotImages/Images/Icons/op-hq-products.png",
+      title: "High Quality Products",
+      description:
+        "Commited to crafting products from the best quality materials to give you furniture that will last a lifetime.",
+      id: v4(),
     },
     {
-      Logo: BsTrophy,
-      title: "Best Quality Products",
-      id: v4()
+      icon: "https://www.godrejinterio.com/imagestore/B2C/EspotImages/Images/Icons/op-ls-network.png",
+      title: "Large Store Network",
+      description:
+        "We have over 400 stores across 84 cities. Visit us to experience our product first hand or interact with our team.",
+      id: v4(),
     },
     {
-      Logo: BsShieldCheck,
-      title: "100% Satisfaction Guarantee",
-      id: v4()
-    },
-    {
-      Logo: BsCashCoin,
-      title: "Easy Finance Options",
-      id: v4()
+      icon: "https://www.godrejinterio.com/imagestore/B2C/EspotImages/Images/Icons/op-fd-and-installation.png",
+      title: "Free Delivery on Eligible Products",
+      description:
+        "We will deliver your furniture install it by our technician at no extra cost if that product is eligible.",
+      id: v4(),
     },
   ];
 
   return (
-    <section className="my-lg py-lg">
-      <h3 className="h2 ubuntu text-center mx-md my-lg">Our Services</h3>
-      <section className="featured-products-wrapper flex wrap">
-        {services.map(({ Logo, title, id }) => (
-          <section className="card" key={id}>
-            <div className="services m-md flex flex-center">
-              <Logo />
+    <ul className="flex services py-md">
+      <p className="fs-l p-md services-title">
+        We at <strong>FurnHouse</strong> Promises You
+      </p>
+      <div className="grid service-cards">
+        {services.map(({ icon, title, id, description }) => (
+          <section className="card full-width" key={id}>
+            <div className="m-md flex flex-center">
+              <img className="icon" src={icon} />
             </div>
             <div className="card-desc services-desc fs-s p-xs fullwidth">
-              <div className="card-description ubuntu h4 mx-md text-center">
-                {title}
-              </div>
+              <div className=" ubuntu h4 mx-md text-center">{title}</div>
+              <p className="fs-s p-sm">{description}</p>
             </div>
           </section>
         ))}
-      </section>
-    </section>
+      </div>
+    </ul>
   );
 };

@@ -1,15 +1,12 @@
-.featured-products-wrapper {
-  width: 70%;
-  margin: 3rem auto;
-  row-gap: 1rem;
+.best-selling {
+  margin: 10rem auto;
+  width: 80vw;
 }
-
-.featured-products-wrapper > .card {
-  width: 30rem;
+.slick-track {
+  display: flex;
+  gap: 1rem;
 }
-
-@media screen and (max-width: 1024px) {
-  .featured-products-wrapper {
-    width: 100%;
-  }
+.slick-prev:before,
+.slick-next:before {
+  color: var(--primary);
 }

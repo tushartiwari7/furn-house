@@ -4,15 +4,55 @@ a {
   text-decoration: none;
 }
 
+.App {
+  height: 100vh;
+  grid-template-areas: "header header" "sidebar main" "footer footer";
+  grid-template-columns: 25rem 1fr;
+}
+footer {
+  grid-area: footer;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 10px;
+  text-align: center;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.homepage {
+  grid-template-areas: "header header" "main main" "footer footer";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Ubuntu", sans-serif;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+main {
+  grid-area: main;
+}
+
+.rounded-circle {
+  border-radius: 50px;
+}
+
 .ubuntu {
   font-family: "Ubuntu", sans-serif;
 }
 
-.App {
-  height: 100vh;
+div.toast {
+  background: var(--text-color);
+  color: var(--bg-primary);
 }
 
-div.toast {
-  background: #1a1a1a; /* var(--text-color); */
-  color: aliceblue; /* var(--bg-primary)*/
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
 }

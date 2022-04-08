@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUser } from "../../services";
 import { useUser } from "../../context";
+import toast from "react-hot-toast";
 export const Login = () => {
   const { setUser } = useUser();
   const navigator = useNavigate();
@@ -19,10 +20,11 @@ export const Login = () => {
     (async () => {
       const { data, status } = await getUser(email.value, password.value);
       if (status === 200) {
+        toast.success("Login successful");
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
         setUser({ ...data.foundUser, isLoggedIn: true });
         navigator("/products", { replace: true });
-      } else console.error("EMAIL OR PASSWORD IS INCORRECT", data);
+      } else toast("Login failed", { icon: "❌" });
     })();
   };
 

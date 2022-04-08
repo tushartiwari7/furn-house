@@ -1,7 +1,13 @@
 import React from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsCart, BsHeart, BsPersonCircle, BsSearch } from "react-icons/bs";
+import {
+  BsHandbag,
+  BsPerson,
+  BsHeart,
+  BsPersonCircle,
+  BsSearch,
+} from "react-icons/bs";
 import { useUser, useProducts } from "../../context";
 
 export const Header = () => {
@@ -17,47 +23,50 @@ export const Header = () => {
 
   return (
     <>
-      <header className="full-width p-sm flex header fs-l">
+      <header className="full-width flex header pos-rel fs-l">
         <div className="flex flex-center">
-          <Link className="list white flex flex-center" to="/">
-            Furn House
+          <Link
+            className="list flex flex-center text-color"
+            to="/"
+            title="Go to Homepage"
+          >
+            <img src="assets/logo-200-100.svg" alt="logo" className="logo" />
           </Link>
         </div>
-        <div className="searchbar flex flex-center pos-rel">
+        <div
+          className="searchbar flex flex-center pos-rel"
+          title="Search Products"
+        >
           <input
             type="text"
-            className="input px-sm py-xs rounded-s"
+            className="input px-sm py-xs"
             placeholder="What are you looking for?"
             onChange={onSearch}
           />
           <BsSearch className="icon pos-abs" color="var(--primary)" />
         </div>
-        <div className="flex flex-center">
-          {!user.isLoggedIn && (
-            <Link
-              to="/login"
-              className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s flex flex-center rounded-s"
-            >
-              Login
-            </Link>
-          )}
+        <div className="flex flex-center navs">
           <Link
             to="/wishlist"
+            title="wishlist"
             className="list white btn btn-icon flex flex-center"
           >
             <BsHeart />
           </Link>
-          <Link to="/cart" className="list white btn btn-icon flex flex-center">
-            <BsCart />
+          <Link
+            to="/cart"
+            title="Cart"
+            className="list white btn btn-icon flex flex-center"
+          >
+            <BsHandbag />
           </Link>
-          {user.isLoggedIn && (
-            <Link
-              to="/profile"
-              className="list white btn btn-icon flex flex-center"
-            >
-              <BsPersonCircle />
-            </Link>
-          )}
+          <Link
+            to="/login"
+            title="Login"
+            className="list btn btn-icon flex flex-center rounded-s"
+          >
+            <BsPerson size="2.4rem" />
+          </Link>
         </div>
       </header>
     </>

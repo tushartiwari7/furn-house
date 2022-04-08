@@ -1,0 +1,58 @@
+.feat-product {
+  height: 400px;
+  width: 100%;
+  background: var(--secondary);
+}
+
+.product-overlay {
+  align-items: flex-end;
+  justify-content: end;
+  /* to add very little shadow around the wishlist icon so that it don't blend with the image */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  inset: 0;
+}
+
+.feat-product img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s linear;
+}
+
+.product-overlay .icon {
+  transform: none;
+  cursor: pointer;
+}
+
+.product-overlay .icon > svg {
+  color: white;
+}
+
+.product-overlay .icon:hover > svg {
+  color: red;
+}
+
+.product-info {
+  background: rgba(255, 255, 255, 0.7);
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--text-color);
+}
+.product-info .h4 {
+  font-weight: 700;
+  text-transform: none;
+  width: 20ch;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
+  min-width: fit-content;
+}

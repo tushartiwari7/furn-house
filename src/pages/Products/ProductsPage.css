@@ -1,13 +1,5 @@
-.product-page {
-  grid-template-columns: 25rem 1fr;
-}
-
 .pointer {
   cursor: pointer;
-}
-
-.product-page .card {
-  width: 100%;
 }
 
 .product-list {

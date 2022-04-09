@@ -7,11 +7,11 @@ import {
 
 export const Home = () => {
   return (
-    <>
-      <Categories />
+    <main>
       <Banner />
+      <Categories />
       <FeaturedProducts />
       <OurServices />
-    </>
+    </main>
   );
 };

@@ -73,6 +73,7 @@ export const Filters = () => {
       <h5 className="my-md h4">Filter by Price</h5>
       <ul className="list m-md flex flex-col">
         <div className="my-xs pointer">
+          <p className="fs-m my-xs">Price : {priceFilterValue} </p>
           <input
             type="range"
             min="5000"
@@ -81,7 +82,6 @@ export const Filters = () => {
             defaultValue={priceFilterValue}
             onChange={onPriceFilterChange}
           />
-          <p className="fs-m my-xs">Price : {priceFilterValue} </p>
         </div>
       </ul>
       <h5 className="my-md h4">Sort by</h5>

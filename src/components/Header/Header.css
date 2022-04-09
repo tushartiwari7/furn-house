@@ -1,12 +1,12 @@
-.btn-login,
-.hamburger {
-  /*  transparent by default */
-  background: white;
+.header {
+  grid-area: header;
+  background: var(--bg-primary);
 }
-.btn-login:hover,
-.hamburger:hover {
-  /* primary color by default */
-  border-color: white;
+
+.btn-login {
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
 }
 
 .icon {
@@ -24,16 +24,36 @@
   width: 40vw;
 }
 
-.searchbar > input {
+.searchbar > .input {
   width: 100%;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s ease-in-out;
 }
 
-.white {
-  color: white;
+.input:focus {
+  outline: 1px solid transparent;
+  border-bottom: 2px solid var(--primary);
+}
+
+.btn-icon,
+.text-color {
+  color: #1a1a1a;
 }
 
 @media (max-width: 640px) {
   .searchbar {
-    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    z-index: 1;
+  }
+  .header {
+    height: 130%;
+    align-items: flex-start;
+  }
+  .navs {
+    transform: translateY(100%);
   }
 }

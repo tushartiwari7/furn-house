@@ -1,0 +1,35 @@
+.sidebar {
+  grid-area: sidebar;
+  border: 1px solid var(--secondary-light);
+}
+
+.sidebar > div {
+  border-bottom: 1px solid var(--secondary-light);
+}
+
+.category-item {
+  padding: 5px 0;
+}
+
+.price-filter-slider {
+  outline: 1px solid transparent;
+  accent-color: var(--text-color);
+  cursor: ew-resize;
+}
+
+.rating {
+  column-gap: 1rem;
+}
+
+.rating-chip {
+  gap: 2px;
+  border: 1px solid var(--secondary-light);
+}
+
+.rating-chip:hover {
+  background-color: var(--secondary-light);
+}
+
+.rating-selected {
+  background-color: var(--secondary);
+}

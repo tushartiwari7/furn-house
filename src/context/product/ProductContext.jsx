@@ -12,12 +12,13 @@ import {
   priceFilter,
   ratingFilter,
   categoryFilter,
-  productSearchFilter
+  productSearchFilter,
 } from "../../utils";
-import { reducerFn,initialFilters } from "./ProductReducer";
+import { reducerFn, initialFilters } from "./ProductReducer";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [state, dispatch] = useReducer(reducerFn, initialFilters);
 
@@ -25,6 +26,7 @@ export const ProductProvider = ({ children }) => {
     (async () => {
       const data = await getProducts();
       setProducts(data);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -38,9 +40,18 @@ export const ProductProvider = ({ children }) => {
   )(products);
   return (
     <ProductContext.Provider
-      value={{ products: filteredProducts, filters: state, dispatch }}
+      value={{
+        products: filteredProducts,
+        filters: state,
+        dispatch,
+        isLoading,
+        setIsLoading,
+      }}
     >
       {children}
+      <div className={`loader-box ${isLoading ? "show-loader" : ""}`}>
+        <img src="assets/loader.svg" />
+      </div>
     </ProductContext.Provider>
   );
 };

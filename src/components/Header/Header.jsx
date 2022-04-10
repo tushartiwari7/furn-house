@@ -12,7 +12,7 @@ import { useUser, useProducts } from "../../context";
 
 export const Header = () => {
   const { user } = useUser();
-  const { dispatch } = useProducts();
+  const { filters, dispatch } = useProducts();
   const navigator = useNavigate();
   const location = useLocation();
 
@@ -41,6 +41,7 @@ export const Header = () => {
             type="text"
             className="input px-sm py-xs"
             placeholder="What are you looking for?"
+            value={filters.searchQuery}
             onChange={onSearch}
           />
           <BsSearch className="icon pos-abs" color="var(--primary)" />
@@ -61,8 +62,8 @@ export const Header = () => {
             <BsHandbag />
           </Link>
           <Link
-            to="/login"
-            title="Login"
+            to={user.isLoggedIn ? "/profile" : "/login"}
+            title={user.isLoggedIn ? "Profile" : "Login"}
             className="list btn btn-icon flex flex-center rounded-s"
           >
             <BsPerson size="2.4rem" />

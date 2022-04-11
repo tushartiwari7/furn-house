@@ -1,0 +1,72 @@
+.close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  border: 1px solid var(--secondary-light);
+  max-width: 75vw;
+  z-index: 2;
+}
+
+.sidebar-bg {
+  display: none;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: fixed;
+}
+
+.open-sidebar {
+  left: 0;
+}
+/* 
+.open-sidebar > .sidebar-heading {
+  display: flex;
+} */
+
+.sidebar-bg-open {
+  display: block;
+}
+
+.sidebar-heading {
+  display: none;
+  right: 0;
+  top: 5rem;
+  justify-content: center;
+  height: fit-content;
+}
+
+.sidebar > div {
+  border-bottom: 1px solid var(--secondary-light);
+}
+
+.category-item {
+  padding: 5px 0;
+}
+
+.price-filter-slider {
+  outline: 1px solid transparent;
+  accent-color: var(--text-color);
+  cursor: ew-resize;
+}
+
+.rating {
+  column-gap: 1rem;
+}
+
+.rating-chip {
+  gap: 2px;
+  border: 1px solid var(--secondary-light);
+}
+
+.rating-chip:hover {
+  background-color: var(--secondary-light);
+}
+
+.rating-selected {
+  background-color: var(--secondary);
+}

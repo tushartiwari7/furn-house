@@ -1,10 +1,8 @@
-import toast from "react-hot-toast";
-
 export const initialFilters = {
-  sort: "",
-  priceFilterValue: 110000,
-  ratingFilterValue: null,
   selectedCategory: {},
+  sort: "",
+  priceFilterValue: "",
+  ratingFilterValue: null,
   searchQuery: "",
 };
 
@@ -26,7 +24,6 @@ export const reducerFn = (state, action) => {
         ratingFilterValue: action.payload,
       };
     case "SET_CATEGORY":
-      toast("Updated Selected Categories");
       if (state.selectedCategory[action.payload]) {
         const categoryCopy = { ...state.selectedCategory };
         delete categoryCopy[action.payload];

@@ -13,7 +13,7 @@ footer {
   grid-area: footer;
   background-color: var(--primary);
   color: var(--secondary);
-  padding: 10px;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -46,6 +46,10 @@ main {
   font-family: "Ubuntu", sans-serif;
 }
 
+.font-bebas {
+  font-family: "Bebas Neue", cursive;
+}
+
 div.toast {
   background: var(--text-color);
   color: var(--bg-primary);
@@ -54,5 +58,23 @@ div.toast {
 @media only screen and (max-width: 768px) {
   html {
     font-size: 50%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .App {
+    grid-template-areas: "header" "main" "footer";
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    left: -100vw;
+    position: fixed;
+    z-index: 1;
+    background: var(--bg-primary);
+    height: 100vh;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+  }
+  .main {
+    margin: 3rem 1rem 1rem;
   }
 }

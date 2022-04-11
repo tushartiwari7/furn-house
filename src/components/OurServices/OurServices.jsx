@@ -39,7 +39,7 @@ export const OurServices = () => {
               <img className="icon" src={icon} />
             </div>
             <div className="card-desc services-desc fs-s p-xs fullwidth">
-              <div className=" ubuntu h4 mx-md text-center">{title}</div>
+              <div className="h4 mx-md text-center">{title}</div>
               <p className="fs-s p-sm">{description}</p>
             </div>
           </section>

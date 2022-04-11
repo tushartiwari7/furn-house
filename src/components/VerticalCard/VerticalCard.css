@@ -1,5 +1,5 @@
 .feat-product {
-  height: 400px;
+  height: 100%;
   width: 100%;
   background: var(--secondary);
 }
@@ -21,18 +21,20 @@
   height: 100%;
   object-fit: cover;
   transition: 0.3s linear;
+  aspect-ratio: 2/3;
 }
 
 .product-overlay .icon {
   transform: none;
   cursor: pointer;
+  color: var(--bg-primary);
 }
-
+/* 
 .product-overlay .icon > svg {
   color: white;
-}
+} */
 
-.product-overlay .icon:hover > svg {
+.product-overlay .icon:hover {
   color: red;
 }
 
@@ -43,7 +45,8 @@
   color: var(--text-color);
 }
 .product-info .h4 {
-  font-weight: 700;
+  font-weight: 300;
+  font-size: 1.7em;
   text-transform: none;
   width: 20ch;
   -webkit-line-clamp: 1;

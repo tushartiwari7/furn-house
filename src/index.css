@@ -26,6 +26,7 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
+  z-index: 3;
 
   /* Giving custom css here so that loader's style gets applied even if the CL styles are loading.*/
   display: flex;

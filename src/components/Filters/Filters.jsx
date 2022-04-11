@@ -3,10 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useProductCategory, useProducts } from "../../context";
 import toast from "react-hot-toast";
-import { BsDiamondHalf, BsStar, BsFillStarFill } from "react-icons/bs";
+import { BsX, BsDiamondHalf, BsStar, BsFillStarFill } from "react-icons/bs";
 import "./Filters.css";
 
-export const Filters = () => {
+export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {
   const categories = useProductCategory();
   const [params] = useSearchParams();
   const isCategoryParam = params.get("categoryName");
@@ -50,54 +50,66 @@ export const Filters = () => {
   };
 
   return (
-    <form className="sidebar m-sm rounded-s" id="sidebar">
-      <div className="p-sm font-bebas fs-m">
-        Filter by Price
-        <span className="fs-s ubuntu">
-          &nbsp;
-          {priceFilterValue && ` :${priceFilterValue}`}
-        </span>
-        <div className="m-sm pointer">
-          <input
-            type="range"
-            max="110000"
-            step="5000"
-            className="price-filter-slider full-width rounded-circle"
-            defaultValue={priceFilterValue}
-            onChange={onPriceFilterChange}
-          />
+    <>
+      <form
+        className={`sidebar m-sm rounded-s ${
+          isSidebarOpen ? "open-sidebar" : ""
+        }`}
+        id="sidebar"
+      >
+        <div className="pos-abs sidebar-heading font-bebas fs-xl full-width">
+          All Filters
         </div>
-      </div>
-      <div className="p-sm font-bebas fs-m">
-        Category
-        <ul className="list m-md flex flex-col">
-          {categories.map(({ _id, categoryName }) => {
-            return (
-              <div key={_id} className="category-item">
-                <input
-                  type="checkbox"
-                  id={_id}
-                  name={categoryName}
-                  value={categoryName}
-                  checked={selected[categoryName] === true}
-                  onChange={() => handleCategoryChange(categoryName)}
-                />
-                <label htmlFor={_id} className="mx-sm fs-s pointer">
-                  {categoryName}
-                </label>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="p-sm font-bebas fs-m">
-        Rating
-        <ul className="list my-md flex wrap rating">
-          {[4, 3, 2, 1].map((rating) => {
-            return (
+        <div className="p-sm font-bebas fs-m">
+          Filter by Price
+          <span className="fs-s ubuntu">
+            &nbsp;
+            {priceFilterValue && ` :${priceFilterValue}`}
+          </span>
+          <div className="m-sm pointer">
+            <input
+              type="range"
+              max="110000"
+              step="5000"
+              className="price-filter-slider full-width rounded-circle"
+              defaultValue={priceFilterValue}
+              onChange={onPriceFilterChange}
+            />
+          </div>
+        </div>
+        <div className="p-sm font-bebas fs-m">
+          Category
+          <ul className="list m-md flex flex-col">
+            {categories.map(({ _id, categoryName }) => {
+              return (
+                <div key={_id} className="category-item">
+                  <input
+                    type="checkbox"
+                    id={_id}
+                    name={categoryName}
+                    value={categoryName}
+                    checked={selected[categoryName] === true}
+                    onChange={() => handleCategoryChange(categoryName)}
+                  />
+                  <label htmlFor={_id} className="mx-sm fs-s pointer">
+                    {categoryName}
+                  </label>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="p-sm font-bebas fs-m">
+          Rating
+          <ul className="list my-md flex wrap rating">
+            {[5, 4, 3, 2, 1].map((rating) => (
               <div
                 key={uuid()}
-                title={`${rating} Star and above`}
+                title={
+                  rating === 5
+                    ? "Only 5 Star Products"
+                    : `${rating} Star and above`
+                }
                 className={`p-xs my-xs pointer flex flex-center rating-chip rounded-circle fs-s ${
                   ratingFilterValue === rating ? "rating-selected" : ""
                 }`}
@@ -106,12 +118,20 @@ export const Filters = () => {
                 {[...Array(rating)].map(() => (
                   <BsFillStarFill color="var(--primary)" key={uuid()} />
                 ))}
-                &up
+                {rating === 5 ? "Only" : "&up"}
               </div>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        </div>
+      </form>
+      <div
+        className={`sidebar-bg ${isSidebarOpen ? "sidebar-bg-open" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      >
+        <i className="close-icon">
+          <BsX color="var(--bg-primary)" size="5rem" />
+        </i>
       </div>
-    </form>
+    </>
   );
 };

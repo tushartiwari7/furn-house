@@ -60,3 +60,21 @@ div.toast {
     font-size: 50%;
   }
 }
+@media only screen and (max-width: 640px) {
+  .App {
+    grid-template-areas: "header" "main" "footer";
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    left: -100vw;
+    position: fixed;
+    z-index: 1;
+    background: var(--bg-primary);
+    height: 100vh;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+  }
+  .main {
+    margin: 3rem 1rem 1rem;
+  }
+}

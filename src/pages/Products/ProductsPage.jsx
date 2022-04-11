@@ -11,6 +11,7 @@ import {
   BsCurrencyDollar,
   BsFillStarFill,
   BsSearch,
+  BsFilter,
 } from "react-icons/bs";
 import { MdOutlineCategory } from "react-icons/md";
 import { Filters, Menu, VerticalCard } from "../../components";
@@ -22,7 +23,7 @@ export const ProductsPage = () => {
   const { products, filters, dispatch } = useProducts();
   const [isBigView, setBigView] = useState(false);
   const [isSortMenuOpen, setSortMenu] = useState(false);
-
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const sortHandler = (payload) => {
     dispatch({ type: "SORT", payload });
     switch (payload) {
@@ -68,7 +69,7 @@ export const ProductsPage = () => {
 
   return (
     <>
-      <Filters />
+      <Filters isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
       <main className="main">
         <div className="pos-rel flex flex-center filter-ui m-sm">
           <div
@@ -136,6 +137,12 @@ export const ProductsPage = () => {
               </li>
             </Menu>
           </div>
+          <div
+            className="p-xs fs-m flex flex-center font-bebas pointer all-filter-toggle-btn"
+            onClick={() => setSidebarOpen(true)}
+          >
+            All Filters <BsFilter />
+          </div>
           <hr />
           <p className="fs-m">{products.length} Items</p>
           <BsGrid3X2
@@ -174,7 +181,9 @@ export const ProductsPage = () => {
                   {type === "sort"
                     ? value.toLowerCase()
                     : type === "ratingFilterValue"
-                    ? `&up`
+                    ? value === 5
+                      ? `only`
+                      : `&up`
                     : value}
                 </li>
               ))}

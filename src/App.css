@@ -6,9 +6,10 @@ a {
 
 .App {
   height: 100vh;
-  grid-template-areas: "header header" "sidebar main" "footer footer";
-  grid-template-columns: 25rem 1fr;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-columns: auto;
 }
+
 footer {
   grid-area: footer;
   background-color: var(--primary);
@@ -21,8 +22,10 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
 }
-.homepage {
-  grid-template-areas: "header header" "main main" "footer footer";
+
+.products {
+  grid-template-areas: "header header" "sidebar main" "footer footer";
+  grid-template-columns: 25rem 1fr;
 }
 
 h1,
@@ -63,7 +66,8 @@ div.toast {
 @media only screen and (max-width: 640px) {
   .App {
     grid-template-areas: "header" "main" "footer";
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
   }
   .sidebar {
     left: -100vw;

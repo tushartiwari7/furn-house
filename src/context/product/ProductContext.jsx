@@ -50,7 +50,7 @@ export const ProductProvider = ({ children }) => {
     >
       {children}
       <div className={`loader-box ${isLoading ? "show-loader" : ""}`}>
-        <img src="assets/loader.svg" />
+        <img src={`${window.location.origin}/assets/loader.svg`} />
       </div>
     </ProductContext.Provider>
   );

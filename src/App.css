@@ -67,6 +67,7 @@ div.toast {
   .App {
     grid-template-areas: "header" "main" "footer";
     grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
   }
   .sidebar {
     left: -100vw;

@@ -9,7 +9,6 @@ export const Header = () => {
   const { filters, dispatch } = useProducts();
   const navigator = useNavigate();
   const location = useLocation();
-
   const onSearch = (e) => {
     if (location.pathname !== "/products") navigator("/products");
     dispatch({ type: "PRODUCTS_SEARCH", payload: e.target.value });
@@ -24,7 +23,11 @@ export const Header = () => {
             to="/"
             title="Go to Homepage"
           >
-            <img src="assets/logo-200-100.svg" alt="logo" className="logo" />
+            <img
+              src={`${window.location.origin}/assets/logo-200-100.svg`}
+              alt="logo"
+              className="logo"
+            />
           </Link>
         </div>
         <div

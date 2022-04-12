@@ -16,9 +16,14 @@ export const products = [
     description:
       "Simple design which is also comfortable with its thick seat, padded armrests and soft back cushions that sit firmly in place.",
     categoryName: "Sofas",
-    rating: "5",
+    rating: 5,
     images: [
       "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0987395_pe817517_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0950864_pe800736_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0950898_pe800738_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0987393_pe817515_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0987394_pe817516_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/glostad-2-seat-sofa-knisa-dark-grey__0950897_pe800737_s5.jpg?f=xxxs",
     ],
   },
   {
@@ -31,9 +36,13 @@ export const products = [
     description:
       "A simple yet sophisticated blue fabric best suits formal living rooms and contemporarily styled decors, adds a soft touch to your urban living space.",
     categoryName: "Sofas",
-    rating: "5",
+    rating: 5,
     images: [
       "https://www.ikea.com/in/en/images/products/ormaryd-3-seat-sofa-dark-blue__0919667_pe786707_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ormaryd-3-seat-sofa-dark-blue__0919664_pe786704_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ormaryd-3-seat-sofa-dark-blue__0919663_pe786703_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ormaryd-3-seat-sofa-dark-blue__0919665_pe786708_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ormaryd-3-seat-sofa-dark-blue__0919666_pe786706_s5.jpg?f=xxs",
     ],
   },
   {
@@ -46,9 +55,14 @@ export const products = [
     description:
       "The broad seating space and longer length of the 3-seater make it an ideal place for napping or relaxed lounging.",
     categoryName: "Sofas",
-    rating: "5",
+    rating: 5,
     images: [
-      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-saxemara-light-blue__1014957_ph177998_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-saxemara-light-blue__1014957_ph177998_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-saxemara-light-blue__0952026_pe801514_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-saxemara-light-blue__0952028_pe801525_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-saxemara-light-blue__0951858_pe801366_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-saxemara-light-blue__0951860_pe801365_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-saxemara-light-blue__1056309_ph177958_s5.jpg?f=xxs",
     ],
   },
   {
@@ -61,10 +75,14 @@ export const products = [
     description:
       "The coffee table is a versatile piece of furniture that can be used for a variety of purposes.",
     categoryName: "Tables",
-    rating: "4",
+    rating: 4,
     images: [
       "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0672900_pe716937_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0842809_pe719505_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0842801_pe716938_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0811546_ph159229_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0811548_ph159230_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gamlehult-footstool-with-storage-rattan-anthracite__0842805_pe716941_s5.jpg?f=xxs",
     ],
   },
   {
@@ -77,9 +95,14 @@ export const products = [
     description:
       "The king size bed is a versatile piece of furniture that can be used for a variety of purposes.",
     categoryName: "Beds",
-    rating: "5",
+    rating: 5,
     images: [
-      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__1101333_pe866597_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__1101333_pe866597_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__0945812_pe797796_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__1101332_pe866596_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__0916202_pe785026_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__1101336_pe866600_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-upholstered-bed-2-storage-boxes-vissle-grey__0789244_pe764314_s5.jpg?f=xxs",
     ],
   },
   {
@@ -87,14 +110,18 @@ export const products = [
     title: "Office Chair",
     sub_title: "Black and White",
     offer_price: "8900",
-    img: "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0997900_pe822868_s5.jpg?f=xxxs",
+    img: "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0399810_pe563882_s5.jpg?f=xxxs",
     price: "11000",
     description:
       "The unique design construction allows flexing and spring-back motion enabling multi-dimensional movement to suit body posture.",
     categoryName: "Chairs",
-    rating: "3",
+    rating: 3,
     images: [
-      "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0984822_pe816425_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0724714_pe734597_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0399484_pe563517_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0854850_pe563377_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0398937_pe563107_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/markus-office-chair-vissle-dark-grey__0404191_pe566310_s5.jpg?f=xxs",
     ],
   },
   {
@@ -107,9 +134,13 @@ export const products = [
     description:
       "The sliding wardrobe is a versatile piece of furniture that can be used for a variety of purposes.",
     categoryName: "Wardrobes",
-    rating: "4",
+    rating: 4,
     images: [
       "https://www.ikea.com/in/en/images/products/hauga-wardrobe-with-sliding-doors-beige__0977719_pe813899_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/hauga-wardrobe-with-sliding-doors-beige__0949021_pe799474_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-wardrobe-with-sliding-doors-beige__0977723_pe813853_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-wardrobe-with-sliding-doors-beige__0977722_pe813902_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/hauga-wardrobe-with-sliding-doors-beige__0977720_pe813900_s5.jpg?f=xxs",
     ],
   },
   {
@@ -122,9 +153,12 @@ export const products = [
     description:
       "The sliding wardrobeThe furniture with which you furnish your home reflects your style and sensibilities.",
     categoryName: "Wardrobes",
-    rating: "4",
+    rating: 4,
     images: [
+      "https://www.ikea.com/in/en/images/products/syvde-cabinet-with-glass-doors-white__0799666_ph163542_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/syvde-cabinet-with-glass-doors-white__0720833_pe740011_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/syvde-cabinet-with-glass-doors-white__0720835_pe740013_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/syvde-cabinet-with-glass-doors-white__0720834_pe740015_s5.jpg?f=xxs",
     ],
   },
   {
@@ -137,25 +171,30 @@ export const products = [
     description:
       "The sliding wardrobe furniture with which you furnish your home reflects your style and sensibilities.",
     categoryName: "Wardrobes",
-    rating: "5",
+    rating: 5,
     images: [
+      "https://www.ikea.com/in/en/images/products/pax-hokksund-wardrobe-combination-white-high-gloss-light-grey__0935337_pe792737_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/pax-hokksund-wardrobe-combination-white-high-gloss-light-grey__0935369_pe792786_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/pax-hokksund-wardrobe-combination-white-high-gloss-light-grey__0758651_pe749945_s5.jpg?f=xxxs",
     ],
   },
-
   {
     _id: uuid(),
     title: "L Shape Sofa",
     sub_title: "Fabric, OffWhite Color",
     offer_price: "61999",
-    img: "https://www.ikea.com/images/a-beige-vimle-sofa-bed-with-chaise-longue-against-a-blue-wal-4c63b7a888bfa121ceed5324dc27254d.jpg?f=xxxs",
+    img: "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__0952138_pe801598_s5.jpg?f=xxs",
     price: "64715",
     description:
       "The sofa is low back in smooth rounded forms with firm support. The firm back supports facilities upright seating or casual seating.",
     categoryName: "Sofas",
-    rating: "4",
+    rating: 4,
     images: [
-      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-gunnared-beige__0952032_pe801518_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__1030002_pe836087_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__1058671_ph181539_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__0952140_pe801588_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__0952139_pe801587_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vimle-3-seat-sofa-with-chaise-longue-with-wide-armrests-with-headrest-saxemara-black-blue__0952121_pe801567_s5.jpg?f=xxs",
     ],
   },
   {
@@ -163,14 +202,18 @@ export const products = [
     title: "Gaming Chair",
     sub_title: "Bomstard Grey",
     offer_price: "10490",
-    img: "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-grey__0997779_pe822756_s5.jpg?f=xxxs",
+    img: "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1046699_ph180881_s5.jpg?f=xxs",
     price: "19500",
     description:
       "gaming chair gives your body a nice support with a synchronised seat and back tilt that precisely follows your movements during the entire match.",
     categoryName: "Chairs",
-    rating: "5",
+    rating: 5,
     images: [
-      "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-grey__1004702_pe825131_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1036734_pe838521_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1039189_pe840044_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1039187_pe840046_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1039188_pe840045_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/gruppspel-gaming-chair-gunnared-beige__1039185_pe840042_s5.jpg?f=xxs",
     ],
   },
   {
@@ -183,9 +226,13 @@ export const products = [
     description:
       "Due to the well-defined grain of Rosewood, each piece of the Utopia King Bed is unique in coloring, making your bed distinct.",
     categoryName: "Beds",
-    rating: "4",
+    rating: 4,
     images: [
       "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966519_ph175103_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0859747_pe781084_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0891005_pe782224_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966517_ph175096_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0859750_pe781087_s5.jpg?f=xxs",
     ],
   },
   {
@@ -198,9 +245,14 @@ export const products = [
     description:
       "A stable construction in solid wood that makes each table unique, with varying grain patterns and natural colour shifts that are part of the charm of wood.",
     categoryName: "Dining",
-    rating: "4",
+    rating: 4,
     images: [
       "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__1097884_pe865164_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__0946321_ph172866_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__0964766_pe809165_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__0949239_pe799601_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__0798332_pe767221_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/strandtorp-odger-table-and-8-chairs-brown-anthracite__1070850_pe854757_s5.jpg?f=xxs",
     ],
   },
   {
@@ -213,9 +265,13 @@ export const products = [
     description:
       "The wide berth of the table top can hold everything from your laptop to your books and that too, at the same time!",
     categoryName: "Tables",
-    rating: "5",
+    rating: 5,
     images: [
       "https://www.ikea.com/in/en/images/products/micke-corner-workstation-black-brown__0734327_pe739443_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/micke-corner-workstation-black-brown__0921922_pe788004_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/micke-corner-workstation-black-brown__0403685_pe565689_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/micke-corner-workstation-black-brown__0921922_pe788004_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/micke-corner-workstation-black-brown__0527137_pe645367_s5.jpg?f=xxs",
     ],
   },
   {
@@ -228,8 +284,12 @@ export const products = [
     description:
       "A stable construction in solid wood that makes each table unique, with varying grain patterns and natural colour shifts that are part of the charm of wood.",
     categoryName: "Dining",
-    rating: "5",
-    images: [""],
+    rating: 5,
+    images: [
+      "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kolboda-beige-dark-grey__1015067_ph176247_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kolboda-beige-dark-grey__0951052_pe800884_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kolboda-beige-dark-grey__1015064_ph176248_s5.jpg?f=s",
+    ],
   },
   {
     _id: uuid(),
@@ -241,9 +301,13 @@ export const products = [
     description:
       "The slightly curved backrest provides support to your back, allowing you or your loved ones to continue conversations for longer periods of time",
     categoryName: "Chairs",
-    rating: "3",
+    rating: 3,
     images: [
       "https://www.ikea.com/in/en/images/products/svenbertil-chair-black-broringe-white__0483262_pe620777_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/svenbertil-chair-black-broringe-white__0729780_pe737161_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/svenbertil-chair-black-broringe-white__0873400_pe620849_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/svenbertil-chair-black-broringe-white__0873372_pe620734_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/svenbertil-chair-black-broringe-white__0873376_pe620755_s5.jpg?f=xxs",
     ],
   },
   {
@@ -256,24 +320,31 @@ export const products = [
     description:
       "The chair strikes a perfect balance between indisputable functionality and striking aesthetics.",
     categoryName: "Chairs",
-    rating: "3",
+    rating: 3,
     images: [
       "https://www.ikea.com/in/en/images/products/yngvar-bar-stool-anthracite__0742485_pe742619_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/yngvar-chair-anthracite__0946427_ph173462_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/yngvar-chair-anthracite__1053103_pe846699_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/yngvar-chair-anthracite__1053106_pe846702_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/yngvar-chair-anthracite__0750850_pe746841_s5.jpg?f=xxs",
     ],
   },
   {
     _id: uuid(),
-    title: "Prime High Armchair",
-    sub_title: "Armchair, Dark grey",
+    title: "Prime Dark Armchair",
+    sub_title: "Armchair, Black",
     offer_price: "15800",
-    img: "https://www.ikea.com/in/en/images/products/remsta-armchair-hakebo-dark-grey__0908604_pe783333_s5.jpg?f=xxxs",
+    img: "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__0951655_pe801303_s5.jpg?f=xxxs",
     price: "17000",
     description:
       "The chair strikes a perfect balance between indisputable functionality and striking aesthetics.",
     categoryName: "Chairs",
-    rating: "4",
+    rating: 4,
     images: [
-      "https://www.ikea.com/in/en/images/products/remsta-armchair-hakebo-dark-grey__0908603_pe783326_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__0951654_pe801302_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__0951657_pe801309_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__1019350_ph144345_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__0951656_pe801304_s5.jpg?f=xxs",
     ],
   },
   {
@@ -286,9 +357,12 @@ export const products = [
     description:
       "The Upbeat table can be pushed to any part of your home to get that best location from where positive work can happen.",
     categoryName: "Tables",
-    rating: "2",
+    rating: 2,
     images: [
       "https://www.ikea.com/in/en/images/products/vittsjoe-laptop-stand-black-brown-glass__0176250_pe329143_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/vittsjoe-laptop-stand-black-brown-glass__1048429_ph151049_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vittsjoe-laptop-stand-black-brown-glass__1048428_ph150969_s5.jpg?f=xxs",
+      "https://www.ikea.com/in/en/images/products/vittsjoe-laptop-stand-black-brown-glass__0855294_pe564652_s5.jpg?f=xxs",
     ],
   },
 ];

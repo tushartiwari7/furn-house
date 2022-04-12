@@ -12,11 +12,13 @@ export const VerticalCard = ({ product }) => {
   const [image] = product.images;
   const { setIsLoading } = useProducts();
   const { user, setUser } = useUser();
-  const isInWishlist =
-    user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
   const navigator = useNavigate();
 
-  const addToWishListHandler = async () => {
+  const isInWishlist =
+    user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
+
+  const addToWishListHandler = async (e) => {
+    e.stopPropagation();
     if (!user.isLoggedIn) {
       toast("Please Login to add items to Wishlist", {
         icon: <BsFillHeartFill color="red" />,
@@ -30,7 +32,8 @@ export const VerticalCard = ({ product }) => {
     setIsLoading(false);
   };
 
-  const deleteFromWishListHandler = async () => {
+  const deleteFromWishListHandler = async (e) => {
+    e.stopPropagation();
     setIsLoading(true);
     const { wishlist } = await deleteFromWishList(product._id);
     toast.success("Item removed from Wishlist");
@@ -40,10 +43,11 @@ export const VerticalCard = ({ product }) => {
 
   return (
     <li
-      className="list feat-product pos-rel"
+      className="list feat-product pos-rel pointer"
       key={product._id}
       onMouseEnter={() => setImgSrc(image ? image : product.img)}
       onMouseLeave={() => setImgSrc(product.img)}
+      onClick={() => navigator(`/products/${product.id}`)}
     >
       <img
         loading="lazy"

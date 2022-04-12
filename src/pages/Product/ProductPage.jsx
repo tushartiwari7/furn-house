@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useProducts, useUser } from "../../context";
 import "./ProductPage.css";
@@ -7,8 +7,8 @@ import {
   BsBag,
   BsTrash,
   BsFillHeartFill,
-  BsStar,
   BsStarFill,
+  BsX,
 } from "react-icons/bs";
 import {
   addToCart,
@@ -25,8 +25,8 @@ export const ProductPage = () => {
   const params = useParams();
   const { products, setIsLoading } = useProducts();
   const product = products?.find((item) => item.id === params.productId);
-  console.log(product);
   const { user, setUser } = useUser();
+  const [modalImage, setModalImage] = useState("");
 
   const isInCart =
     user.isLoggedIn && user.cart.some((item) => item._id === product._id);
@@ -100,6 +100,22 @@ export const ProductPage = () => {
     infinite: true,
     slidesToShow: 2,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1055,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          arrows: false,
+          dots: false,
+        },
+      },
+    ],
   };
 
   const similarProductSlider = {
@@ -107,6 +123,22 @@ export const ProductPage = () => {
     infinite: false,
     slidesToShow: 4,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 748,
+        settings: {
+          slidesToShow: 2,
+          infinite: true,
+        },
+      },
+    ],
   };
 
   useEffect(() => window.scrollTo(0, 0), []);
@@ -125,8 +157,9 @@ export const ProductPage = () => {
                 src={image}
                 alt={product?.title}
                 key={image}
+                onClick={() => setModalImage(image)}
               />
-            ))}{" "}
+            ))}
           </Slider>
         </div>
         <div className="product-page-right px-md flex flex-col">
@@ -160,8 +193,8 @@ export const ProductPage = () => {
           </div>
           <div className="flex flex-col mx-sm">
             <div className="my-xs flex product-rating">
-              {[...Array(product?.rating)].map(() => (
-                <BsStarFill color="var(--secondary)" className="fs-s" />
+              {[...Array(product?.rating)].map((_, i) => (
+                <BsStarFill key={i} color="var(--secondary)" className="fs-s" />
               ))}
             </div>
             <h1 className="product-offer-price h1">
@@ -220,6 +253,21 @@ export const ProductPage = () => {
         <div className="pos-abs heading-overlay">
           <h1 className="heading">You may Also Like</h1>
         </div>
+      </section>
+      <section
+        className={`product-image-modal pointer flex flex-center ${
+          modalImage ? "show" : ""
+        }`}
+        onClick={() => setModalImage("")}
+      >
+        <img
+          src={modalImage}
+          alt={product?.title}
+          onClick={(e) => e.stopPropagation()}
+        />
+        <i className="btn btn-icon icon pos-abs">
+          <BsX size="7rem" />
+        </i>
       </section>
       <OurServices />
     </main>

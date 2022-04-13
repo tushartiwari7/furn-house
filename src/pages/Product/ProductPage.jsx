@@ -1,147 +1,43 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useProducts, useUser } from "../../context";
 import "./ProductPage.css";
 import {
   BsHeart,
-  BsBag,
   BsTrash,
   BsFillHeartFill,
   BsStarFill,
   BsX,
 } from "react-icons/bs";
-import {
-  addToCart,
-  addToWishList,
-  deleteCartItem,
-  deleteFromWishList,
-  updateCartQty,
-} from "../../services";
-import toast from "react-hot-toast";
 import Slider from "react-slick";
 import { OurServices, VerticalCard } from "../../components";
+import { productImagesSlider, similarProductSlider } from "../../utils";
 
 export const ProductPage = () => {
   const params = useParams();
-  const { products, setIsLoading } = useProducts();
-  const product = products?.find((item) => item.id === params.productId);
-  const { user, setUser } = useUser();
+  const { products } = useProducts();
   const [modalImage, setModalImage] = useState("");
+  const {
+    user,
+    cartHandler,
+    updateQuantity,
+    removeFromCart,
+    addToWishListHandler,
+    deleteFromWishListHandler,
+  } = useUser();
+
+  const product = products?.find((item) => item.id === params.productId);
 
   const isInCart =
     user.isLoggedIn && user.cart.some((item) => item._id === product._id);
 
   const isInWishlist =
     user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
-  const navigator = useNavigate();
 
   const qtyInCart =
     user?.cart?.find((item) => item._id === product._id)?.qty ?? 0;
 
-  const cartHandler = async () => {
-    if (!user.isLoggedIn) {
-      toast("Please Login to add items to cart", { icon: <BsBag /> });
-      return navigator("/login");
-    }
-    if (isInCart) {
-      return navigator("/cart");
-    }
-    setIsLoading(true);
-    const { cart } = await addToCart(product);
-    toast.success("Item added to Cart");
-    setUser((user) => ({ ...user, cart }));
-    setIsLoading(false);
-  };
-
-  const updateQuantity = async (type) => {
-    setIsLoading(true);
-    const { cart } = await updateCartQty(product._id, type === "increment");
-    toast.success(
-      type === "increment"
-        ? "Added 1 more item to Cart"
-        : "Removed 1 item from Cart"
-    );
-    setUser((user) => ({ ...user, cart }));
-    setIsLoading(false);
-  };
-
-  const removeFromCart = async () => {
-    setIsLoading(true);
-    const { cart } = await deleteCartItem(product._id);
-    toast.success("Item removed from Cart");
-    setUser((user) => ({ ...user, cart }));
-    setIsLoading(false);
-  };
-
-  const addToWishListHandler = async () => {
-    if (!user.isLoggedIn) {
-      toast("Please Login to add items to Wishlist", {
-        icon: <BsFillHeartFill color="red" />,
-      });
-      return navigator("/login");
-    }
-    setIsLoading(true);
-    const { wishlist } = await addToWishList(product);
-    toast.success("Item added to Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
-  };
-
-  const deleteFromWishListHandler = async () => {
-    setIsLoading(true);
-    const { wishlist } = await deleteFromWishList(product._id);
-    toast.success("Item removed from Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 2,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1055,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-          dots: false,
-        },
-      },
-    ],
-  };
-
-  const similarProductSlider = {
-    dots: true,
-    infinite: false,
-    slidesToShow: 4,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 748,
-        settings: {
-          slidesToShow: 2,
-          infinite: true,
-        },
-      },
-    ],
-  };
-
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => window.scrollTo(0, 0), [params.productId]);
   return (
     <main className="main">
       <div className="breadcrumbs p-md fs-s">
@@ -150,7 +46,7 @@ export const ProductPage = () => {
       </div>
       <div className="product-page flex">
         <div className="product-page-left">
-          <Slider className="product-page-slider" {...settings}>
+          <Slider className="product-page-slider" {...productImagesSlider}>
             {product?.images.map((image) => (
               <img
                 className="product-images"
@@ -173,13 +69,13 @@ export const ProductPage = () => {
                     size="2rem"
                     color="red"
                     className="mx-sm wishlist-icon"
-                    onClick={deleteFromWishListHandler}
+                    onClick={() => deleteFromWishListHandler(product._id)}
                   />
                 ) : (
                   <BsHeart
                     size="2rem"
                     className="mx-sm wishlist-icon"
-                    onClick={addToWishListHandler}
+                    onClick={() => addToWishListHandler(product)}
                   />
                 )}
               </i>
@@ -211,8 +107,8 @@ export const ProductPage = () => {
                   className="btn-minus btn btn-icon fs-m flex flex-center"
                   onClick={() =>
                     qtyInCart === 1
-                      ? removeFromCart()
-                      : updateQuantity("decrement")
+                      ? removeFromCart(product._id)
+                      : updateQuantity(product._id, "decrement")
                   }
                 >
                   {qtyInCart === 1 ? (
@@ -226,7 +122,7 @@ export const ProductPage = () => {
                 </p>
                 <button
                   className="btn-plus btn btn-icon fs-m"
-                  onClick={() => updateQuantity("increment")}
+                  onClick={() => updateQuantity(product._id, "increment")}
                 >
                   +{" "}
                 </button>
@@ -234,7 +130,7 @@ export const ProductPage = () => {
             )}
             <button
               className="full-width btn btn-primary full-width px-sm py-xs fs-l font-bebas"
-              onClick={cartHandler}
+              onClick={() => cartHandler(product)}
             >
               {isInCart ? "Go To Cart" : "Add to Cart"}
             </button>

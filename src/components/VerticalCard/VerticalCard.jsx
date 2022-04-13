@@ -1,44 +1,23 @@
 import "./VerticalCard.css";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useState } from "react";
-import { useProducts, useUser } from "../../context";
+import { useUser } from "../../context";
 import { useNavigate } from "react-router-dom";
-
-import { addToWishList, deleteFromWishList } from "../../services";
-import toast from "react-hot-toast";
 
 export const VerticalCard = ({ product }) => {
   const [imgSrc, setImgSrc] = useState(product.img);
   const [image] = product.images;
-  const { setIsLoading } = useProducts();
-  const { user, setUser } = useUser();
+  const { user, addToWishListHandler, deleteFromWishListHandler } = useUser();
   const navigator = useNavigate();
 
   const isInWishlist =
     user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
 
-  const addToWishListHandler = async (e) => {
+  const wishlistHandler = (e) => {
     e.stopPropagation();
-    if (!user.isLoggedIn) {
-      toast("Please Login to add items to Wishlist", {
-        icon: <BsFillHeartFill color="red" />,
-      });
-      return navigator("/login");
-    }
-    setIsLoading(true);
-    const { wishlist } = await addToWishList(product);
-    toast.success("Item added to Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
-  };
-
-  const deleteFromWishListHandler = async (e) => {
-    e.stopPropagation();
-    setIsLoading(true);
-    const { wishlist } = await deleteFromWishList(product._id);
-    toast.success("Item removed from Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
+    return isInWishlist
+      ? deleteFromWishListHandler(product._id)
+      : addToWishListHandler(product);
   };
 
   return (
@@ -57,12 +36,7 @@ export const VerticalCard = ({ product }) => {
         height="100%"
       />
       <div className="product-overlay pos-abs flex flex-col">
-        <i
-          className="icon p-xs mx-xs"
-          onClick={
-            isInWishlist ? deleteFromWishListHandler : addToWishListHandler
-          }
-        >
+        <i className="icon p-xs mx-xs" onClick={wishlistHandler}>
           <BsFillHeartFill
             size="2rem"
             color={isInWishlist ? "red" : "inherit"}

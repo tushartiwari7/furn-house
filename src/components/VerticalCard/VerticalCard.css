@@ -61,7 +61,7 @@
 }
 
 .product-overlay .icon:hover {
-  color: red;
+  color: var(--icon-hover);
 }
 
 .product-info {

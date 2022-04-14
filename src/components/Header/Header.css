@@ -37,7 +37,7 @@
 
 .btn-icon,
 .text-color {
-  color: #1a1a1a;
+  color: var(--text-color);
 }
 
 @media (max-width: 640px) {

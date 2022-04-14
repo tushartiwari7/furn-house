@@ -1,13 +1,20 @@
 import "./VerticalCard.css";
 import { BsFillHeartFill } from "react-icons/bs";
+import { FaShare } from "react-icons/fa";
 import { useState } from "react";
 import { useUser } from "../../context";
 import { useNavigate } from "react-router-dom";
 
-export const VerticalCard = ({ product }) => {
+export const VerticalCard = ({ product, isWishlistCard }) => {
   const [imgSrc, setImgSrc] = useState(product.img);
   const [image] = product.images;
-  const { user, addToWishListHandler, deleteFromWishListHandler } = useUser();
+  const {
+    user,
+    addToWishListHandler,
+    deleteFromWishListHandler,
+    cartHandler,
+    shareItem,
+  } = useUser();
   const navigator = useNavigate();
 
   const isInWishlist =
@@ -20,9 +27,16 @@ export const VerticalCard = ({ product }) => {
       : addToWishListHandler(product);
   };
 
+  const moveToCart = (e) => {
+    e.stopPropagation();
+    Promise.all[(deleteFromWishListHandler(product._id), cartHandler(product))];
+  };
+
   return (
     <li
-      className="list feat-product pos-rel pointer"
+      className={`list feat-product pos-rel pointer ${
+        isWishlistCard ? "wishlist-page-product" : ""
+      }`}
       key={product._id}
       onMouseEnter={() => setImgSrc(image ? image : product.img)}
       onMouseLeave={() => setImgSrc(product.img)}
@@ -36,18 +50,41 @@ export const VerticalCard = ({ product }) => {
         height="100%"
       />
       <div className="product-overlay pos-abs flex flex-col">
-        <i className="icon p-xs mx-xs" onClick={wishlistHandler}>
-          <BsFillHeartFill
-            size="2rem"
-            color={isInWishlist ? "red" : "inherit"}
-          />
-        </i>
+        <div className="m-xs">
+          <i
+            className="icon p-xs"
+            onClick={wishlistHandler}
+            title="Add to Wishlist"
+          >
+            <BsFillHeartFill
+              size="2rem"
+              color={isInWishlist ? "red" : "inherit"}
+            />
+          </i>
+          <i
+            className="icon-heart p-xs pointer"
+            onClick={(e) => shareItem(product.id, e)}
+            title="Share Item"
+          >
+            <FaShare size="2rem" />
+          </i>
+        </div>
         <div className="product-info px-xs py-sm full-width flex">
           <p className="h4 font-bebas">{product.title}</p>
           <span className="ubuntu fs-s fw-semibold product-price">
             Rs. {product.offer_price}
           </span>
         </div>
+        {isWishlistCard && (
+          <div
+            className="product-info full-width flex pointer"
+            onClick={moveToCart}
+          >
+            <h2 className="h2 font-bebas text-center fs-l move-to-cart-btn full-width px-ss py-xs">
+              Move to Cart
+            </h2>
+          </div>
+        )}
       </div>
     </li>
   );

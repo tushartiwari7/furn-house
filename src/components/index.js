@@ -8,3 +8,4 @@ export { ProductCard } from "./ProductCard/ProductCard";
 export { VerticalCard } from "./VerticalCard/VerticalCard";
 export { CartItem } from "./CartItem/CartItem";
 export { Menu } from "./Menu/Menu";
+export { PrivateRoute } from "./PrivateRoute/PrivateRoute";

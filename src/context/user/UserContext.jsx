@@ -100,6 +100,14 @@ export const UserProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const shareItem = (productId, e) => {
+    e.stopPropagation();
+    toast.success("Copied Link to Clipboard");
+    window.navigator.clipboard.writeText(
+      `${window.location.origin}/products/${productId}`
+    );
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -110,6 +118,7 @@ export const UserProvider = ({ children }) => {
         removeFromCart,
         addToWishListHandler,
         deleteFromWishListHandler,
+        shareItem,
       }}
     >
       {children}

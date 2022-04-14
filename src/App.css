@@ -5,9 +5,10 @@ a {
 }
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
   grid-template-areas: "header" "main" "footer";
   grid-template-columns: auto;
+  grid-template-rows: auto 1fr auto;
 }
 
 footer {
@@ -67,7 +68,6 @@ div.toast {
   .App {
     grid-template-areas: "header" "main" "footer";
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr auto;
   }
   .sidebar {
     left: -100vw;

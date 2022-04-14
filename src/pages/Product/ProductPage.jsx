@@ -12,6 +12,7 @@ import {
 import Slider from "react-slick";
 import { OurServices, VerticalCard } from "../../components";
 import { productImagesSlider, similarProductSlider } from "../../utils";
+import { FaShare } from "react-icons/fa";
 
 export const ProductPage = () => {
   const params = useParams();
@@ -24,6 +25,7 @@ export const ProductPage = () => {
     removeFromCart,
     addToWishListHandler,
     deleteFromWishListHandler,
+    shareItem,
   } = useUser();
 
   const product = products?.find((item) => item.id === params.productId);
@@ -63,7 +65,7 @@ export const ProductPage = () => {
           <div className="flex flex-col full-width">
             <h2 className="product-title h2 px-sm flex">
               {product?.title}
-              <i className="pointer">
+              <i className="pointer icon-heart">
                 {isInWishlist ? (
                   <BsFillHeartFill
                     size="2rem"
@@ -78,6 +80,9 @@ export const ProductPage = () => {
                     onClick={() => addToWishListHandler(product)}
                   />
                 )}
+              </i>
+              <i className="pointer" onClick={(e) => shareItem(product.id, e)}>
+                <FaShare size="2rem" className="mx-sm share-icon" />
               </i>
             </h2>
             <p className="product-subtitle fs-m ubuntu px-sm">

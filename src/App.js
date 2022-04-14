@@ -11,7 +11,7 @@ import {
   Wishlist,
   Profile,
 } from "./pages";
-import { Header, OurServices } from "./components";
+import { Header, OurServices, PrivateRoute } from "./components";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
@@ -25,9 +25,30 @@ const App = () => {
         <Route path="/products/:productId" element={<ProductPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path="/mockman" element={<MockMan />} />
       </Routes>
       <footer className="fs-m">

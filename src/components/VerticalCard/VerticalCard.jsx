@@ -1,49 +1,42 @@
 import "./VerticalCard.css";
 import { BsFillHeartFill } from "react-icons/bs";
+import { FaShare } from "react-icons/fa";
 import { useState } from "react";
-import { useProducts, useUser } from "../../context";
+import { useUser } from "../../context";
 import { useNavigate } from "react-router-dom";
 
-import { addToWishList, deleteFromWishList } from "../../services";
-import toast from "react-hot-toast";
-
-export const VerticalCard = ({ product }) => {
+export const VerticalCard = ({ product, isWishlistCard }) => {
   const [imgSrc, setImgSrc] = useState(product.img);
   const [image] = product.images;
-  const { setIsLoading } = useProducts();
-  const { user, setUser } = useUser();
+  const {
+    user,
+    addToWishListHandler,
+    deleteFromWishListHandler,
+    cartHandler,
+    shareItem,
+  } = useUser();
   const navigator = useNavigate();
 
   const isInWishlist =
     user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
 
-  const addToWishListHandler = async (e) => {
+  const wishlistHandler = (e) => {
     e.stopPropagation();
-    if (!user.isLoggedIn) {
-      toast("Please Login to add items to Wishlist", {
-        icon: <BsFillHeartFill color="red" />,
-      });
-      return navigator("/login");
-    }
-    setIsLoading(true);
-    const { wishlist } = await addToWishList(product);
-    toast.success("Item added to Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
+    return isInWishlist
+      ? deleteFromWishListHandler(product._id)
+      : addToWishListHandler(product);
   };
 
-  const deleteFromWishListHandler = async (e) => {
+  const moveToCart = (e) => {
     e.stopPropagation();
-    setIsLoading(true);
-    const { wishlist } = await deleteFromWishList(product._id);
-    toast.success("Item removed from Wishlist");
-    setUser((user) => ({ ...user, wishlist }));
-    setIsLoading(false);
+    Promise.all[(deleteFromWishListHandler(product._id), cartHandler(product))];
   };
 
   return (
     <li
-      className="list feat-product pos-rel pointer"
+      className={`list feat-product pos-rel pointer ${
+        isWishlistCard ? "wishlist-page-product" : ""
+      }`}
       key={product._id}
       onMouseEnter={() => setImgSrc(image ? image : product.img)}
       onMouseLeave={() => setImgSrc(product.img)}
@@ -57,23 +50,41 @@ export const VerticalCard = ({ product }) => {
         height="100%"
       />
       <div className="product-overlay pos-abs flex flex-col">
-        <i
-          className="icon p-xs mx-xs"
-          onClick={
-            isInWishlist ? deleteFromWishListHandler : addToWishListHandler
-          }
-        >
-          <BsFillHeartFill
-            size="2rem"
-            color={isInWishlist ? "red" : "inherit"}
-          />
-        </i>
+        <div className="m-xs">
+          <i
+            className="icon p-xs"
+            onClick={wishlistHandler}
+            title="Add to Wishlist"
+          >
+            <BsFillHeartFill
+              size="2rem"
+              color={isInWishlist ? "red" : "inherit"}
+            />
+          </i>
+          <i
+            className="icon-heart p-xs pointer"
+            onClick={(e) => shareItem(product.id, e)}
+            title="Share Item"
+          >
+            <FaShare size="2rem" />
+          </i>
+        </div>
         <div className="product-info px-xs py-sm full-width flex">
           <p className="h4 font-bebas">{product.title}</p>
           <span className="ubuntu fs-s fw-semibold product-price">
             Rs. {product.offer_price}
           </span>
         </div>
+        {isWishlistCard && (
+          <div
+            className="product-info full-width flex pointer"
+            onClick={moveToCart}
+          >
+            <h2 className="h2 font-bebas text-center fs-l move-to-cart-btn full-width px-ss py-xs">
+              Move to Cart
+            </h2>
+          </div>
+        )}
       </div>
     </li>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import {
   BsCaretDown,
@@ -24,8 +24,10 @@ export const ProductsPage = () => {
   const [isBigView, setBigView] = useState(false);
   const [isSortMenuOpen, setSortMenu] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   const sortHandler = (payload) => {
     dispatch({ type: "SORT", payload });
+    //shows toast message depending on Sort type
     switch (payload) {
       case "INCREASING":
         return toast(`Sorting in Low to High order.`, { icon: "🚀" });
@@ -67,6 +69,7 @@ export const ProductsPage = () => {
     dispatch({ type: "RESET_FILTERS" });
   };
 
+  useEffect(() => window.scrollTo(0, 0), []);
   return (
     <>
       <Filters isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />

@@ -17,6 +17,7 @@ body {
   --bg-primary: #fcfcfc;
   --text-color: #34252f;
   --text-color100: #eee;
+  --icon-hover: #e50010;
 }
 
 .loader-box {

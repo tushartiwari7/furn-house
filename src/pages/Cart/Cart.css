@@ -4,10 +4,10 @@
 .cart-empty {
   margin: auto;
 }
-.cart-page {
-  width: 70%;
-  margin: 5rem auto;
-  min-height: 70vh;
+.cart > main,
+.wishlist > main {
+  width: 80vw;
+  margin: 0 auto;
 }
 .cart-summary {
   width: 25vw;
@@ -16,10 +16,10 @@
 .cart-items {
   flex-grow: 1;
 }
-.cart-item-img{
+.cart-item-img {
   width: 40%;
 }
-.cart-item-img img{
+.cart-item-img img {
   object-fit: fill;
 }
 
@@ -27,7 +27,7 @@
   padding-top: 20px;
   flex-grow: 1;
 }
-.cart-form-qty > *{
+.cart-form-qty > * {
   width: 3rem;
   height: 3rem;
   font-size: larger;

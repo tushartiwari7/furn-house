@@ -26,9 +26,12 @@ export const ProductProvider = ({ children }) => {
     (async () => {
       const data = await getProducts();
       setProducts(data);
-      setIsLoading(false);
+      setLoader(false);
     })();
   }, []);
+
+  const setLoader = (value) =>
+    value ? setIsLoading(value) : setTimeout(() => setIsLoading(false), 1000);
 
   const filteredProducts = compose(
     state,
@@ -45,12 +48,12 @@ export const ProductProvider = ({ children }) => {
         filters: state,
         dispatch,
         isLoading,
-        setIsLoading,
+        setIsLoading: setLoader,
       }}
     >
       {children}
       <div className={`loader-box ${isLoading ? "show-loader" : ""}`}>
-        <img src={`${window.location.origin}/assets/loader.svg`} />
+        <img src={`${window.location.origin}/assets/loader.gif`} />
       </div>
     </ProductContext.Provider>
   );

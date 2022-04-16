@@ -43,7 +43,7 @@ export const Header = () => {
           />
           <BsSearch className="icon pos-abs" color="var(--primary)" />
         </div>
-        <div className="flex flex-center">
+        <div className="flex flex-center navs">
           <Link
             to="/wishlist"
             title="wishlist"

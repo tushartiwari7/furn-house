@@ -178,3 +178,5 @@ export const ProductPage = () => {
     </main>
   );
 };
+
+export default ProductPage;

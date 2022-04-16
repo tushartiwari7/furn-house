@@ -20,7 +20,8 @@
 
 .wishlist > main {
   width: 80vw;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .cart-summary {
   min-width: 30rem;

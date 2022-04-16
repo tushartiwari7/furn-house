@@ -1,4 +1,5 @@
 import "./Cart.css";
+import { Link } from "react-router-dom";
 import { CartItem } from "../../components";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
@@ -20,7 +21,7 @@ export const Cart = () => {
               <span className="fs-l font-bebas fw-light px-xs">
                 {items} items
               </span>
-              <i className="mx-sm pointer" onClick={()=>window.print()}>
+              <i className="mx-sm pointer" onClick={() => window.print()}>
                 <BsPrinter size="2rem" />
               </i>
             </h2>
@@ -72,10 +73,19 @@ export const Cart = () => {
           </section>
         </>
       ) : (
-        <h3 className="h3 ubuntu flex flex-center fill-height">
-          Your Cart is Empty!
-        </h3>
+        <div className="flex flex-center flex-col">
+          <p className="h3 ubuntu my-xs">Your Cart is Empty!</p>
+          <p className="h2 ubuntu my-xs">Checkout our latest Furniture </p>
+          <Link
+            to="/products"
+            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas cart-cta my-sm"
+          >
+            All Products
+          </Link>
+        </div>
       )}
     </main>
   );
 };
+
+export default Cart;

@@ -5,6 +5,7 @@ import {
   useEffect,
   useReducer,
 } from "react";
+import { Loader } from "../../components";
 import { getProducts } from "../../services";
 import {
   compose,
@@ -26,12 +27,12 @@ export const ProductProvider = ({ children }) => {
     (async () => {
       const data = await getProducts();
       setProducts(data);
-      setLoader(false);
+      setIsLoading(false);
     })();
   }, []);
 
-  const setLoader = (value) =>
-    value ? setIsLoading(value) : setTimeout(() => setIsLoading(false), 1000);
+  // const setLoader = (value) =>
+  //   value ? setIsLoading(value) : setTimeout(() => setIsLoading(false), 1000);
 
   const filteredProducts = compose(
     state,
@@ -48,13 +49,11 @@ export const ProductProvider = ({ children }) => {
         filters: state,
         dispatch,
         isLoading,
-        setIsLoading: setLoader,
+        setIsLoading: setIsLoading,
       }}
     >
       {children}
-      <div className={`loader-box ${isLoading ? "show-loader" : ""}`}>
-        <img src={`${window.location.origin}/assets/loader.gif`} />
-      </div>
+      <Loader />
     </ProductContext.Provider>
   );
 };

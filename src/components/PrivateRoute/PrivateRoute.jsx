@@ -26,3 +26,5 @@ export const PrivateRoute = ({ children }) => {
     </section>
   );
 };
+
+export default PrivateRoute;

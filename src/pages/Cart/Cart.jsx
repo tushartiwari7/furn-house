@@ -61,7 +61,7 @@ export const Cart = () => {
                 Total Amount
                 <span className="h3 ubuntu"> &#8377;{total} </span>
               </p>
-              <button className="btn fs-l fw-lighter px-sm py-xs font-bebas cart-cta">
+              <button className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta">
                 Continue to checkout
               </button>
               <p className="fs-s p-xs my-xs cart-savings">
@@ -78,7 +78,7 @@ export const Cart = () => {
           <p className="h2 ubuntu my-xs">Checkout our latest Furniture </p>
           <Link
             to="/products"
-            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas cart-cta my-sm"
+            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas btn-cta my-sm"
           >
             All Products
           </Link>

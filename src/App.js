@@ -15,6 +15,7 @@ const Profile = lazy(() => import("./pages/Profile/Profile"));
 const PrivateRoute = lazy(() =>
   import("./components/PrivateRoute/PrivateRoute")
 );
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
 import { Toaster } from "react-hot-toast";
@@ -55,6 +56,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
           <Route path="/mockman" element={<MockMan />} />
         </Routes>
       </Suspense>

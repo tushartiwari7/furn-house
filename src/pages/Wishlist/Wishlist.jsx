@@ -36,7 +36,7 @@ export const Wishlist = () => {
           <p className="h2 ubuntu my-xs">Checkout our latest Furniture </p>
           <Link
             to="/products"
-            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas cart-cta my-sm"
+            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas btn-cta my-sm"
           >
             All Products
           </Link>

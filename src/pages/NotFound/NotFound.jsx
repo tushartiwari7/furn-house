@@ -11,7 +11,7 @@ export const NotFound = () => {
           alt="404"
         />
       </div>
-      <div className="not-found-content flex flex-col flex-center p-md">
+      <div className="not-found-content flex flex-col flex-center p-md full-width">
         <h1>404 - Page not found</h1>
         <p className="fs-m my-sm px-md">
           Oops - The Page you're trying to access is might be temporarily down.

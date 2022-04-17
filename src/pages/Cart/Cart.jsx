@@ -10,7 +10,7 @@ export const Cart = () => {
     user: { cart },
   } = useUser();
 
-  const { items, total, discount, gst } = getCartSummary(cart ?? []);
+  const { items, orderVal, total, discount, gst } = getCartSummary(cart ?? []);
   return (
     <main className={`main flex cart  ${!cart?.length && "flex-center"}`}>
       {cart?.length ? (
@@ -37,7 +37,7 @@ export const Cart = () => {
             <section className="card p-sm flex checkout">
               <div>
                 <p className="spread flex fs-s my-xs">
-                  Order Value<span> &#8377;{total} </span>
+                  Order Value<span> &#8377;{orderVal} </span>
                 </p>
                 <p className="spread flex fs-s my-xs">
                   Taxes and charges

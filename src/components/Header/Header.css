@@ -8,6 +8,15 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: 600;
 }
+.nav-icon {
+  width: 4rem;
+  height: 4rem;
+  align-self: center;
+}
+
+.nav-icon > svg {
+  vertical-align: bottom;
+}
 
 .icon {
   right: 1rem;
@@ -35,7 +44,7 @@
   border-bottom: 2px solid var(--primary);
 }
 
-.btn-icon,
+.nav-icon,
 .text-color {
   color: var(--text-color);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useUser } from "../../context";
 import { Link, useLocation } from "react-router-dom";
-
+import toast from "react-hot-toast";
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const {
@@ -17,12 +17,14 @@ export const PrivateRoute = ({ children }) => {
           Login To See Items In {location.pathname.slice(1)}
         </h3>
         <Link
-          to="/login"
-          className="full-width my-sm p-sm btn btn-primary h4 ubuntu text-center rounded-s"
+          to={`/login?from=${location.pathname}`}
+          className="full-width my-md py-sm btn btn-cta h2 font-bebas fw-lighter text-center"
         >
-          Login
+          Log in
         </Link>
       </div>
     </section>
   );
 };
+
+export default PrivateRoute;

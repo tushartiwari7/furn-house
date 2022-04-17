@@ -53,6 +53,17 @@ main {
 .font-bebas {
   font-family: "Bebas Neue", cursive;
 }
+.btn-cta {
+  background: var(--text-color);
+  color: var(--bg-primary);
+  letter-spacing: 0.1ch;
+}
+.btn-cta-secondary {
+  background: var(--secondary-light);
+  border: 1px solid var(--secondary);
+  color: var(--text-color);
+  letter-spacing: 0.1ch;
+}
 
 div.toast {
   background: var(--text-color);

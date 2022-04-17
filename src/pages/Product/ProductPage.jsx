@@ -109,7 +109,10 @@ export const ProductPage = () => {
             {isInCart && (
               <div className="product-qty flex">
                 <button
-                  className="btn-minus btn btn-icon fs-m flex flex-center"
+                  className="btn-minus btn nav-icon fs-m flex flex-center"
+                  title={
+                    qtyInCart === 1 ? "Remove from cart" : "Decrease Quantity"
+                  }
                   onClick={() =>
                     qtyInCart === 1
                       ? removeFromCart(product._id)
@@ -122,12 +125,13 @@ export const ProductPage = () => {
                     `-`
                   )}
                 </button>
-                <p className="flex flex-center btn btn-icon fs-m">
+                <p className="flex flex-center btn nav-icon fs-m">
                   {qtyInCart}
                 </p>
                 <button
-                  className="btn-plus btn btn-icon fs-m"
+                  className="btn-plus btn nav-icon fs-m"
                   onClick={() => updateQuantity(product._id, "increment")}
+                  title="Add One more item to cart"
                 >
                   +{" "}
                 </button>
@@ -174,3 +178,5 @@ export const ProductPage = () => {
     </main>
   );
 };
+
+export default ProductPage;

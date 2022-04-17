@@ -47,21 +47,21 @@ export const Header = () => {
           <Link
             to="/wishlist"
             title="wishlist"
-            className="list white btn btn-icon flex flex-center"
+            className="list white btn nav-icon flex flex-center"
           >
             <BsHeart />
           </Link>
           <Link
             to="/cart"
             title="Cart"
-            className="list white btn btn-icon flex flex-center"
+            className="list white btn nav-icon flex flex-center"
           >
             <BsHandbag />
           </Link>
           <Link
             to={user.isLoggedIn ? "/profile" : "/login"}
             title={user.isLoggedIn ? "Profile" : "Login"}
-            className="list btn btn-icon flex flex-center rounded-s"
+            className="list btn nav-icon flex flex-center rounded-s"
           >
             <BsPerson size="2.4rem" />
           </Link>

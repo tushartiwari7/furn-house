@@ -59,8 +59,8 @@ export const Header = () => {
             <BsHandbag />
           </Link>
           <Link
-            to={user.isLoggedIn ? "/profile" : "/login"}
-            title={user.isLoggedIn ? "Profile" : "Login"}
+            to={user.isLoggedIn ? "/myAccount" : "/login"}
+            title={user.isLoggedIn ? "My Account" : "Login"}
             className="list btn nav-icon flex flex-center rounded-s"
           >
             <BsPerson size="2.4rem" />

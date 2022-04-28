@@ -1,0 +1,25 @@
+.profile-page {
+  flex-grow: 1;
+  justify-content: center;
+  margin-left: 5rem;
+}
+.profile-page > form {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+}
+
+.gap {
+  gap: 1rem;
+}
+.gap3 {
+  gap: 3rem;
+}
+.input {
+  border-bottom: 2px solid transparent;
+  transition: 0.25s ease-in-out;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

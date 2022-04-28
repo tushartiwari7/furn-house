@@ -9,7 +9,10 @@
   grid-area: sidebar;
   border: 1px solid var(--secondary-light);
   max-width: 75vw;
-  z-index: 2;
+  /* z-index: 2; */
+  position: sticky;
+  height: fit-content;
+  top: 2rem;
 }
 
 .sidebar-bg {

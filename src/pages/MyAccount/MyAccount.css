@@ -1,0 +1,28 @@
+.account {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.account > .unstyled {
+  width: 25%;
+  max-width: 25rem;
+  min-width: fit-content;
+  border: 1px dotted var(--secondary);
+  height: fit-content;
+}
+.account .list-item {
+  color: var(--text-color);
+  border-radius: 5rem;
+  border-bottom: 0;
+}
+.unstyled {
+  list-style: none;
+}
+.account .list-item:hover {
+  background: var(--secondary-light);
+  border-bottom: transparent;
+}
+
+.username {
+  margin: 2rem 0 5rem 0;
+}

@@ -11,7 +11,7 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Cart = lazy(() => import("./pages/Cart/Cart"));
 const Wishlist = lazy(() => import("./pages/Wishlist/Wishlist"));
-const Profile = lazy(() => import("./pages/Profile/Profile"));
+const Profile = lazy(() => import("./pages/MyAccount/Profile/Profile"));
 const PrivateRoute = lazy(() =>
   import("./components/PrivateRoute/PrivateRoute")
 );
@@ -19,6 +19,7 @@ const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
 import { Toaster } from "react-hot-toast";
+import { MyAccount } from "./pages";
 
 const App = () => {
   const location = useLocation();
@@ -49,13 +50,22 @@ const App = () => {
             }
           />
           <Route
-            path="/profile"
+            path="/myAccount"
             element={
               <PrivateRoute>
-                <Profile />
+                <MyAccount />
               </PrivateRoute>
             }
-          />
+          >
+            <Route
+              path="change-password"
+              element={<div>Change Password</div>}
+            />
+            <Route index element={<Profile />} />
+            <Route path="orders" element={<div>Orders</div>} />
+            <Route path="addresses" element={<div>Address</div>} />
+            <Route path="settings" element={<div>Settings</div>} />
+          </Route>
           <Route path="*" element={<NotFound />} />
           <Route path="/mockman" element={<MockMan />} />
         </Routes>

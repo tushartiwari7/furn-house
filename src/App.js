@@ -19,7 +19,7 @@ const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
 import { Toaster } from "react-hot-toast";
-import { MyAccount } from "./pages";
+import { Addresses, MyAccount } from "./pages";
 
 const App = () => {
   const location = useLocation();
@@ -63,7 +63,7 @@ const App = () => {
             />
             <Route index element={<Profile />} />
             <Route path="orders" element={<div>Orders</div>} />
-            <Route path="addresses" element={<div>Address</div>} />
+            <Route path="addresses" element={<Addresses />} />
             <Route path="settings" element={<div>Settings</div>} />
           </Route>
           <Route path="*" element={<NotFound />} />

@@ -1,0 +1,13 @@
+/* add address form */
+.add-address {
+  width: 90%;
+  border: 2px dashed var(--secondary);
+  border-radius: 1rem;
+}
+.row > * {
+  flex-grow: 1;
+  max-width: 50%;
+}
+.fit-width {
+  width: fit-content;
+}

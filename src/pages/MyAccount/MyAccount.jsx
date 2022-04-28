@@ -35,7 +35,7 @@ export const MyAccount = () => {
             <NavLink
               to={route}
               style={({ isActive }) => ({
-                backgroundColor: isActive && "var(--secondary)",
+                backgroundColor: isActive && "var(--primary)",
                 color: isActive && "var(--text-color100)",
               })}
               className="list-item my-xs full-width flex px-sm py-xs"

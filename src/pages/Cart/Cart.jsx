@@ -1,9 +1,7 @@
 import "./Cart.css";
-import { Link } from "react-router-dom";
-import { CartItem } from "../../components";
+import { Link, Outlet } from "react-router-dom";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
-import { BsPrinter } from "react-icons/bs";
 
 export const Cart = () => {
   const {
@@ -16,19 +14,7 @@ export const Cart = () => {
       {cart?.length ? (
         <>
           <section className="cart-items flex flex-col px-xs">
-            <h2 className="cart-title h3 fs-xl fw-lighter font-bebas p-xs">
-              Your Cart
-              <span className="fs-l font-bebas fw-light px-xs">
-                {items} items
-              </span>
-              <i className="mx-sm pointer" onClick={() => window.print()}>
-                <BsPrinter size="2rem" />
-              </i>
-            </h2>
-            {cart.length &&
-              cart.map((product) => (
-                <CartItem key={product._id} {...product} />
-              ))}
+            <Outlet />
           </section>
           <section className="cart-summary px-xs">
             <h3 className="cart-title h2 font-bebas p-xs fw-lighter">
@@ -61,9 +47,12 @@ export const Cart = () => {
                 Total Amount
                 <span className="h3 ubuntu"> &#8377;{total} </span>
               </p>
-              <button className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta">
+              <Link
+                to="checkout"
+                className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta"
+              >
                 Continue to checkout
-              </button>
+              </Link>
               <p className="fs-s p-xs my-xs cart-savings">
                 You will save{" "}
                 <span className="fw-semibold">&#8377;{discount}</span> on this

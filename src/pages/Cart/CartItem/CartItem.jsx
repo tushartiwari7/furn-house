@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
-import { getDiscountPercentage } from "../../utils";
-import { useUser } from "../../context";
 import "./CartItem.css";
+import { useUser } from "../../../context";
+import { getDiscountPercentage } from "../../../utils";
+
 export const CartItem = (product) => {
   const {
     updateQuantity, // add/subtract cart items

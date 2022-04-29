@@ -21,6 +21,8 @@ const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 import { Header, Loader } from "./components";
 import { Addresses, MyAccount } from "./pages";
 import { Settings } from "./pages/MyAccount/Settings/Settings";
+import { CartItems } from "./pages/Cart/CartItems/CartItems";
+import { Checkout } from "./pages/Cart/Checkout/Checkout";
 
 const App = () => {
   const location = useLocation();
@@ -41,7 +43,10 @@ const App = () => {
                 <Cart />
               </PrivateRoute>
             }
-          />
+          >
+            <Route index element={<CartItems />} />
+            <Route path="checkout" element={<Checkout />} />
+          </Route>
           <Route
             path="/wishlist"
             element={

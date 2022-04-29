@@ -3,7 +3,7 @@ import { useUser } from "../../../context";
 import "./Profile.css";
 
 export const Profile = () => {
-  const { user } = useUser();
+  const { user, updateUserHandler } = useUser();
 
   const [{ firstName, lastName, email }, setUserDetails] = useState({
     firstName: user.firstName,
@@ -18,7 +18,10 @@ export const Profile = () => {
   return (
     <div className="profile-page m-sm flex">
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={async (e) => {
+          e.preventDefault();
+          await updateUserHandler({ firstName, lastName, email });
+        }}
         className="p-sm flex flex-col gap3"
       >
         <label className="flex flex-col gap">
@@ -60,6 +63,7 @@ export const Profile = () => {
         <button
           disabled={isUnchanged}
           className="btn btn-primary btn-cta py-xs px-sm fs-m font-bebas"
+          type="submit"
         >
           Update
         </button>

@@ -4,7 +4,10 @@ import "./MyAccount.css";
 import { v4 as uuid } from "uuid";
 import { useUser } from "../../context";
 export const MyAccount = () => {
-  const { setUser } = useUser();
+  const {
+    user: { firstName },
+    setUser,
+  } = useUser();
   const redirects = [
     {
       route: "./",
@@ -36,7 +39,7 @@ export const MyAccount = () => {
   return (
     <div className="account flex">
       <ul className="unstyled p-sm rounded-m">
-        <p className="fs-xl ubuntu username">Hello Tushar!</p>
+        <p className="fs-xl ubuntu username">Hello {firstName}!</p>
         {redirects.map(({ route, routeName }) => (
           <li key={uuid()}>
             <NavLink

@@ -21,6 +21,7 @@ import {
   deleteAddress,
   updateAddress,
 } from "../../services/address";
+import { updateUser } from "../../services/getUser";
 
 const UserContext = createContext();
 
@@ -113,6 +114,14 @@ export const UserProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const updateUserHandler = async (userDetails) => {
+    setIsLoading(true);
+    const { updatedUser } = await updateUser(userDetails);
+    toast.success("User updated");
+    setUser((user) => ({ ...user, ...updatedUser }));
+    setIsLoading(false);
+  };
+
   const shareItem = (productId, e) => {
     e.stopPropagation();
     toast.success("Copied Link to Clipboard");
@@ -126,6 +135,7 @@ export const UserProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        updateUserHandler,
         cartHandler,
         updateQuantity,
         removeFromCart,

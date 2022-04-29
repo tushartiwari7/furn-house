@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 import {
   loginHandler,
   signupHandler,
+  updateUserHandler,
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
@@ -82,7 +83,7 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
-
+      this.post("/auth/update", updateUserHandler.bind(this));
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
       this.get("/products/:productId", getProductHandler.bind(this));

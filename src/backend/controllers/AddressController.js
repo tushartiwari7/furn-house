@@ -82,7 +82,7 @@ export const removeAddressHandler = function (schema, request) {
 /**
  * This handler handles changing user's address.
  * send POST Request at /api/user/address/:addressId
- * body contains {address} (whose 'type' can be increment or decrement)
+ * body contains {address}
  * */
 
 export const updateAddressHandler = function (schema, request) {
@@ -100,7 +100,6 @@ export const updateAddressHandler = function (schema, request) {
     }
     const addresses = schema.users.findBy({ _id: userId }).addresses;
     const { address } = JSON.parse(request.requestBody);
-
     const updatedAddressList = addresses.map((addr) =>
       addr._id === addressId
         ? { ...addr, ...address, updatedAt: formatDate() }

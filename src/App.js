@@ -1,7 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import "./App.css";
+import { Toaster } from "react-hot-toast";
 import MockMan from "mockman-js";
+import "./App.css";
 
 // lazy page imports
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -18,8 +19,8 @@ const PrivateRoute = lazy(() =>
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
-import { Toaster } from "react-hot-toast";
 import { Addresses, MyAccount } from "./pages";
+import { Settings } from "./pages/MyAccount/Settings/Settings";
 
 const App = () => {
   const location = useLocation();
@@ -64,7 +65,7 @@ const App = () => {
             <Route index element={<Profile />} />
             <Route path="orders" element={<div>Orders</div>} />
             <Route path="addresses" element={<Addresses />} />
-            <Route path="settings" element={<div>Settings</div>} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
           <Route path="/mockman" element={<MockMan />} />

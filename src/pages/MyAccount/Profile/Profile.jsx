@@ -3,7 +3,7 @@ import { useUser } from "../../../context";
 import "./Profile.css";
 
 export const Profile = () => {
-  const { user, setUser } = useUser();
+  const { user } = useUser();
 
   const [{ firstName, lastName, email }, setUserDetails] = useState({
     firstName: user.firstName,
@@ -11,11 +11,10 @@ export const Profile = () => {
     email: user.email,
   });
 
-  const logoutHandler = () => {
-    setUser({ isLoggedIn: false });
-    localStorage.removeItem("token");
-  };
-
+  const isUnchanged =
+    firstName === user.firstName &&
+    lastName === user.lastName &&
+    email === user.email;
   return (
     <div className="profile-page m-sm flex">
       <form
@@ -59,15 +58,17 @@ export const Profile = () => {
           />
         </label>
         <button
-          disabled={
-            firstName === user.firstName &&
-            lastName === user.lastName &&
-            email === user.email
-          }
+          disabled={isUnchanged}
           className="btn btn-primary btn-cta py-xs px-sm fs-m font-bebas"
         >
           Update
         </button>
+        {user.email !== email && (
+          <p className="fs-s">
+            Note: Changing your Email ID will also cause your primary login ID
+            to change
+          </p>
+        )}
       </form>
     </div>
   );

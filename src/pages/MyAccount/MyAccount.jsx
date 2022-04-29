@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./MyAccount.css";
 import { v4 as uuid } from "uuid";
+import { useUser } from "../../context";
 export const MyAccount = () => {
+  const { setUser } = useUser();
   const redirects = [
     {
       route: "./",
@@ -26,6 +28,11 @@ export const MyAccount = () => {
     },
   ];
 
+  const logoutHandler = () => {
+    setUser({ isLoggedIn: false });
+    localStorage.removeItem("token");
+  };
+
   return (
     <div className="account flex">
       <ul className="unstyled p-sm rounded-m">
@@ -44,6 +51,14 @@ export const MyAccount = () => {
             </NavLink>
           </li>
         ))}
+        <li key={uuid()}>
+          <button
+            className="list-item my-xs full-width flex px-sm py-xs btn logout"
+            onClick={logoutHandler}
+          >
+            <span className="fs-m">Log Out</span>
+          </button>
+        </li>
       </ul>
       <Outlet />
     </div>

@@ -44,3 +44,23 @@
 .total-amount > span {
   color: var(--text-color);
 }
+
+@media (min-width: 968px) {
+  .cart > main,
+  .cartcheckout > main {
+    width: 80vw;
+    margin: auto;
+  }
+}
+
+@media (max-width: 880px) {
+  .cart > main {
+    flex-direction: column;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cart-item-img {
+    aspect-ratio: 1/1;
+  }
+}

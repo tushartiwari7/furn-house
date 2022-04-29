@@ -1,5 +1,5 @@
 import "./Cart.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
 
@@ -7,8 +7,9 @@ export const Cart = () => {
   const {
     user: { cart },
   } = useUser();
+  const location = useLocation();
 
-  const { items, orderVal, total, discount, gst } = getCartSummary(cart ?? []);
+  const { orderVal, total, discount, gst } = getCartSummary(cart ?? []);
   return (
     <main className={`main flex cart  ${!cart?.length && "flex-center"}`}>
       {cart?.length ? (
@@ -51,7 +52,9 @@ export const Cart = () => {
                 to="checkout"
                 className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta"
               >
-                Continue to checkout
+                {location.pathname.includes("checkout")
+                  ? "Place Order"
+                  : "Continue to checkout"}
               </Link>
               <p className="fs-s p-xs my-xs cart-savings">
                 You will save{" "}

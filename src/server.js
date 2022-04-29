@@ -1,4 +1,5 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { v4 as uuid } from "uuid";
 import {
   loginHandler,
   signupHandler,
@@ -60,7 +61,16 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           cart: [],
           wishlist: [],
-          addresses: [],
+          addresses: [
+            {
+              _id: uuid(),
+              street: "Beach N Brew, SCO 8, 1st Floor, Udyan Path, Sector 16 D",
+              city: "Chandigarh - U.T",
+              state: "Punjab",
+              landmark: "Zakir Khan Rose Garden",
+              pincode: "160015",
+            },
+          ],
         })
       );
 

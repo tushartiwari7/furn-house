@@ -27,7 +27,12 @@ import { Checkout } from "./pages/Cart/Checkout/Checkout";
 const App = () => {
   const location = useLocation();
   return (
-    <div className={`App full-height grid ${location.pathname.slice(1)}`}>
+    <div
+      className={`App full-height grid ${location.pathname.replaceAll(
+        `/`,
+        ``
+      )}`}
+    >
       <Header />
       <Suspense fallback={<Loader forRouter={true} />}>
         <Routes>

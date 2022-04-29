@@ -22,6 +22,12 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
+import {
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
+
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -38,6 +44,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      addresses: Model,
     },
 
     // Runs on the start of the server
@@ -49,7 +56,12 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          addresses: [],
+        })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -85,6 +97,15 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+      // addresses routes (private)
+      this.post("/user/addresses", addAddressHandler.bind(this));
+      this.delete(
+        "/user/addresses/:addressId",
+        removeAddressHandler.bind(this)
+      );
+
+      this.post("/user/addresses/:addressId", updateAddressHandler.bind(this));
     },
   });
 }

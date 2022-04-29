@@ -2,7 +2,8 @@ import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import "./NewAddressForm.css";
 import { states } from "../../../../utils";
-export const NewAddressForm = ({ setter }) => {
+import { useUser } from "../../../../context";
+export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
   const initialAddress = {
     street: "",
     city: "",
@@ -11,8 +12,8 @@ export const NewAddressForm = ({ setter }) => {
     pincode: "",
   };
 
-  const [address, setAddress] = useState(initialAddress);
-
+  const [address, setAddress] = useState(updateAddr ?? initialAddress);
+  const { addAddressHandler, updateAddressHandler } = useUser();
   const autofillAddress = () =>
     setAddress({
       street: "#43, 2nd Floor, S.G. Road, Vile Parle (W)",
@@ -24,12 +25,24 @@ export const NewAddressForm = ({ setter }) => {
 
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
+      id="form"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        await addAddressHandler(address);
+        setter(false);
+      }}
       className="p-md flex flex-col gap3 add-address"
     >
       <label className="flex fs-l font-bebas spread">
         Add New Address
-        <BsX size="2.5rem" className="pointer" onClick={() => setter(false)} />
+        <BsX
+          size="2.5rem"
+          className="pointer"
+          onClick={() => {
+            updateAddrSetter(null);
+            setter(false);
+          }}
+        />
       </label>
       <label className="flex flex-col gap">
         <span className="fs-m">Street Address</span>
@@ -37,6 +50,7 @@ export const NewAddressForm = ({ setter }) => {
           type="text"
           required
           className="input px-sm py-xs"
+          placeholder="1234 Main St phase-1"
           value={address.street}
           onChange={(e) =>
             setAddress((address) => ({ ...address, street: e.target.value }))
@@ -50,6 +64,7 @@ export const NewAddressForm = ({ setter }) => {
             type="text"
             className="input px-sm py-xs"
             value={address.landmark}
+            placeholder="Sai Mandir"
             onChange={(e) =>
               setAddress((address) => ({
                 ...address,
@@ -64,6 +79,8 @@ export const NewAddressForm = ({ setter }) => {
             type="number"
             required
             minLength="6"
+            maxLength="6"
+            placeholder="110085"
             className="input px-sm py-xs"
             value={address.pincode}
             onChange={(e) =>
@@ -83,6 +100,7 @@ export const NewAddressForm = ({ setter }) => {
             required
             className="input px-sm py-xs"
             value={address.city}
+            placeholder="Shimla"
             onChange={(e) =>
               setAddress((address) => ({ ...address, city: e.target.value }))
             }
@@ -102,19 +120,39 @@ export const NewAddressForm = ({ setter }) => {
             }
           >
             <option value="">Select State</option>
-            {states.map((state) => (
-              <option value={state}>{state}</option>
+            {states.map((state, idx) => (
+              <option value={state} key={idx}>
+                {state}
+              </option>
             ))}
           </select>
         </label>
       </div>
       <div className="flex gap">
-        <button className="btn btn-cta px-sm py-xs fs-m font-bebas fit-width">
-          Save Changes
+        {updateAddr && (
+          <button
+            className="btn btn-cta px-sm py-xs fs-m font-bebas fit-width"
+            id="update-address"
+            type="button"
+            onClick={async () => {
+              await updateAddressHandler(address);
+              updateAddrSetter(null);
+              setter(false);
+            }}
+          >
+            Update Address
+          </button>
+        )}
+        <button
+          className="btn btn-cta px-sm py-xs fs-m font-bebas fit-width"
+          type="submit"
+        >
+          Add New
         </button>
         <button
           className="btn btn-cta-secondary px-sm py-xs fs-m font-bebas fit-width"
           onClick={autofillAddress}
+          type="button"
         >
           AutoFill Address
         </button>

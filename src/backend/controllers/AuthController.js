@@ -132,3 +132,57 @@ export const updateUserHandler = function (schema, request) {
     );
   }
 };
+
+export const deleteUserHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    this.db.users.remove({ _id: userId });
+
+    return new Response(
+      200,
+      {},
+      { statusMessage: "User Deleted Successfully" }
+    );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+export const resetUserHandler = function (schema, request) {
+  console.log(this);
+  const userId = requiresAuth.call(this, request);
+  console.log("userId");
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    this.db.users.update(
+      { _id: userId },
+      { cart: [], wishlist: [], addresses: [] }
+    );
+    return new Response(
+      200,
+      {},
+      { updatedUser: this.db.users.findBy({ _id: userId }) }
+    );
+  } catch (error) {
+    return new Response(500, {}, { error });
+  }
+};

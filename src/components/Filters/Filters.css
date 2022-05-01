@@ -9,7 +9,7 @@
   grid-area: sidebar;
   border: 1px solid var(--secondary-light);
   max-width: 75vw;
-  /* z-index: 2; */
+  z-index: 2;
   position: sticky;
   height: fit-content;
   top: 2rem;
@@ -23,14 +23,9 @@
   position: fixed;
 }
 
-.open-sidebar {
+.sidebar.open-sidebar {
   left: 0;
 }
-/* 
-.open-sidebar > .sidebar-heading {
-  display: flex;
-} */
-
 .sidebar-bg-open {
   display: block;
 }
@@ -73,3 +68,17 @@
 .rating-selected {
   background-color: var(--secondary);
 }
+
+@media only screen and (max-width: 640px) {
+  .sidebar {
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    max-width: 300px;
+    top: 0;
+    background: var(--bg-primary);
+    left: -100vw;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+  }
+} ;

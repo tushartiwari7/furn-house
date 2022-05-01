@@ -12,7 +12,7 @@ export const Addresses = () => {
   } = useUser();
 
   return (
-    <main className="addresses flex flex-col">
+    <section className="addresses flex flex-col">
       {isAddressesFormOpen ? (
         <NewAddressForm
           updateAddr={addressToUpdate}
@@ -43,7 +43,7 @@ export const Addresses = () => {
                 <span className="fs-s">{pincode}</span>
               </div>
             </div>
-            <div className="row">
+            <div className="row actions">
               <BsPen
                 size="2rem"
                 color="var(--text-color)"
@@ -70,6 +70,6 @@ export const Addresses = () => {
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 };

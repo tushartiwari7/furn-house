@@ -3,10 +3,25 @@
   width: 90%;
   border: 2px dashed var(--secondary);
   border-radius: 1rem;
+  min-width: fit-content;
+  margin-top: 2rem;
 }
 .row > * {
   flex-grow: 1;
 }
 .fit-width {
   width: fit-content;
+}
+
+.w50 {
+  width: 50%;
+}
+
+@media screen and (max-width: 640px) {
+  .w50 {
+    width: 100%;
+  }
+  .two-cols {
+    flex-direction: column;
+  }
 }

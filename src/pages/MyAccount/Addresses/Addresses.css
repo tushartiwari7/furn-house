@@ -1,6 +1,10 @@
+.actions {
+  min-width: fit-content;
+}
 .addresses {
   flex-grow: 1;
   margin-left: 5rem;
+  max-width: 100%;
 }
 .address-list > li {
   border: 1px dotted var(--secondary-light);
@@ -10,4 +14,10 @@
 
 .address-info {
   flex-grow: 1;
+}
+
+@media only screen and (max-width: 640px) {
+  .addresses {
+    margin-left: 0;
+  }
 }

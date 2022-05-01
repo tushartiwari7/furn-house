@@ -1,13 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./MyAccount.css";
 import { v4 as uuid } from "uuid";
 import { useUser } from "../../context";
+import { BsList } from "react-icons/bs";
 export const MyAccount = () => {
   const {
     user: { firstName },
     setUser,
   } = useUser();
+
+  const [isAccountMenuOpen, setAccountMenuOpen] = useState(false);
+
   const redirects = [
     {
       route: "./",
@@ -37,8 +41,18 @@ export const MyAccount = () => {
   };
 
   return (
-    <div className="account flex">
-      <ul className="unstyled p-sm rounded-m">
+    <main className="main account flex">
+      <BsList
+        size="3rem"
+        color="var(--text-color)"
+        className="account-menu-btn my-xs pointer"
+        onClick={() => setAccountMenuOpen((open) => !open)}
+      />
+      <ul
+        className="unstyled p-sm rounded-m"
+        style={{ left: isAccountMenuOpen ? "auto" : "-100vw" }}
+        onClick={() => setAccountMenuOpen(false)}
+      >
         <p className="fs-xl ubuntu username">Hello {firstName}!</p>
         {redirects.map(({ route, routeName }) => (
           <li key={uuid()}>
@@ -64,6 +78,6 @@ export const MyAccount = () => {
         </li>
       </ul>
       <Outlet />
-    </div>
+    </main>
   );
 };

@@ -57,8 +57,8 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
           }
         />
       </label>
-      <div className="flex row gap2">
-        <label className="flex flex-col gap">
+      <div className="flex gap2 two-cols">
+        <label className="flex flex-col gap w50">
           <span className="fs-m">Landmark</span>
           <input
             type="text"
@@ -73,7 +73,7 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
             }
           />
         </label>
-        <label className="flex flex-col gap">
+        <label className="flex flex-col gap w50">
           <span className="fs-m">Postal Code</span>
           <input
             type="number"
@@ -81,7 +81,7 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
             minLength="6"
             maxLength="6"
             placeholder="110085"
-            className="input px-sm py-xs"
+            className="input px-sm py-xs "
             value={address.pincode}
             onChange={(e) =>
               setAddress((address) => ({
@@ -92,8 +92,8 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
           />
         </label>
       </div>
-      <div className="flex row gap2">
-        <label className="flex flex-col gap">
+      <div className="flex gap2 two-cols">
+        <label className="flex flex-col gap w50">
           <span className="fs-m">City</span>
           <input
             type="text"
@@ -106,11 +106,11 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
             }
           />
         </label>
-        <label className="flex flex-col gap">
+        <label className="flex flex-col gap w50">
           <span className="fs-m">State</span>
           <select
             required
-            className="input px-sm py-xs"
+            className="input px-sm py-xs "
             value={address.state}
             onChange={(e) =>
               setAddress((address) => ({

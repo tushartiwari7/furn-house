@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
-import { formatDate } from "../utils/authUtils";
+import { formatDate, requiresAuth } from "../utils/authUtils";
 import bcrypt from "bcryptjs";
 const jwt = require("jsonwebtoken");
 
@@ -40,6 +40,8 @@ export const signupHandler = function (schema, request) {
       ...rest,
       cart: [],
       wishlist: [],
+      addresses: [],
+      orders: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = jwt.sign(
@@ -100,5 +102,86 @@ export const loginHandler = function (schema, request) {
         error,
       }
     );
+  }
+};
+
+export const updateUserHandler = function (schema, request) {
+  const { userDetails } = JSON.parse(request.requestBody);
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+
+    this.db.users.update({ _id: userId }, { ...userDetails });
+    return new Response(
+      200,
+      {},
+      { updatedUser: this.db.users.findBy({ _id: userId }) }
+    );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+export const deleteUserHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    this.db.users.remove({ _id: userId });
+
+    return new Response(
+      200,
+      {},
+      { statusMessage: "User Deleted Successfully" }
+    );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+export const resetUserHandler = function (schema, request) {
+  console.log(this);
+  const userId = requiresAuth.call(this, request);
+  console.log("userId");
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    this.db.users.update(
+      { _id: userId },
+      { cart: [], wishlist: [], addresses: [], orders: [] }
+    );
+    const updatedUser = this.db.users.findBy({ _id: userId });
+    delete updatedUser.password;
+    return new Response(200, {}, { updatedUser });
+  } catch (error) {
+    return new Response(500, {}, { error });
   }
 };

@@ -16,6 +16,12 @@ import {
   updateCartQty,
 } from "../../services";
 import { useProducts } from "../";
+import {
+  addAddress,
+  deleteAddress,
+  updateAddress,
+} from "../../services/address";
+import { updateUser } from "../../services/user";
 
 const UserContext = createContext();
 
@@ -24,22 +30,6 @@ export const UserProvider = ({ children }) => {
   const { setIsLoading } = useProducts();
 
   const navigator = useNavigate();
-  /**
-   * Demo User Schema after login:
-   * {
-      "_id": "15adeed5-070a-4ffd-828a-11c86a110d56",
-      "firstName": "Adarsh",
-      "lastName": "Balika",
-      "email": "adarshbalika@gmail.com",
-      "createdAt": "2022-03-19T11:29:18+05:30",
-      "updatedAt": "2022-03-19T11:29:18+05:30",
-      "cart": "[]",
-      "wishlist": "[]",
-      "id": "1",
-      "isLoggedIn": true
-    }
-   */
-
   const cartHandler = async (product) => {
     const isInCart =
       user.isLoggedIn && user.cart.some((item) => item._id === product._id);
@@ -100,6 +90,38 @@ export const UserProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const addAddressHandler = async (address) => {
+    setIsLoading(true);
+    const { addresses } = await addAddress(address);
+    toast.success("Address added");
+    setUser((user) => ({ ...user, addresses }));
+    setIsLoading(false);
+  };
+
+  const deleteAddressHandler = async (addressId) => {
+    setIsLoading(true);
+    const { addresses } = await deleteAddress(addressId);
+    toast.success("Address removed");
+    setUser((user) => ({ ...user, addresses }));
+    setIsLoading(false);
+  };
+
+  const updateAddressHandler = async (address) => {
+    setIsLoading(true);
+    const { addresses } = await updateAddress(address);
+    toast.success("Address updated");
+    setUser((user) => ({ ...user, addresses }));
+    setIsLoading(false);
+  };
+
+  const updateUserHandler = async (userDetails) => {
+    setIsLoading(true);
+    const { updatedUser } = await updateUser(userDetails);
+    toast.success("User updated");
+    setUser((user) => ({ ...user, ...updatedUser }));
+    setIsLoading(false);
+  };
+
   const shareItem = (productId, e) => {
     e.stopPropagation();
     toast.success("Copied Link to Clipboard");
@@ -113,11 +135,15 @@ export const UserProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        updateUserHandler,
         cartHandler,
         updateQuantity,
         removeFromCart,
         addToWishListHandler,
         deleteFromWishListHandler,
+        addAddressHandler,
+        deleteAddressHandler,
+        updateAddressHandler,
         shareItem,
       }}
     >

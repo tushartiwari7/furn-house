@@ -5,7 +5,7 @@ export { OurServices } from "./OurServices/OurServices";
 export { FeaturedProducts } from "./FeaturedProducts/FeaturedProducts";
 export { Filters } from "./Filters/Filters";
 export { VerticalCard } from "./VerticalCard/VerticalCard";
-export { CartItem } from "./CartItem/CartItem";
 export { Menu } from "./Menu/Menu";
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { Loader } from "./Loader/Loader";
+export { AddressList } from "./AddressList/AddressList";

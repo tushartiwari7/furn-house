@@ -1,0 +1,23 @@
+.actions {
+  min-width: fit-content;
+}
+.addresses {
+  flex-grow: 1;
+  margin-left: 5rem;
+  max-width: 100%;
+}
+.address-list > li {
+  border: 1px dotted var(--secondary-light);
+  border-bottom: 2px solid var(--secondary);
+  padding: 1rem;
+}
+
+.address-info {
+  flex-grow: 1;
+}
+
+@media only screen and (max-width: 640px) {
+  .addresses {
+    margin-left: 0;
+  }
+}

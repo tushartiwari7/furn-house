@@ -1,7 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import "./App.css";
+import { Toaster } from "react-hot-toast";
 import MockMan from "mockman-js";
+import "./App.css";
 
 // lazy page imports
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -11,19 +12,28 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Cart = lazy(() => import("./pages/Cart/Cart"));
 const Wishlist = lazy(() => import("./pages/Wishlist/Wishlist"));
-const Profile = lazy(() => import("./pages/Profile/Profile"));
+const Profile = lazy(() => import("./pages/MyAccount/Profile/Profile"));
 const PrivateRoute = lazy(() =>
   import("./components/PrivateRoute/PrivateRoute")
 );
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
-import { Toaster } from "react-hot-toast";
+import { Addresses, MyAccount } from "./pages";
+import { Settings } from "./pages/MyAccount/Settings/Settings";
+import { CartItems } from "./pages/Cart/CartItems/CartItems";
+import { Checkout } from "./pages/Cart/Checkout/Checkout";
+import { BsTypeH2 } from "react-icons/bs";
 
 const App = () => {
   const location = useLocation();
   return (
-    <div className={`App full-height grid ${location.pathname.slice(1)}`}>
+    <div
+      className={`App full-height grid ${location.pathname.replaceAll(
+        `/`,
+        ``
+      )}`}
+    >
       <Header />
       <Suspense fallback={<Loader forRouter={true} />}>
         <Routes>
@@ -39,7 +49,10 @@ const App = () => {
                 <Cart />
               </PrivateRoute>
             }
-          />
+          >
+            <Route index element={<CartItems />} />
+            <Route path="checkout" element={<Checkout />} />
+          </Route>
           <Route
             path="/wishlist"
             element={
@@ -49,13 +62,29 @@ const App = () => {
             }
           />
           <Route
-            path="/profile"
+            path="/myAccount"
             element={
               <PrivateRoute>
-                <Profile />
+                <MyAccount />
               </PrivateRoute>
             }
-          />
+          >
+            <Route
+              path="change-password"
+              element={<div>Change Password</div>}
+            />
+            <Route index element={<Profile />} />
+            <Route
+              path="orders"
+              element={
+                <p className="flex flex-center full-width fs-xl font-bebas">
+                  Coming soon...
+                </p>
+              }
+            />
+            <Route path="addresses" element={<Addresses />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
           <Route path="/mockman" element={<MockMan />} />
         </Routes>

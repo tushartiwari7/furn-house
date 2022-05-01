@@ -1,10 +1,4 @@
-export { getCategories } from "./getCategories";
-export { getProducts } from "./getProducts";
-export { getSingleProduct } from "./getSingleProduct";
-export { getUser } from "./getUser";
-export { postNewUser } from "./postNewUser";
-export { addToCart } from "./addToCart";
-export { updateCartQty } from "./updateCartQty";
-export { deleteCartItem } from "./deleteCartItem";
-export { addToWishList } from "./addToWishList";
-export { deleteFromWishList } from "./deleteFromWishList";
+export * from "./data";
+export * from "./user";
+export * from "./cart";
+export * from "./wishlist";

@@ -72,6 +72,14 @@
   color: var(--text-color);
   left: 0;
   min-width: 30rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s linear;
+}
+
+.sort-menu.open {
+  visibility: visible;
+  opacity: 1;
 }
 
 .sort-menu svg {

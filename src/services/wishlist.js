@@ -1,5 +1,5 @@
 import axios from "axios";
-const token = localStorage.getItem("token").slice(1, -1);
+const token = localStorage.getItem("token")?.slice(1, -1);
 
 export const addToWishList = async (product) => {
   try {

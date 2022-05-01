@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const addToCart = async (product) => {
-  const token = localStorage.getItem("token").slice(1, -1);
+  const token = localStorage.getItem("token")?.slice(1, -1);
   try {
     const { data, status } = await axios({
       method: "POST",

@@ -1,8 +1,8 @@
 import axios from "axios";
 import toast from "react-hot-toast";
+const token = localStorage.getItem("token")?.slice(1, -1);
 
 export const addAddress = async (address) => {
-  const token = localStorage.getItem("token").slice(1, -1);
   try {
     const { data, status } = await axios({
       method: "POST",
@@ -18,7 +18,6 @@ export const addAddress = async (address) => {
 };
 
 export const deleteAddress = async (addressID) => {
-  const token = localStorage.getItem("token").slice(1, -1);
   try {
     const { data, status } = await axios({
       method: "DELETE",
@@ -33,7 +32,6 @@ export const deleteAddress = async (addressID) => {
 };
 
 export const updateAddress = async (address) => {
-  const token = localStorage.getItem("token").slice(1, -1);
   try {
     const { data, status } = await axios({
       method: "POST",

@@ -17,10 +17,10 @@ export const MyAccount = () => {
       route: "addresses",
       routeName: "Manage Addresses",
     },
-    {
-      route: "change-password",
-      routeName: "Change Password",
-    },
+    // {
+    //   route: "change-password",
+    //   routeName: "Change Password",
+    // },
     {
       route: "orders",
       routeName: "Orders",

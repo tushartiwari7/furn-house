@@ -41,6 +41,7 @@ export const signupHandler = function (schema, request) {
       cart: [],
       wishlist: [],
       addresses: [],
+      orders: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = jwt.sign(
@@ -175,13 +176,11 @@ export const resetUserHandler = function (schema, request) {
     }
     this.db.users.update(
       { _id: userId },
-      { cart: [], wishlist: [], addresses: [] }
+      { cart: [], wishlist: [], addresses: [], orders: [] }
     );
-    return new Response(
-      200,
-      {},
-      { updatedUser: this.db.users.findBy({ _id: userId }) }
-    );
+    const updatedUser = this.db.users.findBy({ _id: userId });
+    delete updatedUser.password;
+    return new Response(200, {}, { updatedUser });
   } catch (error) {
     return new Response(500, {}, { error });
   }

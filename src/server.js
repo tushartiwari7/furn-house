@@ -31,6 +31,10 @@ import {
   removeAddressHandler,
   updateAddressHandler,
 } from "./backend/controllers/AddressController";
+import {
+  getOrdersHandler,
+  addItemToOrdersHandler,
+} from "./backend/controllers/OrderController";
 
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
@@ -74,6 +78,7 @@ export function makeServer({ environment = "development" } = {}) {
               pincode: "160015",
             },
           ],
+          orders: [],
         })
       );
 
@@ -120,8 +125,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/addresses/:addressId",
         removeAddressHandler.bind(this)
       );
-
       this.post("/user/addresses/:addressId", updateAddressHandler.bind(this));
+
+      // orders routes (private)
+      this.get("/user/orders", getOrdersHandler.bind(this));
+      this.post("/user/orders", addItemToOrdersHandler.bind(this));
     },
   });
 }

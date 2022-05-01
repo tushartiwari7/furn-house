@@ -49,7 +49,7 @@ export const ProductProvider = ({ children }) => {
         filters: state,
         dispatch,
         isLoading,
-        setIsLoading: setIsLoading,
+        setIsLoading,
       }}
     >
       {children}

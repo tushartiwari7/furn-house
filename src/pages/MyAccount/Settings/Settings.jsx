@@ -1,11 +1,12 @@
 import React from "react";
 import { deactivateUser, resetUserData } from "../../../services";
 import "./Settings.css";
-import { useUser } from "../../../context";
+import { useProducts, useUser } from "../../../context";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 export const Settings = () => {
   const { setUser } = useUser();
+  const { setIsLoading } = useProducts();
   const navigate = useNavigate();
   return (
     <main className="m-sm flex flex-col settings gap3">
@@ -20,8 +21,16 @@ export const Settings = () => {
         <button
           className="btn btn-primary btn-cta-secondary px-sm py-xs fit-width font-bebas fs-m"
           onClick={async () => {
-            const { updatedUser } = await resetUserData();
-            console.log(updatedUser);
+            setIsLoading(true);
+            await resetUserData();
+            setUser((user) => ({
+              ...user,
+              cart: [],
+              wishlist: [],
+              addresses: [],
+              orders: [],
+            }));
+            setIsLoading(false);
           }}
         >
           Reset Data

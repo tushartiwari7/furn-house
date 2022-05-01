@@ -23,6 +23,7 @@ import { Addresses, MyAccount } from "./pages";
 import { Settings } from "./pages/MyAccount/Settings/Settings";
 import { CartItems } from "./pages/Cart/CartItems/CartItems";
 import { Checkout } from "./pages/Cart/Checkout/Checkout";
+import { BsTypeH2 } from "react-icons/bs";
 
 const App = () => {
   const location = useLocation();
@@ -73,7 +74,14 @@ const App = () => {
               element={<div>Change Password</div>}
             />
             <Route index element={<Profile />} />
-            <Route path="orders" element={<div>Orders</div>} />
+            <Route
+              path="orders"
+              element={
+                <p className="flex flex-center full-width fs-xl font-bebas">
+                  Coming soon...
+                </p>
+              }
+            />
             <Route path="addresses" element={<Addresses />} />
             <Route path="settings" element={<Settings />} />
           </Route>

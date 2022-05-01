@@ -21,7 +21,7 @@ import {
   deleteAddress,
   updateAddress,
 } from "../../services/address";
-import { updateUser } from "../../services/getUser";
+import { updateUser } from "../../services/user";
 
 const UserContext = createContext();
 

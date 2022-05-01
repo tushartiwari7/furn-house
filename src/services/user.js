@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const token = localStorage.getItem("token").slice(1, -1);
+const token = localStorage.getItem("token")?.slice(1, -1);
 
 export const getUser = async (email, password) => {
   try {
@@ -14,6 +14,16 @@ export const getUser = async (email, password) => {
     return error;
   }
 };
+
+export const postNewUser = async (firstName, lastName, email, password) => {
+  try {
+    const {data,status} = await axios.post("/api/auth/signup",{firstName,lastName,email,password});
+    return {data,status};
+  } catch (error) {
+    console.error("failed to save user to db",error);
+    return error;
+  }
+}
 
 export const updateUser = async (userDetails) => {
   try {
@@ -45,6 +55,7 @@ export const deactivateUser = async () => {
 };
 
 export const resetUserData = async () => {
+  console.log("resetUserData");
   try {
     const { data, status } = await axios({
       method: "POST",

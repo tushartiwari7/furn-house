@@ -1,10 +1,4 @@
-.menu {
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.25s linear;
-}
-
-.open {
+.menu.open {
   visibility: visible;
   opacity: 1;
 }

@@ -77,6 +77,11 @@
   transition: 0.25s linear;
 }
 
+.sort-menu.open {
+  visibility: visible;
+  opacity: 1;
+}
+
 .sort-menu svg {
   margin-right: 1rem;
 }

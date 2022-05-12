@@ -31,12 +31,9 @@ export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {
     },
     dispatch,
   } = useProducts();
-  const onPriceFilterChange = (e) => {
-    toast(`Showing Products less than ${e.target.value}.`, {
-      icon: <BsDiamondHalf />,
-    });
+  const onPriceFilterChange = (e) =>
     dispatch({ type: "PRICE_FILTER", payload: e.target.value });
-  };
+
   const onRatingFilterChange = (rating) => {
     toast(
       rating === 1

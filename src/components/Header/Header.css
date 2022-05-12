@@ -3,6 +3,17 @@
   background: var(--bg-primary);
 }
 
+.badge {
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.8;
+  color: var(--bg-primary);
+  text-align: center;
+}
+
 .btn-login {
   text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;

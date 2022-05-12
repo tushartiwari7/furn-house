@@ -47,16 +47,26 @@ export const Header = () => {
           <Link
             to="/wishlist"
             title="wishlist"
-            className="list white btn nav-icon flex flex-center"
+            className="list white btn nav-icon flex flex-center pos-rel"
           >
             <BsHeart />
+            {user.isLoggedIn && user.wishlist.length >= 1 && (
+              <div className="pos-abs badge rounded-circle fs-s fw-bold">
+                {user.wishlist.length}
+              </div>
+            )}
           </Link>
           <Link
             to="/cart"
             title="Cart"
-            className="list white btn nav-icon flex flex-center"
+            className="list white btn nav-icon flex flex-center pos-rel"
           >
             <BsHandbag />
+            {user.isLoggedIn && user.cart.length >= 1 && (
+              <div className="pos-abs badge rounded-circle fs-s fw-bold">
+                {user.cart.length}
+              </div>
+            )}
           </Link>
           <Link
             to={user.isLoggedIn ? "/myAccount" : "/login"}

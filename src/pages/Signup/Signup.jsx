@@ -1,4 +1,3 @@
-import "./Signup.css";
 import { BsArrowRight } from "react-icons/bs";
 import { postNewUser } from "../../services";
 import { useUser } from "../../context";
@@ -31,50 +30,50 @@ export const Signup = () => {
   return (
     <main className="flex flex-center fill-height auth-page">
       <form className="card auth-card p-sm" onSubmit={signupHandler}>
-        <div className="h3  text-center fw-semibold m-xs">Sign Up</div>
+        <h1 className="h1 text-center fw-lighter font-bebas m-xs">Sign Up</h1>
         <div className="flex">
           <div className="m-xs">
-            <label className="fs-s">First Name</label>
+            <label className="fs-s font-bebas">First Name</label>
             <input
               type="text"
               placeholder="James"
-              className="input full-width px-sm py-xs my-xs rounded-s"
+              className="input full-width px-sm py-xs my-xs rounded-s ubuntu"
               required
             />
           </div>
           <div className="m-xs">
-            <label className="fs-s">Last Name</label>
+            <label className="fs-s font-bebas">Last Name</label>
             <input
               type="text"
               placeholder="Anderson"
-              className="input full-width px-sm py-xs my-xs rounded-s"
+              className="input full-width px-sm py-xs my-xs rounded-s ubuntu"
             />
           </div>
         </div>
         <div className="m-xs">
-          <label className="fs-s">Email</label>
+          <label className="fs-s font-bebas">Email</label>
           <input
             type="email"
             placeholder="jamesanderson@example.com"
-            className="input full-width px-sm py-xs my-xs rounded-s"
+            className="input full-width px-sm ubuntu py-xs my-xs rounded-s"
             required
           />
         </div>
         <div className="m-xs">
-          <label className="fs-s">Password</label>
+          <label className="fs-s font-bebas">Password</label>
           <input
             type="password"
             placeholder="enter password"
-            className="input full-width px-sm py-xs my-xs rounded-s"
+            className="input full-width px-sm py-xs my-xs rounded-s ubuntu"
             required
           />
         </div>
         <div className="m-xs">
-          <label className="fs-s">Confirm Password</label>
+          <label className="fs-s font-bebas">Confirm Password</label>
           <input
             type="password"
             placeholder="confirm your password"
-            className="input full-width px-sm py-xs my-xs rounded-s"
+            className="input full-width px-sm py-xs my-xs rounded-s ubuntu"
             required
           />
         </div>
@@ -85,17 +84,21 @@ export const Signup = () => {
               name="rememberme"
               id="rememberme"
               className="pointer"
+              required
             />
-            <label htmlFor="rememberme" className="mx-xs fs-s pointer">
+            <label htmlFor="rememberme" className="mx-xs fs-s pointer ubuntu">
               I accept all terms and conditions
             </label>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary py-xs px-sm m-xs fs-m">
+        <button
+          type="submit"
+          className="btn btn-cta py-xs px-sm m-xs fs-m font-bebas"
+        >
           Create New Account
         </button>
         <Link
-          className="btn btn-outline-primary fs-s list py-xs px-sm m-xs"
+          className="btn btn-cta-secondary font-bebas fs-s list py-xs px-sm m-xs"
           to="/login"
         >
           Already have an Account
@@ -105,3 +108,5 @@ export const Signup = () => {
     </main>
   );
 };
+
+export default Signup;

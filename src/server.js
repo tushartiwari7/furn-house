@@ -1,7 +1,11 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { v4 as uuid } from "uuid";
 import {
   loginHandler,
   signupHandler,
+  updateUserHandler,
+  deleteUserHandler,
+  resetUserHandler,
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
@@ -22,6 +26,16 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
+import {
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
+import {
+  getOrdersHandler,
+  addItemToOrdersHandler,
+} from "./backend/controllers/OrderController";
+
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -38,6 +52,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      addresses: Model,
     },
 
     // Runs on the start of the server
@@ -49,7 +64,22 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          addresses: [
+            {
+              _id: uuid(),
+              street: "Beach N Brew, SCO 8, 1st Floor, Udyan Path, Sector 16 D",
+              city: "Chandigarh - U.T",
+              state: "Punjab",
+              landmark: "Zakir Khan Rose Garden",
+              pincode: "160015",
+            },
+          ],
+          orders: [],
+        })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -60,6 +90,9 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
+      this.post("/auth/update", updateUserHandler.bind(this));
+      this.post("/auth/reset", resetUserHandler.bind(this));
+      this.delete("/auth/deactivate", deleteUserHandler.bind(this));
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
@@ -85,6 +118,18 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+      // addresses routes (private)
+      this.post("/user/addresses", addAddressHandler.bind(this));
+      this.delete(
+        "/user/addresses/:addressId",
+        removeAddressHandler.bind(this)
+      );
+      this.post("/user/addresses/:addressId", updateAddressHandler.bind(this));
+
+      // orders routes (private)
+      this.get("/user/orders", getOrdersHandler.bind(this));
+      this.post("/user/orders", addItemToOrdersHandler.bind(this));
     },
   });
 }

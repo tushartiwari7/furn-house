@@ -1,12 +1,32 @@
-.btn-login,
-.hamburger {
-  /*  transparent by default */
-  background: white;
+.header {
+  grid-area: header;
+  background: var(--bg-primary);
 }
-.btn-login:hover,
-.hamburger:hover {
-  /* primary color by default */
-  border-color: white;
+
+.badge {
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.8;
+  color: var(--bg-primary);
+  text-align: center;
+}
+
+.btn-login {
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+.nav-icon {
+  width: 4rem;
+  height: 4rem;
+  align-self: center;
+}
+
+.nav-icon > svg {
+  vertical-align: bottom;
 }
 
 .icon {
@@ -24,16 +44,36 @@
   width: 40vw;
 }
 
-.searchbar > input {
+.searchbar > .input {
   width: 100%;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s ease-in-out;
 }
 
-.white {
-  color: white;
+.input:focus {
+  outline: 1px solid transparent;
+  border-bottom: 2px solid var(--primary);
+}
+
+.nav-icon,
+.text-color {
+  color: var(--text-color);
 }
 
 @media (max-width: 640px) {
   .searchbar {
-    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    z-index: 1;
+  }
+  .header {
+    height: 130%;
+    align-items: flex-start;
+  }
+  .navs {
+    transform: translateY(100%);
   }
 }

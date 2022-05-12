@@ -1,15 +1,14 @@
 import React from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsCart, BsHeart, BsPersonCircle, BsSearch } from "react-icons/bs";
+import { BsHandbag, BsPerson, BsHeart, BsSearch } from "react-icons/bs";
 import { useUser, useProducts } from "../../context";
 
 export const Header = () => {
   const { user } = useUser();
-  const { dispatch } = useProducts();
+  const { filters, dispatch } = useProducts();
   const navigator = useNavigate();
   const location = useLocation();
-
   const onSearch = (e) => {
     if (location.pathname !== "/products") navigator("/products");
     dispatch({ type: "PRODUCTS_SEARCH", payload: e.target.value });
@@ -17,47 +16,65 @@ export const Header = () => {
 
   return (
     <>
-      <header className="full-width p-sm flex header fs-l">
+      <header className="full-width flex header pos-rel fs-l">
         <div className="flex flex-center">
-          <Link className="list white flex flex-center" to="/">
-            Furn House
+          <Link
+            className="list flex flex-center text-color"
+            to="/"
+            title="Go to Homepage"
+          >
+            <img
+              src={`${window.location.origin}/assets/logo-200-100.svg`}
+              alt="logo"
+              className="logo"
+            />
           </Link>
         </div>
-        <div className="searchbar flex flex-center pos-rel">
+        <div
+          className="searchbar flex flex-center pos-rel"
+          title="Search Products"
+        >
           <input
             type="text"
-            className="input px-sm py-xs rounded-s"
+            className="input px-sm py-xs"
             placeholder="What are you looking for?"
+            value={filters.searchQuery}
             onChange={onSearch}
           />
           <BsSearch className="icon pos-abs" color="var(--primary)" />
         </div>
-        <div className="flex flex-center">
-          {!user.isLoggedIn && (
-            <Link
-              to="/login"
-              className="btn btn-outline-primary btn-login px-sm py-xs mx-xs fs-s flex flex-center rounded-s"
-            >
-              Login
-            </Link>
-          )}
+        <div className="flex flex-center navs">
           <Link
             to="/wishlist"
-            className="list white btn btn-icon flex flex-center"
+            title="wishlist"
+            className="list white btn nav-icon flex flex-center pos-rel"
           >
             <BsHeart />
+            {user.isLoggedIn && user.wishlist.length >= 1 && (
+              <div className="pos-abs badge rounded-circle fs-s fw-bold">
+                {user.wishlist.length}
+              </div>
+            )}
           </Link>
-          <Link to="/cart" className="list white btn btn-icon flex flex-center">
-            <BsCart />
+          <Link
+            to="/cart"
+            title="Cart"
+            className="list white btn nav-icon flex flex-center pos-rel"
+          >
+            <BsHandbag />
+            {user.isLoggedIn && user.cart.length >= 1 && (
+              <div className="pos-abs badge rounded-circle fs-s fw-bold">
+                {user.cart.length}
+              </div>
+            )}
           </Link>
-          {user.isLoggedIn && (
-            <Link
-              to="/profile"
-              className="list white btn btn-icon flex flex-center"
-            >
-              <BsPersonCircle />
-            </Link>
-          )}
+          <Link
+            to={user.isLoggedIn ? "/myAccount" : "/login"}
+            title={user.isLoggedIn ? "My Account" : "Login"}
+            className="list btn nav-icon flex flex-center rounded-s"
+          >
+            <BsPerson size="2.4rem" />
+          </Link>
         </div>
       </header>
     </>

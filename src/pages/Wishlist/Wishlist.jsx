@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProductCard } from "../../components";
+import { VerticalCard } from "../../components";
 import { useUser } from "../../context";
 export const Wishlist = () => {
   const {
-    user: { wishlist, isLoggedIn },
+    user: { wishlist },
   } = useUser();
 
   return (
-    <main className="main flex flex-col cart-page">
-      {isLoggedIn ? (
+    <main
+      className={`main flex flex-col ${!wishlist.length ? "flex-center" : ""}`}
+    >
+      {wishlist.length ? (
         <>
-          {" "}
           <h2 className="cart-title h3 ubuntu p-xs">
             Your Wishlist
             <span className="fs-m fw-regular px-xs">
@@ -21,25 +22,28 @@ export const Wishlist = () => {
           <div className="main grid product-list p-sm">
             {wishlist &&
               wishlist.map((product) => (
-                <ProductCard key={product._id} {...product} />
+                <VerticalCard
+                  key={product._id}
+                  product={product}
+                  isWishlistCard={true}
+                />
               ))}
           </div>
         </>
       ) : (
-        <section className="flex flex-center cart-empty">
-          <div className="flex flex-center flex-col">
-            <h3 className="h2 ubuntu text-center">
-              Login To See Items In WishList
-            </h3>
-            <Link
-              to="/login"
-              className="full-width my-sm p-sm btn btn-primary h4 ubuntu text-center rounded-s"
-            >
-              Login
-            </Link>
-          </div>
-        </section>
+        <div className="flex flex-center flex-col">
+          <p className="h3 ubuntu my-xs">Your Wishlist is Empty!</p>
+          <p className="h2 ubuntu my-xs">Checkout our latest Furniture </p>
+          <Link
+            to="/products"
+            className="text-center full-width fs-l fw-lighter px-sm py-xs font-bebas btn-cta my-sm"
+          >
+            All Products
+          </Link>
+        </div>
       )}
     </main>
   );
 };
+
+export default Wishlist;

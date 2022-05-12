@@ -1,0 +1,36 @@
+.gif {
+  max-height: 70vh;
+}
+.grid2 {
+  grid-template-columns: 1fr 1fr;
+}
+.not-found-cta {
+  background: var(--text-color);
+  color: var(--bg-primary);
+  letter-spacing: 0.1ch;
+}
+.not-found-content {
+  width: 100%;
+}
+.width70 {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.not-found-page-btns {
+  gap: 2rem;
+}
+@media only screen and (max-width: 600px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+  }
+  .gif-container {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .width70 {
+    width: 100%;
+  }
+}

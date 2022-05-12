@@ -1,9 +1,62 @@
-
 .services {
-  text-align: center;
-  font-size: 7rem;
+  width: 100%;
+  background: var(--secondary);
+  align-items: center;
+}
+
+.service-cards {
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  gap: 1rem;
+  padding-right: 3rem;
+}
+
+.services-title {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: var(--text-color);
+}
+
+.services .card {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  height: 100%;
+}
+
+.services .icon {
+  transform: none;
+  width: 50%;
+  color: var(--text-color);
+  height: 10rem;
+  object-fit: contain;
+}
+
+.services-desc {
+  color: var(--text-color);
   max-width: 100%;
 }
-.services-desc {
-  max-width: 100%;
+
+@media only screen and (max-width: 1070px) {
+  .services {
+    flex-direction: column;
+  }
+  .service-cards {
+    padding-right: 0;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .service-cards {
+    width: 90%;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: auto;
+  }
+  .services .card {
+    width: 100%;
+    flex-direction: row;
+  }
+  .services .icon {
+    width: 8rem;
+  }
 }

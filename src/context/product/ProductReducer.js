@@ -1,32 +1,41 @@
-import toast from "react-hot-toast";
-
 export const initialFilters = {
-  sort: "",
-  priceFilterValue: 110000,
-  ratingFilterValue: null,
   selectedCategory: {},
+  sort: "",
+  priceFilterValue: "",
+  ratingFilterValue: null,
   searchQuery: "",
+};
+
+const reducerTypes = {
+  SET_CATEGORY: "SET_CATEGORY",
+  SORT: "SORT",
+  PRICE_FILTER: "PRICE_FILTER",
+  RATING_FILTER: "RATING_FILTER",
+  SEARCH_FILTER: "PRODUCTS_SEARCH",
+  RESET_FILTERS: "RESET_FILTERS",
 };
 
 export const reducerFn = (state, action) => {
   switch (action.type) {
-    case "SORT":
+    case reducerTypes.SORT:
       return {
         ...state,
         sort: action.payload || "",
       };
-    case "PRICE_FILTER":
+
+    case reducerTypes.PRICE_FILTER:
       return {
         ...state,
         priceFilterValue: action.payload,
       };
-    case "RATING_FILTER":
+
+    case reducerTypes.RATING_FILTER:
       return {
         ...state,
         ratingFilterValue: action.payload,
       };
-    case "SET_CATEGORY":
-      toast("Updated Selected Categories");
+
+    case reducerTypes.SET_CATEGORY:
       if (state.selectedCategory[action.payload]) {
         const categoryCopy = { ...state.selectedCategory };
         delete categoryCopy[action.payload];
@@ -43,13 +52,13 @@ export const reducerFn = (state, action) => {
         },
       };
 
-    case "PRODUCTS_SEARCH":
+    case reducerTypes.SEARCH_FILTER:
       return {
         ...state,
         searchQuery: action.payload,
       };
 
-    case "RESET_FILTERS":
+    case reducerTypes.RESET_FILTERS:
       return initialFilters;
 
     default:

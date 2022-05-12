@@ -9,12 +9,13 @@ export const getCartSummary = (cart) => {
       return {
         ...acc,
         items: acc.items + item.qty,
+        orderVal: acc.orderVal + productAmount,
         total:
           acc.total + productAmount + calculateGST(productAmount) - discount,
         gst: acc.gst + calculateGST(productAmount),
         discount: acc.discount + discount,
       };
     },
-    { items: 0, total: 0, discount: 0, gst: 0 }
+    { items: 0, orderVal: 0, total: 0, discount: 0, gst: 0 }
   );
 };

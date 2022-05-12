@@ -1,17 +1,121 @@
 .category-list {
-  justify-content: space-around;
+  grid-template-columns: repeat(4, 1fr);
+  width: 80vw;
+  margin: 10rem auto 0;
+  gap: 2px;
 }
 
-.categories {
-  grid-area: category;
-  border-bottom: 1px solid var(--text-color100);
-}
-.list-item {
+.category {
+  background: var(--secondary);
   width: 100%;
-  text-align: center;
-  border-left: 1px solid var(--text-color100);
 }
 
-.list-item:hover {
-  background-color: var(--primary100);
+.category:nth-child(1) {
+  grid-area: 1/1/3/2;
+}
+.category:nth-child(3) {
+  grid-area: 1/3/3/4;
+}
+
+.category-content {
+  inset: 2rem;
+  opacity: 0;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-end;
+  transition: 0.3s ease-in-out;
+}
+.category-content * {
+  color: var(--bg-primary);
+}
+.category-content p {
+  font-size: 1.8rem;
+  line-height: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.category > img {
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+}
+
+.category:hover > img {
+  opacity: 0.4;
+}
+
+.category:hover .category-content {
+  bottom: 3rem;
+  opacity: 1;
+}
+
+.heading-overlay {
+  top: 0;
+  left: 2rem;
+  height: fit-content;
+  filter: drop-shadow(0px 15px 10px var(--bg-primary));
+}
+.heading-overlay > .heading {
+  transform: translateY(-50%);
+  font-size: 4rem;
+  padding-bottom: 7px;
+  filter: drop-shadow(2px 1px 1px var(--secondary));
+}
+
+@media only screen and (min-width: 768px) {
+  .category-content {
+    inset: 1rem;
+  }
+  .category-content p {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .category-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .category:nth-child(1),
+  .category:nth-child(3) {
+    grid-area: auto;
+  }
+  .category:nth-child(4) {
+    grid-area: 2/1/4/3;
+  }
+  .category:nth-child(4) .h2 {
+    font-size: 6rem;
+  }
+  .category:nth-child(4) .fs-m {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .heading-overlay > .heading {
+    font-size: 3rem;
+  }
+  .category-content {
+    inset: 1rem;
+  }
+  .category-content > p {
+    display: none;
+  }
+  .category-content > .h2 {
+    font-size: small;
+  }
+  .category-special .h2 {
+    font-size: 4rem;
+  }
 }

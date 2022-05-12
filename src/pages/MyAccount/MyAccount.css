@@ -1,0 +1,49 @@
+.account {
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+.logout {
+  background: transparent;
+}
+
+.account > .unstyled {
+  width: 25%;
+  max-width: 25rem;
+  min-width: fit-content;
+  border: 1px dotted var(--secondary);
+  height: fit-content;
+  transition: 0.25s linear;
+}
+.account .list-item {
+  color: var(--text-color);
+  border-radius: 5rem;
+  border-bottom: 0;
+}
+.unstyled {
+  list-style: none;
+}
+.account .list-item:hover {
+  background: var(--secondary-light);
+  border-bottom: transparent;
+}
+
+.account-menu-btn {
+  display: none;
+}
+
+.username {
+  margin: 2rem 0 5rem 0;
+}
+
+@media only screen and (max-width: 640px) {
+  .account > .unstyled {
+    position: fixed;
+    top: 20rem;
+    background: var(--bg-primary);
+    z-index: 1;
+  }
+  .account-menu-btn {
+    display: block;
+  }
+}

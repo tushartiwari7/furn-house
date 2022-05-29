@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import "./NewAddressForm.css";
-import { states } from "../../../../utils";
+import { states, validateAddressForm } from "../../../../utils";
 import { useUser } from "../../../../context";
 export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
   const initialAddress = {
@@ -23,14 +23,18 @@ export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
       pincode: "171001",
     });
 
+  const formHandler = async (e) => {
+    e.preventDefault();
+    if (validateAddressForm(address)) {
+      await addAddressHandler(address);
+      setter(false);
+    }
+  };
+
   return (
     <form
       id="form"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        await addAddressHandler(address);
-        setter(false);
-      }}
+      onSubmit={formHandler}
       className="p-md flex flex-col gap3 add-address"
     >
       <label className="flex fs-l font-bebas spread">

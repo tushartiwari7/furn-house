@@ -7,8 +7,8 @@ export { productSearchFilter } from "./productSearchFilter";
 export { getCartSummary } from "./getCartSummary";
 export { getDiscountPercentage } from "./getDiscountPercentage";
 export { getDate } from "./getDate";
-export { productImagesSlider, similarProductSlider } from "./sliderSettings";
-
+export * from "./sliderSettings";
+export * from "./validation";
 export const states = [
   "Andaman and Nicobar Islands",
   "Andhra Pradesh",

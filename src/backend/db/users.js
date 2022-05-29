@@ -10,15 +10,6 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    email: "adarshbalika@gmail.com",
-    password: bcyrpt.hashSync("adarshBalika123", 5),
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
-  {
-    _id: uuid(),
     firstName: "John",
     lastName: "Doe",
     email: "johndoe@gmail.com",
@@ -28,10 +19,10 @@ export const users = [
   },
   {
     _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balak",
-    email: "adarshbalak@gmail.com",
-    password: bcyrpt.hashSync("adarshBalaki123", 5),
+    firstName: "Tushar",
+    lastName: "Tiwari",
+    email: "tushartiwari@gmail.com",
+    password: bcyrpt.hashSync("rockstarDev123", 5),
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

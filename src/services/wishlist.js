@@ -11,7 +11,6 @@ export const addToWishList = async (product) => {
     });
     return { wishlist: data.wishlist, status };
   } catch (err) {
-    alert("Something went wrong: Add To Cart Failed");
     return err;
   }
 };

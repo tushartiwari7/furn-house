@@ -29,7 +29,7 @@ export const Login = () => {
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
         setUser({ ...data.foundUser, isLoggedIn: true });
         navigator(params.get("from") ?? "/products", { replace: true });
-      } else toast("Login failed", { icon: "❌" });
+      } else toast.error("Login failed");
     })();
   };
 

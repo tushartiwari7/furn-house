@@ -9,3 +9,4 @@ export { Profile } from "./MyAccount/Profile/Profile";
 export { NotFound } from "./NotFound/NotFound";
 export { MyAccount } from "./MyAccount/MyAccount";
 export { Addresses } from "./MyAccount/Addresses/Addresses";
+export { Success } from "./Success/Success";

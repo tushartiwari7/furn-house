@@ -13,6 +13,7 @@ export const AddressList = () => {
             className="mx-sm"
             name="choose-address"
             id={_id}
+            onChange={(e) => console.log(e.target)}
           />
           <label className="row address-info" htmlFor={_id}>
             <div className="flex flex-col gap">

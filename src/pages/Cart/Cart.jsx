@@ -1,15 +1,53 @@
 import "./Cart.css";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 export const Cart = () => {
   const {
-    user: { cart },
+    user: { cart,firstName,email },
   } = useUser();
   const location = useLocation();
-
+  const navigate = useNavigate();
+  const checkoutPage = location.pathname.includes("checkout");
   const { orderVal, total, discount, gst } = getCartSummary(cart ?? []);
+
+  const loadRazorPay = async () => {
+    const options = {
+      key: process.env.REACT_APP_RAZOR_KEY,
+      amount: total,
+      currency: "INR",
+      name: "Furn House",
+      order_id: "order_JbMfU14PQn7pFD",
+      handler: function (response) {
+        console.log(response);
+        // create order and navigate
+      },
+      modal: {
+        ondismiss: function () {
+          toast.error("Payment Cancelled");
+        },
+      },
+      prefill: {
+        name: firstName ?? "",
+        email: email ?? "",
+        contact: "+919855084891",
+      },
+      theme: {
+        color: "#c7ac92",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+    rzp1.on("payment.failed", function (response) {
+      console.error(response);
+      toast.error("Payment Failed");
+    });
+  };
+
+
   return (
     <main className={`main flex cart  ${!cart?.length && "flex-center"}`}>
       {cart?.length ? (
@@ -48,16 +86,17 @@ export const Cart = () => {
                 Total Amount
                 <span className="h3 ubuntu"> &#8377;{total} </span>
               </p>
-              <Link
-                to="checkout"
+              <button
+                to={checkoutPage ? "/success" : "checkout"}
+                onClick={
+                  checkoutPage ? loadRazorPay : () => navigate("checkout")
+                }
                 className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta"
               >
-                {location.pathname.includes("checkout")
-                  ? "Place Order"
-                  : "Continue to checkout"}
-              </Link>
+                {checkoutPage ? "Place Order" : "Continue to checkout"}
+              </button>
               <p className="fs-s p-xs my-xs cart-savings">
-                You will save{" "}
+                You will save
                 <span className="fw-semibold">&#8377;{discount}</span> on this
                 order.
               </p>

@@ -19,11 +19,15 @@ const PrivateRoute = lazy(() =>
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 import { Header, Loader } from "./components";
-import { Addresses, MyAccount, Success } from "./pages";
-import { Settings } from "./pages/MyAccount/Settings/Settings";
-import { CartItems } from "./pages/Cart/CartItems/CartItems";
-import { Checkout } from "./pages/Cart/Checkout/Checkout";
-
+import {
+  Addresses,
+  CartItems,
+  Checkout,
+  MyAccount,
+  Orders,
+  Settings,
+  Success,
+} from "./pages";
 const App = () => {
   const location = useLocation();
   return (
@@ -74,14 +78,7 @@ const App = () => {
               element={<div>Change Password</div>}
             />
             <Route index element={<Profile />} />
-            <Route
-              path="orders"
-              element={
-                <p className="flex flex-center full-width fs-xl font-bebas">
-                  Coming soon...
-                </p>
-              }
-            />
+            <Route path="orders" element={<Orders />} />
             <Route path="addresses" element={<Addresses />} />
             <Route path="settings" element={<Settings />} />
           </Route>

@@ -3,50 +3,23 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useRazorpay } from "../../hooks/useRazorpay";
 
 export const Cart = () => {
   const {
-    user: { cart,firstName,email },
+    user: { cart, firstName, email, selectedAddress },
   } = useUser();
   const location = useLocation();
   const navigate = useNavigate();
   const checkoutPage = location.pathname.includes("checkout");
   const { orderVal, total, discount, gst } = getCartSummary(cart ?? []);
-
-  const loadRazorPay = async () => {
-    const options = {
-      key: process.env.REACT_APP_RAZOR_KEY,
-      amount: total,
-      currency: "INR",
-      name: "Furn House",
-      order_id: "order_JbMfU14PQn7pFD",
-      handler: function (response) {
-        console.log(response);
-        // create order and navigate
-      },
-      modal: {
-        ondismiss: function () {
-          toast.error("Payment Cancelled");
-        },
-      },
-      prefill: {
-        name: firstName ?? "",
-        email: email ?? "",
-        contact: "+919855084891",
-      },
-      theme: {
-        color: "#c7ac92",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-    rzp1.on("payment.failed", function (response) {
-      console.error(response);
-      toast.error("Payment Failed");
-    });
+  const { loadRazorPay } = useRazorpay();
+  const checkout = async () => {
+    if (!selectedAddress || !selectedAddress._id) {
+      return toast.error("Please Choose a address to checkout");
+    }
+    await loadRazorPay(total, firstName, email);
   };
-
 
   return (
     <main className={`main flex cart  ${!cart?.length && "flex-center"}`}>
@@ -72,7 +45,7 @@ export const Cart = () => {
                   Shipping Fee
                   <span className="cart-delivery-fee fw-semibold">
                     {" "}
-                    {total > 10000 ? "FREE" : `₹${499}`}{" "}
+                    {total > 2000 ? "FREE" : `₹${499}`}{" "}
                   </span>
                 </p>
               </div>
@@ -88,9 +61,7 @@ export const Cart = () => {
               </p>
               <button
                 to={checkoutPage ? "/success" : "checkout"}
-                onClick={
-                  checkoutPage ? loadRazorPay : () => navigate("checkout")
-                }
+                onClick={checkoutPage ? checkout : () => navigate("checkout")}
                 className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta"
               >
                 {checkoutPage ? "Place Order" : "Continue to checkout"}

@@ -163,9 +163,7 @@ export const deleteUserHandler = function (schema, request) {
 };
 
 export const resetUserHandler = function (schema, request) {
-  console.log(this);
   const userId = requiresAuth.call(this, request);
-  console.log("userId");
   try {
     if (!userId) {
       return new Response(

@@ -2,7 +2,8 @@ import React from "react";
 import { useUser } from "../../context";
 export const AddressList = () => {
   const {
-    user: { addresses },
+    user: { addresses, selectedAddress },
+    setUser,
   } = useUser();
   return (
     <ul className="address-list my-md flex flex-col gap3">
@@ -13,7 +14,20 @@ export const AddressList = () => {
             className="mx-sm"
             name="choose-address"
             id={_id}
-            onChange={(e) => console.log(e.target)}
+            checked={_id === selectedAddress?._id}
+            onChange={() => {
+              setUser((user) => ({
+                ...user,
+                selectedAddress: {
+                  _id,
+                  street,
+                  city,
+                  state,
+                  landmark,
+                  pincode,
+                },
+              }));
+            }}
           />
           <label className="row address-info" htmlFor={_id}>
             <div className="flex flex-col gap">

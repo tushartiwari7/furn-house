@@ -1,14 +1,10 @@
-import axios from "axios";
 import toast from "react-hot-toast";
+import { axiosCall } from "../utils";
 
 export const addAddress = async (address) => {
   try {
-    const token = localStorage.getItem("token")?.slice(1, -1);
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/addresses`,
-      headers: { authorization: token },
-      data: { address },
+    const { data, status } = await axiosCall("/api/user/addresses", "post", {
+      address,
     });
     return { addresses: data.addresses, status };
   } catch (err) {
@@ -19,12 +15,10 @@ export const addAddress = async (address) => {
 
 export const deleteAddress = async (addressID) => {
   try {
-    const token = localStorage.getItem("token")?.slice(1, -1);
-    const { data, status } = await axios({
-      method: "DELETE",
-      url: `/api/user/addresses/${addressID}`,
-      headers: { authorization: token },
-    });
+    const { data, status } = await axiosCall(
+      `/api/user/addresses/${addressID}`,
+      "delete"
+    );
     return { addresses: data.addresses, status };
   } catch (error) {
     toast.error("Something went wrong: Delete Address Failed");
@@ -34,13 +28,11 @@ export const deleteAddress = async (addressID) => {
 
 export const updateAddress = async (address) => {
   try {
-    const token = localStorage.getItem("token")?.slice(1, -1);
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/addresses/${address._id}`,
-      headers: { authorization: token },
-      data: { address },
-    });
+    const { data, status } = await axiosCall(
+      `/api/user/addresses/${address._id}`,
+      "post",
+      { address }
+    );
     return { addresses: data.addresses, status };
   } catch (error) {
     toast.error("Something went wrong: Update Address Failed");

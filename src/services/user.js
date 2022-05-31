@@ -1,7 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const token = localStorage.getItem("token")?.slice(1, -1);
-
+import { axiosCall } from "../utils";
 export const getUser = async (email, password) => {
   try {
     const { data, status } = await axios.post("/api/auth/login", {
@@ -32,11 +31,8 @@ export const postNewUser = async (firstName, lastName, email, password) => {
 
 export const updateUser = async (userDetails) => {
   try {
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/auth/update`,
-      headers: { authorization: token },
-      data: { userDetails },
+    const { data, status } = await axiosCall("/api/auth/update", "post", {
+      userDetails,
     });
     return { updatedUser: data.updatedUser, status };
   } catch (error) {
@@ -47,11 +43,7 @@ export const updateUser = async (userDetails) => {
 
 export const deactivateUser = async () => {
   try {
-    const { data, status } = await axios({
-      method: "DELETE",
-      url: `/api/auth/deactivate`,
-      headers: { authorization: token },
-    });
+    const { data, status } = await axiosCall("/api/auth/deactivate", "delete");
     return { statusMessage: data.statusMessage, status };
   } catch (error) {
     toast.error("Something went wrong: Deactivate User Failed");
@@ -61,11 +53,7 @@ export const deactivateUser = async () => {
 
 export const resetUserData = async () => {
   try {
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/auth/reset`,
-      headers: { authorization: token },
-    });
+    const { data, status } = await axiosCall("/api/auth/reset", "post");
     return { updatedUser: data.updatedUser, status };
   } catch (error) {
     toast.error("Something went wrong: Reset User Failed");

@@ -1,13 +1,9 @@
-import axios from "axios";
+import { axiosCall } from "../utils";
 
 export const addToCart = async (product) => {
-  const token = localStorage.getItem("token")?.slice(1, -1);
   try {
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/cart`,
-      headers: { authorization: token },
-      data: { product },
+    const { data, status } = await axiosCall("/api/user/cart", "post", {
+      product,
     });
     return { cart: data.cart, status };
   } catch (err) {
@@ -17,14 +13,11 @@ export const addToCart = async (product) => {
 };
 
 export const deleteCartItem = async (productID) => {
-  const token = localStorage.getItem("token").slice(1, -1);
-
   try {
-    const { data, status } = await axios({
-      method: "DELETE",
-      url: `/api/user/cart/${productID}`,
-      headers: { authorization: token },
-    });
+    const { data, status } = await axiosCall(
+      `/api/user/cart/${productID}`,
+      "delete"
+    );
     return { cart: data.cart, status };
   } catch (error) {
     console.error(error);
@@ -33,15 +26,13 @@ export const deleteCartItem = async (productID) => {
 };
 
 export const updateCartQty = async (productId, isIncrement = true) => {
-  const token = localStorage.getItem("token").slice(1, -1);
   const action = { type: isIncrement ? "increment" : "decrement" };
   try {
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/cart/${productId}`,
-      headers: { authorization: token },
-      data: { action },
-    });
+    const { data, status } = await axiosCall(
+      `/api/user/cart/${productId}`,
+      "put",
+      { action }
+    );
     return { cart: data.cart, status };
   } catch (error) {
     console.error(err);

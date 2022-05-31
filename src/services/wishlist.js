@@ -1,13 +1,9 @@
-import axios from "axios";
-const token = localStorage.getItem("token")?.slice(1, -1);
+import { axiosCall } from "../utils";
 
 export const addToWishList = async (product) => {
   try {
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/wishlist`,
-      headers: { authorization: token },
-      data: { product },
+    const { data, status } = await axiosCall("/api/user/wishlist", "post", {
+      product,
     });
     return { wishlist: data.wishlist, status };
   } catch (err) {
@@ -17,11 +13,10 @@ export const addToWishList = async (product) => {
 
 export const deleteFromWishList = async (productId) => {
   try {
-    const { data, status } = await axios({
-      method: "DELETE",
-      url: `/api/user/wishlist/${productId}`,
-      headers: { authorization: token },
-    });
+    const { data, status } = await axiosCall(
+      `/api/user/wishlist/${productId}`,
+      "delete"
+    );
     return { wishlist: data.wishlist, status };
   } catch (error) {
     console.error(error);

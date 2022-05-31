@@ -75,7 +75,7 @@ export const ProductsPage = () => {
   return (
     <>
       <Filters isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <main className="main">
+      <main className="main products-page">
         <div className="pos-rel flex flex-center filter-ui m-sm">
           <div
             className={`sort p-xs fs-m flex flex-center font-bebas pointer pos-rel ${

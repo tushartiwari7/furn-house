@@ -1,15 +1,26 @@
 import "./Cart.css";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../context";
 import { getCartSummary } from "../../utils";
+import toast from "react-hot-toast";
+import { useRazorpay } from "../../hooks/useRazorpay";
 
 export const Cart = () => {
   const {
-    user: { cart },
+    user: { cart, firstName, email, selectedAddress },
   } = useUser();
   const location = useLocation();
-
+  const navigate = useNavigate();
+  const checkoutPage = location.pathname.includes("checkout");
   const { orderVal, total, discount, gst } = getCartSummary(cart ?? []);
+  const { loadRazorPay } = useRazorpay();
+  const checkout = async () => {
+    if (!selectedAddress || !selectedAddress._id) {
+      return toast.error("Please Choose a address to checkout");
+    }
+    await loadRazorPay(total, firstName, email);
+  };
+
   return (
     <main className={`main flex cart  ${!cart?.length && "flex-center"}`}>
       {cart?.length ? (
@@ -34,7 +45,7 @@ export const Cart = () => {
                   Shipping Fee
                   <span className="cart-delivery-fee fw-semibold">
                     {" "}
-                    {total > 10000 ? "FREE" : `₹${499}`}{" "}
+                    {total > 2000 ? "FREE" : `₹${499}`}{" "}
                   </span>
                 </p>
               </div>
@@ -48,16 +59,15 @@ export const Cart = () => {
                 Total Amount
                 <span className="h3 ubuntu"> &#8377;{total} </span>
               </p>
-              <Link
-                to="checkout"
+              <button
+                to={checkoutPage ? "/success" : "checkout"}
+                onClick={checkoutPage ? checkout : () => navigate("checkout")}
                 className="btn fs-l fw-lighter px-sm py-xs font-bebas btn-cta"
               >
-                {location.pathname.includes("checkout")
-                  ? "Place Order"
-                  : "Continue to checkout"}
-              </Link>
+                {checkoutPage ? "Place Order" : "Continue to checkout"}
+              </button>
               <p className="fs-s p-xs my-xs cart-savings">
-                You will save{" "}
+                You will save
                 <span className="fw-semibold">&#8377;{discount}</span> on this
                 order.
               </p>

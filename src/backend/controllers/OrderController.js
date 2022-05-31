@@ -46,14 +46,21 @@ export const addItemToOrdersHandler = function (schema, request) {
       );
     }
     const orders = schema.users.findBy({ _id: userId }).orders;
-    const { order } = JSON.parse(request.requestBody);
-    orders.push({
-      ...order,
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-    });
+    const { ordersToAdd, paymentStatus, paymentId, address } = JSON.parse(
+      request.requestBody
+    );
+    orders.unshift(
+      ...ordersToAdd.map((order) => ({
+        ...order,
+        paymentStatus,
+        paymentId,
+        address,
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      }))
+    );
 
-    this.db.users.update({ _id: userId }, { orders });
+    this.db.users.update({ _id: userId }, { orders, cart: [] });
     return new Response(201, {}, { orders });
   } catch (error) {
     return new Response(500, {}, { error });

@@ -2,6 +2,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { postNewUser } from "../../services";
 import { useUser } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
+import { validateSignupForm } from "../../utils";
 
 export const Signup = () => {
   const { setUser } = useUser();
@@ -9,9 +10,9 @@ export const Signup = () => {
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    const [firstName, lastName, email, password] = e.target.elements;
-
+    if (!validateSignupForm(e.target.elements)) return;
     (async () => {
+      const [firstName, lastName, email, password] = e.target.elements;
       const { data } = await postNewUser(
         firstName.value,
         lastName.value,

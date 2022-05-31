@@ -19,13 +19,17 @@ export const Login = () => {
           ]
         : e.target.elements;
     (async () => {
+      if (password.value.length < 6) {
+        toast.error("Please enter password with minimum 6 characters");
+        return;
+      }
       const { data, status } = await getUser(email.value, password.value);
       if (status === 200) {
         toast.success("Login successful");
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
         setUser({ ...data.foundUser, isLoggedIn: true });
         navigator(params.get("from") ?? "/products", { replace: true });
-      } else toast("Login failed", { icon: "❌" });
+      } else toast.error("Login failed");
     })();
   };
 

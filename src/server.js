@@ -130,6 +130,10 @@ export function makeServer({ environment = "development" } = {}) {
       // orders routes (private)
       this.get("/user/orders", getOrdersHandler.bind(this));
       this.post("/user/orders", addItemToOrdersHandler.bind(this));
+
+      this.passthrough((request) => {
+        return request.url.includes("razorpay");
+      });
     },
   });
 }

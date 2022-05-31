@@ -9,3 +9,8 @@ export { Profile } from "./MyAccount/Profile/Profile";
 export { NotFound } from "./NotFound/NotFound";
 export { MyAccount } from "./MyAccount/MyAccount";
 export { Addresses } from "./MyAccount/Addresses/Addresses";
+export { Success } from "./Success/Success";
+export { Orders } from "./Orders/Orders";
+export { Settings } from "./MyAccount/Settings/Settings";
+export { Checkout } from "./Cart/Checkout/Checkout";
+export { CartItems } from "./Cart/CartItems/CartItems";

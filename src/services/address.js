@@ -1,9 +1,9 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const token = localStorage.getItem("token")?.slice(1, -1);
 
 export const addAddress = async (address) => {
   try {
+    const token = localStorage.getItem("token")?.slice(1, -1);
     const { data, status } = await axios({
       method: "POST",
       url: `/api/user/addresses`,
@@ -19,6 +19,7 @@ export const addAddress = async (address) => {
 
 export const deleteAddress = async (addressID) => {
   try {
+    const token = localStorage.getItem("token")?.slice(1, -1);
     const { data, status } = await axios({
       method: "DELETE",
       url: `/api/user/addresses/${addressID}`,
@@ -33,6 +34,7 @@ export const deleteAddress = async (addressID) => {
 
 export const updateAddress = async (address) => {
   try {
+    const token = localStorage.getItem("token")?.slice(1, -1);
     const { data, status } = await axios({
       method: "POST",
       url: `/api/user/addresses/${address._id}`,

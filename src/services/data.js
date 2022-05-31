@@ -11,6 +11,17 @@ export const getProducts = async (page = 1) => {
   }
 };
 
+export const getSimilarProducts = async (category) => {
+  try {
+    const {
+      data: { products },
+    } = await axios.get(`/api/similarproducts?category=${category}`);
+    return products;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getCategories = async () => {
   try {
     const {

@@ -25,10 +25,30 @@ export const getAllProductsHandler = function (schema, request) {
  * send GET Request at /api/user/products/:productId
  * */
 
+export const getSimilarProducts = function (schema, request) {
+  const { category } = request.queryParams;
+  try {
+    const similarproducts = schema.products.where({ categoryName: category });
+    return new Response(200, {}, { products: similarproducts.models });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+/**
+ * This handler handles gets all products in the db.
+ * send GET Request at /api/user/products/:productId
+ * */
+
 export const getProductHandler = function (schema, request) {
   const productId = request.params.productId;
   try {
-    const product = schema.products.findBy({ _id: productId });
+    const product = schema.products.findBy({ id: productId });
     return new Response(200, {}, { product });
   } catch (error) {
     return new Response(

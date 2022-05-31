@@ -1,9 +1,10 @@
 import axios from "axios";
-export const getProducts = async () => {
+
+export const getProducts = async (page = 1) => {
   try {
     const {
       data: { products },
-    } = await axios.get("/api/products");
+    } = await axios.get(`/api/products?page=${page}`);
     return products;
   } catch (error) {
     console.error(error);

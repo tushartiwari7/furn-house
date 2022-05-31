@@ -65,6 +65,14 @@
   margin: 0 1rem 2rem 0;
 }
 
+.paginate-btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 6px;
+  margin: auto 6px;
+  cursor: pointer;
+}
+
 .sort-menu {
   transform: translateY(100%);
   z-index: 1;

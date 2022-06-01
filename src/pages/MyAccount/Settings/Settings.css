@@ -2,3 +2,6 @@
   flex-grow: 1;
   max-width: 75%;
 }
+.settings .input {
+  max-width: 20rem;
+}

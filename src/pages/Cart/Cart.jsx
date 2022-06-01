@@ -67,7 +67,7 @@ export const Cart = () => {
                 {checkoutPage ? "Place Order" : "Continue to checkout"}
               </button>
               <p className="fs-s p-xs my-xs cart-savings">
-                You will save
+                You will save{"  "}
                 <span className="fw-semibold">&#8377;{discount}</span> on this
                 order.
               </p>

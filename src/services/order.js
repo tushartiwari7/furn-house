@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { axiosCall } from "../utils";
 /**
  *
  * @param {order[]} ordersToAdd
@@ -16,12 +17,11 @@ export const addOrders = async (
   paymentStatus
 ) => {
   try {
-    const token = localStorage.getItem("token");
-    const { data, status } = await axios({
-      method: "POST",
-      url: `/api/user/orders`,
-      headers: { authorization: token },
-      data: { ordersToAdd, address, paymentStatus, paymentId },
+    const { data, status } = await axiosCall("/api/user/orders", "post", {
+      ordersToAdd,
+      address,
+      paymentId,
+      paymentStatus,
     });
     return { orders: data.orders, status };
   } catch (err) {

@@ -9,7 +9,7 @@ export const Login = () => {
   const navigator = useNavigate();
   const [params] = useSearchParams();
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
     const [email, password] =
       e.target.id === "login-with-test-credentials"
@@ -18,19 +18,20 @@ export const Login = () => {
             { value: process.env.REACT_APP_TEST_PASSWORD },
           ]
         : e.target.elements;
-    (async () => {
-      if (password.value.length < 6) {
-        toast.error("Please enter password with minimum 6 characters");
-        return;
-      }
-      const { data, status } = await getUser(email.value, password.value);
-      if (status === 200) {
-        toast.success("Login successful");
-        localStorage.setItem("token", data.encodedToken);
-        setUser({ ...data.foundUser, isLoggedIn: true });
-        navigator(params.get("from") ?? "/products", { replace: true });
-      } else toast.error("Login failed");
-    })();
+
+    if (password.value.length < 6) {
+      toast.error("Please enter password with minimum 6 characters");
+      return;
+    }
+
+    const { data, status } = await getUser(email.value, password.value);
+
+    if (status === 200) {
+      localStorage.setItem("token", data.encodedToken);
+      setUser({ ...data.foundUser, isLoggedIn: true });
+      navigator(params.get("from") ?? "/products", { replace: true });
+      toast.success("Login successful");
+    } else toast.error("Login failed");
   };
 
   return (

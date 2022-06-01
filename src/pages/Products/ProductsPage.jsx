@@ -223,7 +223,7 @@ export const ProductsPage = () => {
             >
               Prev
             </button>
-            {[...Array(3)].map((_, index) => (
+            {[...Array(4)].map((_, index) => (
               <button
                 key={index}
                 className={`paginate-btn btn ${

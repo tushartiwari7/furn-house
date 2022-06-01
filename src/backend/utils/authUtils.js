@@ -3,17 +3,15 @@ const jwt = require("jsonwebtoken");
 import dayjs from "dayjs";
 
 export const requiresAuth = function (request) {
-  const encodedToken = request.requestHeaders.authorization;
-  const decodedToken = jwt.verify(
-    encodedToken,
-    process.env.REACT_APP_JWT_SECRET
-  );
+  const encodedToken = request.requestHeaders.Authorization.split(" ")[1];
+  const decodedToken = jwt.verify(encodedToken, "secret");
   if (decodedToken) {
     const user = this.db.users.findBy({ email: decodedToken.email });
     if (user) {
       return user._id;
     }
   }
+
   return new Response(
     401,
     {},

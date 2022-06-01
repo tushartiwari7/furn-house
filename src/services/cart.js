@@ -7,6 +7,7 @@ export const addToCart = async (product) => {
     });
     return { cart: data.cart, status };
   } catch (err) {
+    console.error(err);
     alert("Something went wrong: Add To Cart Failed");
     return err;
   }
@@ -35,7 +36,7 @@ export const updateCartQty = async (productId, isIncrement = true) => {
     );
     return { cart: data.cart, status };
   } catch (error) {
-    console.error(err);
-    return err;
+    console.error(error);
+    return error;
   }
 };

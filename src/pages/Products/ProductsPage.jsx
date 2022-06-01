@@ -20,10 +20,11 @@ import "./ProductsPage.css";
 import toast from "react-hot-toast";
 import { initialFilters } from "../../context/product/ProductReducer";
 export const ProductsPage = () => {
-  const { products, filters, dispatch } = useProducts();
+  const { products, filters, dispatch, changePage } = useProducts();
   const [isBigView, setBigView] = useState(false);
   const [isSortMenuOpen, setSortMenu] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [page, setPage] = useState(1);
 
   const sortHandler = (payload) => {
     dispatch({ type: "SORT", payload });
@@ -68,12 +69,13 @@ export const ProductsPage = () => {
     toast("Resetted All Filters", { icon: "✨" });
     dispatch({ type: "RESET_FILTERS" });
   };
-
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
   return (
     <>
       <Filters isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <main className="main">
+      <main className="main products-page">
         <div className="pos-rel flex flex-center filter-ui m-sm">
           <div
             className={`sort p-xs fs-m flex flex-center font-bebas pointer pos-rel ${
@@ -147,7 +149,7 @@ export const ProductsPage = () => {
             All Filters <BsFilter />
           </div>
           <hr />
-          <p className="fs-m">{products.length} Items</p>
+          <p className="fs-m">{products?.length} Items</p>
           <BsGrid3X2
             size="2rem"
             color={isBigView ? `var(--text-color)` : `var(--secondary)`}
@@ -161,9 +163,9 @@ export const ProductsPage = () => {
         </div>
         {JSON.stringify(filters) !== JSON.stringify(initialFilters) && (
           <div className="pos-rel flex flex-center wrap m-sm fs-m ubuntu filters-selected">
-            Selected Filters:{" "}
+            Selected Filters:
             {filtersArr
-              .filter((item) => item[1])
+              ?.filter((item) => item[1])
               .map(([type, value]) => (
                 <li
                   key={uuid()}
@@ -212,6 +214,35 @@ export const ProductsPage = () => {
               <VerticalCard key={product._id} product={product} />
             ))}
         </ul>
+        {true && (
+          <div className="my-sm flex flex-center">
+            <button
+              className={` paginate-btn`}
+              disabled={page === 1}
+              onClick={() => changePage(page - 1, setPage)}
+            >
+              Prev
+            </button>
+            {[...Array(3)].map((_, index) => (
+              <button
+                key={index}
+                className={`paginate-btn btn ${
+                  page === index + 1 ? "btn-primary" : "btn-secondary"
+                }`}
+                onClick={() => changePage(index + 1, setPage)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              disabled={page === 3}
+              className={`my-sm paginate-btn`}
+              onClick={() => changePage(page + 1, setPage)}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </main>
     </>
   );

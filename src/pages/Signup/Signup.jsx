@@ -20,7 +20,7 @@ export const Signup = () => {
         password.value
       );
 
-      localStorage.setItem("token", JSON.stringify(data.encodedToken));
+      localStorage.setItem("token", data.encodedToken);
       const createdUser = data.createdUser;
       delete createdUser.password;
       setUser({ ...createdUser, isLoggedIn: true });

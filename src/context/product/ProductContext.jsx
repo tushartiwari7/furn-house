@@ -22,7 +22,6 @@ export const ProductProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [state, dispatch] = useReducer(reducerFn, initialFilters);
-
   useEffect(() => {
     (async () => {
       const data = await getProducts();
@@ -31,8 +30,13 @@ export const ProductProvider = ({ children }) => {
     })();
   }, []);
 
-  // const setLoader = (value) =>
-  //   value ? setIsLoading(value) : setTimeout(() => setIsLoading(false), 1000);
+  const changePage = async (page, setPage) => {
+    setIsLoading(true);
+    const data = await getProducts(page);
+    setProducts(data);
+    setIsLoading(false);
+    setPage(page);
+  };
 
   const filteredProducts = compose(
     state,
@@ -50,6 +54,7 @@ export const ProductProvider = ({ children }) => {
         dispatch,
         isLoading,
         setIsLoading,
+        changePage,
       }}
     >
       {children}

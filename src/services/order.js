@@ -16,7 +16,7 @@ export const addOrders = async (
   paymentStatus
 ) => {
   try {
-    const token = localStorage.getItem("token")?.slice(1, -1);
+    const token = localStorage.getItem("token");
     const { data, status } = await axios({
       method: "POST",
       url: `/api/user/orders`,

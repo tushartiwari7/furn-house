@@ -13,11 +13,14 @@ import Slider from "react-slick";
 import { OurServices, VerticalCard } from "../../components";
 import { productImagesSlider, similarProductSlider } from "../../utils";
 import { FaShare } from "react-icons/fa";
+import { getSimilarProducts, getSingleProduct } from "../../services";
 
 export const ProductPage = () => {
   const params = useParams();
-  const { products } = useProducts();
+  const { setIsLoading } = useProducts();
   const [modalImage, setModalImage] = useState("");
+  const [similarProducts, setSimilarProducts] = useState([]);
+
   const {
     user,
     cartHandler,
@@ -28,18 +31,28 @@ export const ProductPage = () => {
     shareItem,
   } = useUser();
 
-  const product = products?.find((item) => item.id === params.productId);
-
+  const [product, setProduct] = useState(null);
   const isInCart =
-    user.isLoggedIn && user.cart.some((item) => item._id === product._id);
+    user.isLoggedIn && user.cart.some((item) => item._id === product?._id);
 
   const isInWishlist =
-    user.isLoggedIn && user.wishlist.some((item) => item._id === product._id);
+    user.isLoggedIn && user.wishlist.some((item) => item._id === product?._id);
 
   const qtyInCart =
-    user?.cart?.find((item) => item._id === product._id)?.qty ?? 0;
+    user?.cart?.find((item) => item._id === product?._id)?.qty ?? 0;
 
-  useEffect(() => window.scrollTo(0, 0), [params.productId]);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const product = await getSingleProduct(params.productId);
+      const data = await getSimilarProducts(product?.categoryName);
+      setSimilarProducts(data);
+      setProduct(product);
+      setIsLoading(false);
+    })();
+    window.scrollTo(0, 0);
+  }, [params.productId]);
+
   return (
     <main className="main">
       <div className="breadcrumbs p-md fs-s">
@@ -149,11 +162,9 @@ export const ProductPage = () => {
 
       <section className="best-selling pos-rel">
         <Slider {...similarProductSlider}>
-          {products
-            .filter((item) => item.categoryName === product.categoryName)
-            .map((product) => (
-              <VerticalCard key={product._id} product={product} />
-            ))}{" "}
+          {similarProducts.map((product) => (
+            <VerticalCard key={product._id} product={product} />
+          ))}{" "}
         </Slider>
         <div className="pos-abs heading-overlay">
           <h1 className="heading">You may Also Like</h1>

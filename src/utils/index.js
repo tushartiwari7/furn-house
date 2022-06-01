@@ -1,15 +1,4 @@
 import axios from "axios";
-export { compose } from "./compose";
-export { sort } from "./sort";
-export { priceFilter } from "./priceFilter";
-export { ratingFilter } from "./ratingFilter";
-export { categoryFilter } from "./categoryFilter";
-export { productSearchFilter } from "./productSearchFilter";
-export { getCartSummary } from "./getCartSummary";
-export { getDiscountPercentage } from "./getDiscountPercentage";
-export { getDate } from "./getDate";
-export * from "./sliderSettings";
-export * from "./validation";
 
 /**
  * @description: This function is used to make a REQUEST to the backend server
@@ -34,6 +23,14 @@ export const axiosCall = async (url, method, data) => {
   } catch (error) {
     return error;
   }
+};
+
+export const compose = (filters, ...utilFunctions) => {
+  return (initialProducts) =>
+    utilFunctions.reduce(
+      (filteredProducts, func) => func(filteredProducts, filters),
+      initialProducts
+    );
 };
 
 export const states = [
@@ -73,3 +70,8 @@ export const states = [
   "Uttar Pradesh",
   "West Bengal",
 ];
+
+export * from "./filters";
+export * from "./cart";
+export * from "./sliderSettings";
+export * from "./validation";

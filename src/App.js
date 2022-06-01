@@ -56,7 +56,14 @@ const App = () => {
             <Route index element={<CartItems />} />
             <Route path="checkout" element={<Checkout />} />
           </Route>
-          <Route path="/success" element={<Success />} />
+          <Route
+            path="/success"
+            element={
+              <PrivateRoute>
+                <Success />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/wishlist"
             element={
@@ -73,10 +80,6 @@ const App = () => {
               </PrivateRoute>
             }
           >
-            <Route
-              path="change-password"
-              element={<div>Change Password</div>}
-            />
             <Route index element={<Profile />} />
             <Route path="orders" element={<Orders />} />
             <Route path="addresses" element={<Addresses />} />

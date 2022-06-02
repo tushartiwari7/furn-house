@@ -1,4 +1,4 @@
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 import toast from "react-hot-toast";
 
 export const addToCart = async (product) => {

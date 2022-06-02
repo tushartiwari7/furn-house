@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getCategories } from "../../services";
+import { getCategories } from "services";
 const ProductCategoryContext = createContext();
 
 export const ProductCategoryProvider = ({ children }) => {
@@ -11,7 +11,7 @@ export const ProductCategoryProvider = ({ children }) => {
       setCategory(response);
     })();
   }, []);
-  
+
   return (
     <ProductCategoryContext.Provider value={category}>
       {children}

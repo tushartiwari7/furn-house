@@ -1,8 +1,8 @@
 import { BsArrowRight } from "react-icons/bs";
-import { postNewUser } from "../../services";
-import { useUser } from "../../context";
+import { postNewUser } from "services";
+import { useUser } from "context";
 import { Link, useNavigate } from "react-router-dom";
-import { validateSignupForm } from "../../utils";
+import { validateSignupForm } from "helpers";
 
 export const Signup = () => {
   const { setUser } = useUser();

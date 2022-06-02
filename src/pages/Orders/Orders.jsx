@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Orders.css";
-import { useUser } from "../../context";
+import { useUser } from "context";
 export const Orders = () => {
   const {
     user: { orders },

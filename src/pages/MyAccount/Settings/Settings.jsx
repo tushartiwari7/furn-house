@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  deactivateUser,
-  forgotPassword,
-  resetUserData,
-} from "../../../services";
+import { deactivateUser, forgotPassword, resetUserData } from "services";
 import "./Settings.css";
-import { useProducts, useUser } from "../../../context";
+import { useProducts, useUser } from "context";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 export const Settings = () => {

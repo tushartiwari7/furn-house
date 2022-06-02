@@ -1,6 +1,5 @@
-import axios from "axios";
 import { toast } from "react-hot-toast";
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 /**
  *
  * @param {order[]} ordersToAdd

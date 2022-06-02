@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { VerticalCard } from "../../components";
-import { useUser } from "../../context";
+import { VerticalCard } from "components";
+import { useUser } from "context";
 export const Wishlist = () => {
   const {
     user: { wishlist },

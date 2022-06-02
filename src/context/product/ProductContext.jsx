@@ -5,8 +5,9 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import { Loader } from "../../components";
-import { getProducts } from "../../services";
+import { Loader } from "components";
+import { getProducts } from "services";
+import { initialFilters } from "helpers";
 import {
   compose,
   sort,
@@ -14,8 +15,9 @@ import {
   ratingFilter,
   categoryFilter,
   productSearchFilter,
-} from "../../utils";
-import { reducerFn, initialFilters } from "./ProductReducer";
+} from "utils";
+import { reducerFn } from "./ProductReducer";
+
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {

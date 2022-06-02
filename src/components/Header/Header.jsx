@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsHandbag, BsPerson, BsHeart, BsSearch } from "react-icons/bs";
-import { useUser, useProducts } from "../../context";
+import { useUser, useProducts } from "context";
 
 export const Header = () => {
   const { user } = useUser();

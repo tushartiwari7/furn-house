@@ -1,40 +1,36 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import MockMan from "mockman-js";
+import { Header, Loader, PrivateRoute } from "./components";
+import { lazyLoad } from "./helpers/lazyload";
 import "./App.css";
-
-// lazy page imports
-const Home = lazy(() => import("./pages/Home/Home"));
-const ProductsPage = lazy(() => import("./pages/Products/ProductsPage"));
-const ProductPage = lazy(() => import("./pages/Product/ProductPage"));
-const Login = lazy(() => import("./pages/Login/Login"));
-const Signup = lazy(() => import("./pages/Signup/Signup"));
-const Cart = lazy(() => import("./pages/Cart/Cart"));
-const Wishlist = lazy(() => import("./pages/Wishlist/Wishlist"));
-const Profile = lazy(() => import("./pages/MyAccount/Profile/Profile"));
-const PrivateRoute = lazy(() =>
-  import("./components/PrivateRoute/PrivateRoute")
-);
-const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
-
-import { Header, Loader } from "./components";
 import {
   Addresses,
   CartItems,
   Checkout,
   MyAccount,
   Orders,
+  Profile,
   Settings,
   Success,
-} from "./pages";
+} from "pages";
 const App = () => {
   const location = useLocation();
+  const {
+    Home,
+    ProductsPage,
+    ProductPage,
+    Login,
+    Signup,
+    Cart,
+    Wishlist,
+    NotFound,
+  } = lazyLoad();
   return (
     <div
       className={`App full-height grid ${location.pathname.replaceAll(
-        `/`,
-        ``
+        "/",
+        ""
       )}`}
     >
       <Header />
@@ -57,18 +53,18 @@ const App = () => {
             <Route path="checkout" element={<Checkout />} />
           </Route>
           <Route
-            path="/success"
-            element={
-              <PrivateRoute>
-                <Success />
-              </PrivateRoute>
-            }
-          />
-          <Route
             path="/wishlist"
             element={
               <PrivateRoute>
                 <Wishlist />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <PrivateRoute>
+                <Success />
               </PrivateRoute>
             }
           />
@@ -86,7 +82,6 @@ const App = () => {
             <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
-          <Route path="/mockman" element={<MockMan />} />
         </Routes>
       </Suspense>
       <footer className="fs-m">

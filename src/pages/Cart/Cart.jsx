@@ -1,9 +1,9 @@
 import "./Cart.css";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useUser } from "../../context";
-import { getCartSummary } from "../../utils";
+import { useUser } from "context";
+import { getCartSummary } from "utils";
 import toast from "react-hot-toast";
-import { useRazorpay } from "../../hooks/useRazorpay";
+import { useRazorpay } from "hooks/useRazorpay";
 
 export const Cart = () => {
   const {

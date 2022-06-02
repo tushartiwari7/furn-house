@@ -14,11 +14,13 @@ import {
   BsFilter,
 } from "react-icons/bs";
 import { MdOutlineCategory } from "react-icons/md";
-import { Filters, Menu, VerticalCard } from "../../components";
-import { useProducts } from "../../context";
 import "./ProductsPage.css";
 import toast from "react-hot-toast";
-import { initialFilters } from "../../context/product/ProductReducer";
+
+import { Filters, Menu, VerticalCard } from "components";
+import { useProducts } from "context";
+import { initialFilters } from "helpers";
+
 export const ProductsPage = () => {
   const { products, filters, dispatch, changePage } = useProducts();
   const [isBigView, setBigView] = useState(false);
@@ -235,7 +237,7 @@ export const ProductsPage = () => {
               </button>
             ))}
             <button
-              disabled={page === 3}
+              disabled={page === 4}
               className={`my-sm paginate-btn`}
               onClick={() => changePage(page + 1, setPage)}
             >

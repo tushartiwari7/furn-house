@@ -1,8 +1,8 @@
 import { BsArrowRight } from "react-icons/bs";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "./Login.css";
-import { getUser } from "../../services";
-import { useUser } from "../../context";
+import { getUser } from "services";
+import { useUser } from "context";
 import toast from "react-hot-toast";
 export const Login = () => {
   const { setUser } = useUser();

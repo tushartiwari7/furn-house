@@ -14,16 +14,10 @@ import {
   deleteCartItem,
   deleteFromWishList,
   updateCartQty,
-} from "../../services";
+} from "services";
 
-import { useProducts } from "../";
-
-import {
-  addAddress,
-  deleteAddress,
-  updateAddress,
-} from "../../services/address";
-import { updateUser } from "../../services/user";
+import { useProducts } from "context";
+import { addAddress, deleteAddress, updateAddress, updateUser } from "services";
 
 const UserContext = createContext();
 

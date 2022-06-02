@@ -1,6 +1,6 @@
 import "./Categories.css";
 import { Link } from "react-router-dom";
-import { useProductCategory } from "../../context";
+import { useProductCategory } from "context";
 
 export const Categories = () => {
   const categories = useProductCategory();

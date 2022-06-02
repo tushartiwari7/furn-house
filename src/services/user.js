@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 export const getUser = async (email, password) => {
   try {
     const { data, status } = await axios.post("/api/auth/login", {

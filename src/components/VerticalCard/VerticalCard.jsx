@@ -2,7 +2,7 @@ import "./VerticalCard.css";
 import { BsFillHeartFill } from "react-icons/bs";
 import { FaShare } from "react-icons/fa";
 import { useState } from "react";
-import { useUser } from "../../context";
+import { useUser } from "context";
 import { useNavigate } from "react-router-dom";
 
 export const VerticalCard = ({ product, isWishlistCard }) => {

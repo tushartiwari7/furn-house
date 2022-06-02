@@ -4,7 +4,10 @@ import dayjs from "dayjs";
 
 export const requiresAuth = function (request) {
   const encodedToken = request.requestHeaders.Authorization.split(" ")[1];
-  const decodedToken = jwt.verify(encodedToken, "secret");
+  const decodedToken = jwt.verify(
+    encodedToken,
+    process.env.REACT_APP_JWT_SECRET
+  );
   if (decodedToken) {
     const user = this.db.users.findBy({ email: decodedToken.email });
     if (user) {

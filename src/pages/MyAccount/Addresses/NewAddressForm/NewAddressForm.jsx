@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import "./NewAddressForm.css";
-import { states, validateAddressForm } from "../../../../utils";
-import { useUser } from "../../../../context";
+import { states, validateAddressForm } from "helpers";
+import { useUser } from "context";
 export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
   const initialAddress = {
     street: "",

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { useProductCategory, useProducts } from "../../context";
 import toast from "react-hot-toast";
-import { BsX, BsDiamondHalf, BsStar, BsFillStarFill } from "react-icons/bs";
+import { BsX, BsStar, BsFillStarFill } from "react-icons/bs";
+import { useProductCategory, useProducts } from "context";
 import "./Filters.css";
 
 export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {

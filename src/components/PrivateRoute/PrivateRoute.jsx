@@ -1,7 +1,6 @@
 import React from "react";
-import { useUser } from "../../context";
+import { useUser } from "context";
 import { Link, useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const {

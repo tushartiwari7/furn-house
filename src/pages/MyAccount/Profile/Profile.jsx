@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUser } from "../../../context";
+import { useUser } from "context";
 import "./Profile.css";
 
 export const Profile = () => {

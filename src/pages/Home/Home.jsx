@@ -1,9 +1,4 @@
-import {
-  Banner,
-  Categories,
-  FeaturedProducts,
-  OurServices,
-} from "../../components";
+import { Banner, Categories, FeaturedProducts, OurServices } from "components";
 
 export const Home = () => {
   return (

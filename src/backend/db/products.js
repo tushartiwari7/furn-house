@@ -278,9 +278,9 @@ export const products = [
     _id: uuid(),
     title: "6 Seat Dining Table",
     sub_title: "Table and 6 chairs, Dark Grey",
-    offer_price: "8040",
+    offer_price: "4040",
     img: "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kolboda-beige-dark-grey__1015064_ph176248_s5.jpg?f=xxxs",
-    price: "499",
+    price: "4999",
     description:
       "A stable construction in solid wood that makes each table unique, with varying grain patterns and natural colour shifts that are part of the charm of wood.",
     categoryName: "Dining",

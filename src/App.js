@@ -1,8 +1,9 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { Header, Loader, PrivateRoute } from "./components";
-import { lazyLoad } from "./helpers/lazyload";
+import { Header, Loader, PrivateRoute } from "components";
+import { lazyLoad } from "helpers/lazyload";
+import Mockman from "mockman-js";
 import "./App.css";
 import {
   Addresses,
@@ -14,6 +15,8 @@ import {
   Settings,
   Success,
 } from "pages";
+import { useUser } from "context";
+import { updateUser } from "services";
 const App = () => {
   const location = useLocation();
   const {
@@ -26,6 +29,22 @@ const App = () => {
     Wishlist,
     NotFound,
   } = lazyLoad();
+  const { user, setUser } = useUser();
+
+  useEffect(() => {
+    // persist user data on refresh
+    const token = localStorage.getItem("token");
+    if (!user.isLoggedIn && token) {
+      const prevSessionUser = JSON.parse(localStorage.getItem("user"));
+      delete prevSessionUser.isLoggedIn;
+      delete prevSessionUser._id;
+      (async (user) => {
+        const { updatedUser } = await updateUser(user);
+        setUser({ ...updatedUser, isLoggedIn: true });
+      })(prevSessionUser);
+    }
+  }, []);
+
   return (
     <div
       className={`App full-height grid ${location.pathname.replaceAll(
@@ -82,6 +101,7 @@ const App = () => {
             <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
+          <Route path="mock" element={<Mockman />} />
         </Routes>
       </Suspense>
       <footer className="fs-m">

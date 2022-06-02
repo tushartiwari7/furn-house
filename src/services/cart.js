@@ -1,4 +1,5 @@
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
+import toast from "react-hot-toast";
 
 export const addToCart = async (product) => {
   try {
@@ -7,7 +8,8 @@ export const addToCart = async (product) => {
     });
     return { cart: data.cart, status };
   } catch (err) {
-    alert("Something went wrong: Add To Cart Failed");
+    console.error(err);
+    toast.error("Something went wrong: Add To Cart Failed");
     return err;
   }
 };
@@ -35,7 +37,7 @@ export const updateCartQty = async (productId, isIncrement = true) => {
     );
     return { cart: data.cart, status };
   } catch (error) {
-    console.error(err);
-    return err;
+    console.error(error);
+    return error;
   }
 };

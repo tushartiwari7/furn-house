@@ -1,8 +1,8 @@
 import React from "react";
-import { useUser } from "../../../context";
-import { CartItem } from "../CartItem/CartItem";
+import { useUser } from "context";
+import { CartItem } from "pages";
 import { BsPrinter } from "react-icons/bs";
-import { getCartSummary } from "../../../utils";
+import { getCartSummary } from "utils";
 export const CartItems = () => {
   const {
     user: { cart },

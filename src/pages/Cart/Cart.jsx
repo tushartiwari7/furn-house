@@ -1,9 +1,9 @@
 import "./Cart.css";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useUser } from "../../context";
-import { getCartSummary } from "../../utils";
+import { useUser } from "context";
+import { getCartSummary } from "utils";
 import toast from "react-hot-toast";
-import { useRazorpay } from "../../hooks/useRazorpay";
+import { useRazorpay } from "hooks/useRazorpay";
 
 export const Cart = () => {
   const {
@@ -67,7 +67,7 @@ export const Cart = () => {
                 {checkoutPage ? "Place Order" : "Continue to checkout"}
               </button>
               <p className="fs-s p-xs my-xs cart-savings">
-                You will save
+                You will save{"  "}
                 <span className="fw-semibold">&#8377;{discount}</span> on this
                 order.
               </p>

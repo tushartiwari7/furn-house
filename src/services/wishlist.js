@@ -1,4 +1,4 @@
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 
 export const addToWishList = async (product) => {
   try {

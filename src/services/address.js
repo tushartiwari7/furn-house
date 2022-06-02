@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 
 export const addAddress = async (address) => {
   try {

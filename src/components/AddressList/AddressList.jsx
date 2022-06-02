@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "../../context";
+import { useUser } from "context";
 export const AddressList = () => {
   const {
     user: { addresses, selectedAddress },

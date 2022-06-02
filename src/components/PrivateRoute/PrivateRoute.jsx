@@ -1,7 +1,6 @@
 import React from "react";
-import { useUser } from "../../context";
+import { useUser } from "context";
 import { Link, useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const {
@@ -17,7 +16,8 @@ export const PrivateRoute = ({ children }) => {
           Login To See Items In {location.pathname.slice(1)}
         </h3>
         <Link
-          to={`/login?from=${location.pathname}`}
+          to="/login"
+          state={{ from: location }}
           className="full-width my-md py-sm btn btn-cta h2 font-bebas fw-lighter text-center"
         >
           Log in

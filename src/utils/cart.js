@@ -19,3 +19,6 @@ export const getCartSummary = (cart) => {
     { items: 0, orderVal: 0, total: 0, discount: 0, gst: 0 }
   );
 };
+
+export const getDiscountPercentage = (price, offer_price) =>
+  Math.round(((price - offer_price) / price) * 100);

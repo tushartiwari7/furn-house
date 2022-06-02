@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { useUser } from "../context";
-import { addOrders } from "../services/order";
+import { useUser } from "context";
+import { addOrders } from "services";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 

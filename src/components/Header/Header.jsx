@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsHandbag, BsPerson, BsHeart, BsSearch } from "react-icons/bs";
-import { useUser, useProducts } from "../../context";
+import { useUser, useProducts } from "context";
 
 export const Header = () => {
   const { user } = useUser();
@@ -70,6 +70,7 @@ export const Header = () => {
           </Link>
           <Link
             to={user.isLoggedIn ? "/myAccount" : "/login"}
+            state={{ from: location }}
             title={user.isLoggedIn ? "My Account" : "Login"}
             className="list btn nav-icon flex flex-center rounded-s"
           >

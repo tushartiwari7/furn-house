@@ -22,5 +22,4 @@ const ContextCluster = ({ children }) => {
     </ProductProvider>
   );
 };
-
 export { useProducts, useUser, useProductCategory, ContextCluster };

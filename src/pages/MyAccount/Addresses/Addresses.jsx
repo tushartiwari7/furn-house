@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsPen, BsPlus, BsTrash } from "react-icons/bs";
-import { useUser } from "../../../context";
+import { useUser } from "context";
 import "./Addresses.css";
 import { NewAddressForm } from "./NewAddressForm/NewAddressForm";
 export const Addresses = () => {

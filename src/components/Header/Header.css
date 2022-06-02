@@ -36,7 +36,7 @@
 }
 
 .input {
-  background: white;
+  background: var(--bg-primary);
   padding-right: 4rem;
 }
 

@@ -6,6 +6,7 @@ import {
   updateUserHandler,
   deleteUserHandler,
   resetUserHandler,
+  forgotPasswordHandler,
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
@@ -93,6 +94,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/login", loginHandler.bind(this));
       this.post("/auth/update", updateUserHandler.bind(this));
       this.post("/auth/reset", resetUserHandler.bind(this));
+      this.put("/auth/forgot", forgotPasswordHandler.bind(this));
       this.delete("/auth/deactivate", deleteUserHandler.bind(this));
 
       // products routes (public)
@@ -107,7 +109,7 @@ export function makeServer({ environment = "development" } = {}) {
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));
       this.post("/user/cart", addItemToCartHandler.bind(this));
-      this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
+      this.put("/user/cart/:productId", updateCartItemHandler.bind(this));
       this.delete(
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)

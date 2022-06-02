@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useProducts, useUser } from "../../context";
+import { useProducts, useUser } from "context";
 import "./ProductPage.css";
 import {
   BsHeart,
@@ -10,10 +10,10 @@ import {
   BsX,
 } from "react-icons/bs";
 import Slider from "react-slick";
-import { OurServices, VerticalCard } from "../../components";
-import { productImagesSlider, similarProductSlider } from "../../utils";
+import { OurServices, VerticalCard } from "components";
+import { productImagesSlider, similarProductSlider } from "helpers";
 import { FaShare } from "react-icons/fa";
-import { getSimilarProducts, getSingleProduct } from "../../services";
+import { getSimilarProducts, getSingleProduct } from "services";
 
 export const ProductPage = () => {
   const params = useParams();

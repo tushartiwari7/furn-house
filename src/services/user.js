@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { axiosCall } from "../utils";
+import { axiosCall } from "utils";
 export const getUser = async (email, password) => {
   try {
     const { data, status } = await axios.post("/api/auth/login", {
@@ -9,7 +9,7 @@ export const getUser = async (email, password) => {
     });
     return { data, status };
   } catch (error) {
-    console.error("no user availaible With this Mail Id", error);
+    toast.error("No user availaible With this Mail Id");
     return error;
   }
 };
@@ -59,4 +59,13 @@ export const resetUserData = async () => {
     toast.error("Something went wrong: Reset User Failed");
     return error;
   }
+};
+
+export const forgotPassword = async (newPassword) => {
+  try {
+    const { status } = await axiosCall("/api/auth/forgot", "put", {
+      newPassword,
+    });
+    return { statusMessage: "Updated New Password.", status };
+  } catch (error) {}
 };

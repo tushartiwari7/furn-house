@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./MyAccount.css";
 import { v4 as uuid } from "uuid";
-import { useUser } from "../../context";
+import { useUser } from "context";
 import { BsList } from "react-icons/bs";
 export const MyAccount = () => {
   const {

@@ -1,5 +1,5 @@
 import React from "react";
-import { AddressList } from "../../../components";
+import { AddressList } from "components";
 
 export const Checkout = () => {
   return (

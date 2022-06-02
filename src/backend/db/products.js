@@ -278,9 +278,9 @@ export const products = [
     _id: uuid(),
     title: "6 Seat Dining Table",
     sub_title: "Table and 6 chairs, Dark Grey",
-    offer_price: "8040",
+    offer_price: "4040",
     img: "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kolboda-beige-dark-grey__1015064_ph176248_s5.jpg?f=xxxs",
-    price: "499",
+    price: "4999",
     description:
       "A stable construction in solid wood that makes each table unique, with varying grain patterns and natural colour shifts that are part of the charm of wood.",
     categoryName: "Dining",
@@ -479,7 +479,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Designer Sofa",
-    sub_title: "@-Seat Sofa, Multicolor",
+    sub_title: "3-Seat Sofa, Multicolor",
     offer_price: 1129,
     img: "https://www.ikea.com/in/en/images/products/klippan-2-seat-sofa-rotebro-multicolour__0852354_pe780030_s5.jpg?f=xxxs",
     price: "1799",
@@ -534,12 +534,13 @@ export const products = [
     _id: uuid(),
     title: "Pine Stool",
     sub_title: "Cafe Stool",
-    offer_price: "",
+    offer_price: "399",
     img: "https://www.ikea.com/in/en/images/products/kullaberg-stool-pine-black__0854758_pe695329_s5.jpg?f=xxxs",
     price: "499",
-    description: "",
+    description:
+      "It's smart to store things high up - but sometimes it's difficult to reach them. This step stool makes it easier to reach things highest up in cabinets - and it's also nice to look at.",
     categoryName: "Tables",
-    rating: 3,
+    rating: 4,
     images: [
       "https://www.ikea.com/in/en/images/products/kullaberg-stool-pine-black__0854746_pe646721_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/kullaberg-stool-pine-black__0727388_pe735640_s5.jpg?f=xxxs",

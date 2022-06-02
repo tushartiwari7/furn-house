@@ -69,7 +69,7 @@ export const signupHandler = function (schema, request) {
 export const loginHandler = function (schema, request) {
   const { email, password } = JSON.parse(request.requestBody);
   try {
-    const foundUser = schema.users.findBy({ email });
+    const { attrs: foundUser } = schema.users.findBy({ email });
     if (!foundUser) {
       return new Response(
         404,
@@ -82,7 +82,7 @@ export const loginHandler = function (schema, request) {
         { _id: foundUser._id, email },
         process.env.REACT_APP_JWT_SECRET
       );
-      foundUser.password = undefined;
+      delete foundUser.password;
       return new Response(200, {}, { foundUser, encodedToken });
     }
     new Response(
@@ -181,5 +181,36 @@ export const resetUserHandler = function (schema, request) {
     return new Response(200, {}, { updatedUser });
   } catch (error) {
     return new Response(500, {}, { error });
+  }
+};
+
+export const forgotPasswordHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  const { newPassword } = JSON.parse(request.requestBody);
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    this.db.users.update(
+      { _id: userId },
+      { password: bcrypt.hashSync(newPassword, 5) }
+    );
+    return new Response(
+      200,
+      {},
+      { updatedUser: this.db.users.findBy({ _id: userId }) }
+    );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
   }
 };

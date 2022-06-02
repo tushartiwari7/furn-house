@@ -1,5 +1,5 @@
 import React from "react";
-import { useProducts } from "../../context";
+import { useProducts } from "context";
 
 export const Loader = ({ forRouter }) => {
   const { isLoading } = useProducts();

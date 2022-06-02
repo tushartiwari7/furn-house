@@ -73,7 +73,6 @@ export const forgotPassword = async (newPassword) => {
 export const authUser = async () => {
   try {
     const { data, status } = await axiosCall("/api/auth", "get");
-    console.log(data);
     if (data.success) {
       return { user: data.foundUser, status };
     }

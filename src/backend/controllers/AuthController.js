@@ -119,9 +119,7 @@ export const getAuthUserHandler = function (schema, request) {
 
 export const updateUserHandler = function (schema, request) {
   const { userDetails } = JSON.parse(request.requestBody);
-  console.log("userDetails controller", userDetails);
   const userId = requiresAuth.call(this, request);
-  console.log("userId", userId);
   try {
     if (!userId) {
       return new Response(
@@ -131,10 +129,8 @@ export const updateUserHandler = function (schema, request) {
       );
     }
     this.db.users.update({ _id: userId }, { ...userDetails });
-    console.log("der");
     const updatedUser = this.db.users.findBy({ _id: userId });
     delete updatedUser.password;
-    console.log("updatedUser", updatedUser);
     return new Response(200, {}, { updatedUser });
   } catch (error) {
     return new Response(

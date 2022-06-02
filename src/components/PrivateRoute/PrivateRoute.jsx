@@ -16,7 +16,8 @@ export const PrivateRoute = ({ children }) => {
           Login To See Items In {location.pathname.slice(1)}
         </h3>
         <Link
-          to={`/login?from=${location.pathname}`}
+          to="/login"
+          state={{ from: location }}
           className="full-width my-md py-sm btn btn-cta h2 font-bebas fw-lighter text-center"
         >
           Log in

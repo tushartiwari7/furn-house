@@ -70,6 +70,7 @@ export const Header = () => {
           </Link>
           <Link
             to={user.isLoggedIn ? "/myAccount" : "/login"}
+            state={{ from: location }}
             title={user.isLoggedIn ? "My Account" : "Login"}
             className="list btn nav-icon flex flex-center rounded-s"
           >

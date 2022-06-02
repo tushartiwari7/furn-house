@@ -1,7 +1,7 @@
 //react imports
 import { createContext } from "react";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // ui utils
 import toast from "react-hot-toast";
@@ -26,13 +26,14 @@ export const UserProvider = ({ children }) => {
   const { setIsLoading } = useProducts();
 
   const navigator = useNavigate();
+  const location = useLocation();
   const cartHandler = async (product) => {
     const isInCart =
       user.isLoggedIn && user.cart.some((item) => item._id === product._id);
 
     if (!user.isLoggedIn) {
       toast("Please Login to add items to cart", { icon: <BsBag /> });
-      return navigator("/login");
+      return navigator("/login", { state: { from: location } });
     }
     if (isInCart) {
       return navigator("/cart");
@@ -69,7 +70,7 @@ export const UserProvider = ({ children }) => {
       toast("Please Login to add items to Wishlist", {
         icon: <BsFillHeartFill color="red" />,
       });
-      return navigator("/login");
+      return navigator("/login", { state: { from: location } });
     }
     setIsLoading(true);
     const { wishlist } = await addToWishList(product);

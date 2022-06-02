@@ -1,5 +1,5 @@
 import { BsArrowRight } from "react-icons/bs";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUser } from "services";
 import { useUser } from "context";
@@ -7,8 +7,7 @@ import toast from "react-hot-toast";
 export const Login = () => {
   const { setUser } = useUser();
   const navigator = useNavigate();
-  const [params] = useSearchParams();
-
+  const { state } = useLocation();
   const loginHandler = async (e) => {
     e.preventDefault();
     const [email, password] =
@@ -25,11 +24,10 @@ export const Login = () => {
     }
 
     const { data, status } = await getUser(email.value, password.value);
-
     if (status === 200) {
       localStorage.setItem("token", data.encodedToken);
       setUser({ ...data.foundUser, isLoggedIn: true });
-      navigator(params.get("from") ?? "/products", { replace: true });
+      navigator(state.from?.pathname ?? "/products", { replace: true });
       toast.success("Login successful");
     } else toast.error("Login failed");
   };

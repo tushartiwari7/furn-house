@@ -1,5 +1,5 @@
 //react imports
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -126,6 +126,8 @@ export const UserProvider = ({ children }) => {
       `${window.location.origin}/products/${productId}`
     );
   };
+
+  useEffect(() => localStorage.setItem("user", JSON.stringify(user)), [user]);
 
   return (
     <UserContext.Provider

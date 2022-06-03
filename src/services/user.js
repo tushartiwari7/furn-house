@@ -69,3 +69,15 @@ export const forgotPassword = async (newPassword) => {
     return { statusMessage: "Updated New Password.", status };
   } catch (error) {}
 };
+
+export const authUser = async () => {
+  try {
+    const { data, status } = await axiosCall("/api/auth", "get");
+    if (data.success) {
+      return { user: data.foundUser, status };
+    }
+  } catch (error) {
+    toast.error("Something went wrong: Auth User Failed");
+    return error;
+  }
+};

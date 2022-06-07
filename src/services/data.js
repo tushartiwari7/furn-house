@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosCall } from "utils";
 
 export const getProducts = async (page = 1) => {
   try {
@@ -6,6 +7,17 @@ export const getProducts = async (page = 1) => {
       data: { products },
     } = await axios.get(`/api/products?page=${page}`);
     return products;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getFilteredProducts = async (page = 1, filters) => {
+  try {
+    const {
+      data: { products, size },
+    } = await axiosCall(`/api/products?page=${page}`, "put", { filters });
+    return { products, size };
   } catch (error) {
     console.error(error);
   }

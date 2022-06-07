@@ -45,7 +45,6 @@ export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {
     );
     dispatch({ type: "RATING_FILTER", payload: rating });
   };
-
   return (
     <>
       <form
@@ -57,6 +56,15 @@ export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {
         <div className="pos-abs sidebar-heading font-bebas fs-xl full-width">
           All Filters
         </div>
+        <div
+          className="p-sm font-bebas fs-m pointer clear-filter-btn"
+          onClick={() => {
+            toast("Resetted All Filters", { icon: "✨" });
+            dispatch({ type: "RESET_FILTERS" });
+          }}
+        >
+          Clear Filters
+        </div>
         <div className="p-sm font-bebas fs-m">
           Filter by Price
           <span className="fs-s ubuntu">
@@ -66,8 +74,8 @@ export const Filters = ({ isSidebarOpen, setSidebarOpen }) => {
           <div className="m-sm pointer">
             <input
               type="range"
-              max="110000"
-              step="5000"
+              max="10000"
+              step="500"
               className="price-filter-slider full-width rounded-circle"
               defaultValue={priceFilterValue}
               onChange={onPriceFilterChange}

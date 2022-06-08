@@ -1,4 +1,13 @@
+import { PRODUCTS_PER_PAGE } from "helpers";
 import { Response } from "miragejs";
+import {
+  categoryFilter,
+  compose,
+  priceFilter,
+  productSearchFilter,
+  ratingFilter,
+  sort,
+} from "utils";
 
 /**
  * All the routes related to Product are present here.
@@ -59,4 +68,29 @@ export const getProductHandler = function (schema, request) {
       }
     );
   }
+};
+
+export const getFilteredProducts = function (schema, request) {
+  const { page } = request.queryParams;
+  const { filters } = JSON.parse(request.requestBody);
+  const allProducts = schema.products.all();
+  const filteredProducts = compose(
+    filters,
+    sort,
+    priceFilter,
+    ratingFilter,
+    categoryFilter,
+    productSearchFilter
+  )(allProducts.models);
+  return new Response(
+    200,
+    {},
+    {
+      products: filteredProducts.slice(
+        PRODUCTS_PER_PAGE * (page - 1),
+        page * PRODUCTS_PER_PAGE
+      ),
+      size: filteredProducts.length,
+    }
+  );
 };

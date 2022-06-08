@@ -16,18 +16,16 @@ import {
 import { MdOutlineCategory } from "react-icons/md";
 import "./ProductsPage.css";
 import toast from "react-hot-toast";
-
 import { Filters, Menu, VerticalCard } from "components";
 import { useProducts } from "context";
 import { initialFilters } from "helpers";
 
 export const ProductsPage = () => {
-  const { products, filters, dispatch, changePage } = useProducts();
+  const { products, filters, dispatch, changePage, page, totalPages } =
+    useProducts();
   const [isBigView, setBigView] = useState(false);
   const [isSortMenuOpen, setSortMenu] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [page, setPage] = useState(1);
-
   const sortHandler = (payload) => {
     dispatch({ type: "SORT", payload });
     //shows toast message depending on Sort type
@@ -216,30 +214,30 @@ export const ProductsPage = () => {
               <VerticalCard key={product._id} product={product} />
             ))}
         </ul>
-        {true && (
+        {totalPages > 1 && (
           <div className="my-sm flex flex-center">
             <button
               className={` paginate-btn`}
               disabled={page === 1}
-              onClick={() => changePage(page - 1, setPage)}
+              onClick={() => changePage(page - 1)}
             >
               Prev
             </button>
-            {[...Array(4)].map((_, index) => (
+            {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
                 className={`paginate-btn btn ${
                   page === index + 1 ? "btn-primary" : "btn-secondary"
                 }`}
-                onClick={() => changePage(index + 1, setPage)}
+                onClick={() => changePage(index + 1)}
               >
                 {index + 1}
               </button>
             ))}
             <button
-              disabled={page === 4}
+              disabled={page === totalPages}
               className={`my-sm paginate-btn`}
-              onClick={() => changePage(page + 1, setPage)}
+              onClick={() => changePage(page + 1)}
             >
               Next
             </button>

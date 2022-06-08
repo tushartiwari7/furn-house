@@ -21,6 +21,7 @@ import {
 } from "./backend/controllers/CategoryController";
 import {
   getAllProductsHandler,
+  getFilteredProducts,
   getProductHandler,
   getSimilarProducts,
 } from "./backend/controllers/ProductController";
@@ -101,6 +102,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
+      this.put("/products", getFilteredProducts.bind(this));
       this.get("/similarproducts", getSimilarProducts.bind(this));
       this.get("/products/:productId", getProductHandler.bind(this));
 

@@ -1,15 +1,17 @@
-## E-Commerce App - Furn House
-This is an E-Commerce Project that aims to sell Furniture goods like Sofas, Wardrobes, Beds etc. <br/>
-[https://furn-house.vercel.app](https://furn-house.vercel.app)
+<div align="center">
+  <img src="/public/assets/android-chrome-512x512.png" height="100" width="100" alt="logo"/>
+  <h1>Furn House</h1>
+  <p> <a href="https://furnhouse.tusharcodes.tech">Furn House</a> is an E-Commerce Project that aims to sell Furniture goods like Sofas, Wardrobes, Beds etc.</p>
+ </div>
 
 ## Features
 - ### Home Page
-  - A landing page with a list of featured categories. 
+  - A landing page with a list of featured categories.
   - A Section having trending products of the e-commerce.
   - Services provided by us.
 
 - ### Product Listing Page
-  - a product listing page where all the products are listed with a section of filters.
+  - a product listing page where all the products are listed with a **maximum of 8 products per Page using Pagination** and a section of filters.
   - Product listing page includes multiple filters like - 
     - **Price Range**: A Slider to show products within a price price range.
     - **Sort Price**: A radio button to sort from low to high & high to low.
@@ -29,14 +31,22 @@ This is an E-Commerce Project that aims to sell Furniture goods like Sofas, Ward
       - Total Tax Payable.
       - Total Price of The Cart
       - Place Order CTA button
+
   - ### Wishlist Management
       - Total Products in Wishlist.
-      - Remove from Wishlist & Add To Cart Btn.
-  - ### Login
-      - I can login using my **email** and **password**.
+      - Remove from Wishlist & Move To Cart Btn.
 
-# Login Credentials
-```
-email: adarshbalika@gmail.com
-password: adarshBalika123
-```
+  - ### Address Management
+      - CRUD operations on Addresses. 
+      - Select a default Address for Orders.
+
+  - ### Payment Integration 
+      - Payment Integration using razorpay to pay using any online payment method.
+
+  - ### Order Managgement
+      - A list of orders you have placed with Payment Success/Failed Status
+  
+  - ### Login & Signup
+      - I can login using my **email** and **password**.
+      - Login using Test Credentials
+      - Crate a new Account by Signing Up.

@@ -118,6 +118,7 @@ export const getAuthUserHandler = function (schema, request) {
 };
 
 export const updateUserHandler = function (schema, request) {
+  console.log("updateUserHandler");
   const { userDetails } = JSON.parse(request.requestBody);
   const userId = requiresAuth.call(this, request);
   try {
@@ -129,9 +130,14 @@ export const updateUserHandler = function (schema, request) {
       );
     }
     this.db.users.update({ _id: userId }, { ...userDetails });
+    const encodedToken = jwt.sign(
+      { _id: userId, email: userDetails.email },
+      process.env.REACT_APP_JWT_SECRET
+    );
+
     const updatedUser = this.db.users.findBy({ _id: userId });
     delete updatedUser.password;
-    return new Response(200, {}, { updatedUser });
+    return new Response(200, {}, { updatedUser, encodedToken });
   } catch (error) {
     return new Response(
       500,

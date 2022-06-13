@@ -113,7 +113,8 @@ export const UserProvider = ({ children }) => {
 
   const updateUserHandler = async (userDetails) => {
     setIsLoading(true);
-    const { updatedUser } = await updateUser(userDetails);
+    const { updatedUser, encodedToken } = await updateUser(userDetails);
+    localStorage.setItem("token", encodedToken);
     toast.success("User updated");
     setUser((user) => ({ ...user, ...updatedUser }));
     setIsLoading(false);

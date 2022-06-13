@@ -34,7 +34,7 @@ export const updateUser = async (userDetails) => {
     const { data, status } = await axiosCall("/api/auth/update", "post", {
       userDetails,
     });
-    return { updatedUser: data.updatedUser, status };
+    return { ...data, status };
   } catch (error) {
     toast.error("Something went wrong: Update User Failed");
     return error;

@@ -55,6 +55,7 @@ export const Profile = () => {
             required
             className="input px-sm py-xs"
             value={email}
+            // disabled
             onChange={(e) =>
               setUserDetails((user) => ({ ...user, email: e.target.value }))
             }

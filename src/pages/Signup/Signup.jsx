@@ -78,20 +78,6 @@ export const Signup = () => {
             required
           />
         </div>
-        <div className="spread flex flex-center m-xs">
-          <div className="flex flex-center">
-            <input
-              type="checkbox"
-              name="rememberme"
-              id="rememberme"
-              className="pointer"
-              required
-            />
-            <label htmlFor="rememberme" className="mx-xs fs-s pointer ubuntu">
-              I accept all terms and conditions
-            </label>
-          </div>
-        </div>
         <button
           type="submit"
           className="btn btn-cta py-xs px-sm m-xs fs-m font-bebas"

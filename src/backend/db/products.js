@@ -221,14 +221,14 @@ export const products = [
     title: "Upholstered Bed",
     sub_title: "Dark Green, Bed Frame",
     offer_price: "4700",
-    img: "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0859749_pe781086_s5.jpg?f=xxxs",
+    img: "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966517_ph175096_s5.jpg?f=xxxs",
     price: "5500",
     description:
       "Due to the well-defined grain of Rosewood, each piece of the Utopia King Bed is unique in coloring, making your bed distinct.",
     categoryName: "Beds",
     rating: 4,
     images: [
-      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966519_ph175103_s5.jpg?f=xxxs",
+      "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966519_ph175103_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0859747_pe781084_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0891005_pe782224_s5.jpg?f=xxs",
       "https://www.ikea.com/in/en/images/products/tufjord-upholstered-bed-frame-djuparp-dark-green__0966517_ph175096_s5.jpg?f=xxs",

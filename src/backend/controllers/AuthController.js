@@ -118,7 +118,6 @@ export const getAuthUserHandler = function (schema, request) {
 };
 
 export const updateUserHandler = function (schema, request) {
-  console.log("updateUserHandler");
   const { userDetails } = JSON.parse(request.requestBody);
   const userId = requiresAuth.call(this, request);
   try {

@@ -3,7 +3,11 @@ import { BsX } from "react-icons/bs";
 import "./NewAddressForm.css";
 import { states, validateAddressForm } from "helpers";
 import { useUser } from "context";
-export const NewAddressForm = ({ updateAddr, updateAddrSetter, setter }) => {
+export const NewAddressForm = ({
+  updateAddr = null,
+  updateAddrSetter = () => {},
+  setter,
+}) => {
   const initialAddress = {
     street: "",
     city: "",

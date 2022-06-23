@@ -27,7 +27,7 @@ export const Login = () => {
     if (status === 200) {
       localStorage.setItem("token", data.encodedToken);
       setUser({ ...data.foundUser, isLoggedIn: true });
-      navigator(state.from?.pathname ?? "/products", { replace: true });
+      navigator(state?.from?.pathname ?? "/products", { replace: true });
       toast.success("Login successful");
     } else toast.error("Login failed");
   };

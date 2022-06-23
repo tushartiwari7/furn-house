@@ -13,6 +13,10 @@
   color: var(--text-color);
 }
 
+.cart-title .clear-filter-btn {
+  display: inline-flex;
+}
+
 .wishlist > main {
   width: 80vw;
   margin-left: auto;

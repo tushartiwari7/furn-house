@@ -14,6 +14,7 @@ import { OurServices, VerticalCard } from "components";
 import { productImagesSlider, similarProductSlider } from "helpers";
 import { FaShare } from "react-icons/fa";
 import { getSimilarProducts, getSingleProduct } from "services";
+import Image from "components/atoms/Image/Image";
 
 export const ProductPage = () => {
   const params = useParams();
@@ -176,7 +177,7 @@ export const ProductPage = () => {
         }`}
         onClick={() => setModalImage("")}
       >
-        <img
+        <Image
           src={modalImage}
           alt={product?.title}
           onClick={(e) => e.stopPropagation()}

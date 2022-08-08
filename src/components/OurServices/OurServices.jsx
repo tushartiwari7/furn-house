@@ -1,6 +1,7 @@
 import React from "react";
 import "./OurServices.css";
 import { v4 } from "uuid";
+import Image from "components/atoms/Image/Image";
 
 export const OurServices = () => {
   const services = [
@@ -36,7 +37,7 @@ export const OurServices = () => {
         {services.map(({ icon, title, id, description }) => (
           <section className="card full-width" key={id}>
             <div className="m-md flex flex-center">
-              <img className="icon" src={icon} />
+              <Image className="icon" src={icon} />
             </div>
             <div className="card-desc services-desc fs-s p-xs fullwidth">
               <div className="h4 mx-md text-center">{title}</div>

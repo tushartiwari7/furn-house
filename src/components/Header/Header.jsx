@@ -3,7 +3,7 @@ import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsHandbag, BsPerson, BsHeart, BsSearch } from "react-icons/bs";
 import { useUser, useProducts } from "context";
-
+import Image from "components/atoms/Image/Image";
 export const Header = () => {
   const { user } = useUser();
   const { filters, dispatch } = useProducts();
@@ -23,7 +23,7 @@ export const Header = () => {
             to="/"
             title="Go to Homepage"
           >
-            <img
+            <Image
               src={`${window.location.origin}/assets/logo-200-100.svg`}
               alt="logo"
               className="logo"

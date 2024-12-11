@@ -1,7 +1,7 @@
 <div align="center">
   <img src="/public/assets/android-chrome-512x512.png" height="100" width="100" alt="logo"/>
   <h1>Furn House</h1>
-  <p> <a href="https://furnhouse.tusharcodes.tech">Furn House</a> is an E-Commerce Project that aims to sell Furniture goods like Sofas, Wardrobes, Beds etc.</p>
+  <p> <a href="https://furn-house.vercel.app/">Furn House</a> is an E-Commerce Project that aims to sell Furniture goods like Sofas, Wardrobes, Beds etc.</p>
  </div>
 
 ## Features

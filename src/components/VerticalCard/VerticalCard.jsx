@@ -4,6 +4,7 @@ import { FaShare } from "react-icons/fa";
 import { useState } from "react";
 import { useUser } from "context";
 import { useNavigate } from "react-router-dom";
+import Image from "components/atoms/Image/Image";
 
 export const VerticalCard = ({ product, isWishlistCard }) => {
   const [imgSrc, setImgSrc] = useState(product.img);
@@ -42,7 +43,7 @@ export const VerticalCard = ({ product, isWishlistCard }) => {
       onMouseLeave={() => setImgSrc(product.img)}
       onClick={() => navigator(`/products/${product.id}`)}
     >
-      <img
+      <Image
         loading="lazy"
         src={imgSrc}
         alt={product.title}

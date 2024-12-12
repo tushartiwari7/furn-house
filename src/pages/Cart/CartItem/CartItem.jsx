@@ -4,6 +4,7 @@ import { BsTrash } from "react-icons/bs";
 import "./CartItem.css";
 import { useUser } from "context";
 import { getDiscountPercentage } from "utils";
+import Image from "components/atoms/Image/Image";
 
 export const CartItem = (product) => {
   const {
@@ -20,7 +21,7 @@ export const CartItem = (product) => {
 
   return (
     <section className="card cart-item my-sm full-width flex-row">
-      <img
+      <Image
         className="cart-item-img"
         src={product.img}
         height="100%"

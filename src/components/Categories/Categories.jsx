@@ -1,7 +1,7 @@
 import "./Categories.css";
 import { Link } from "react-router-dom";
 import { useProductCategory } from "context";
-
+import Image from "components/atoms/Image/Image";
 export const Categories = () => {
   const categories = useProductCategory();
   return (
@@ -12,7 +12,7 @@ export const Categories = () => {
           key={_id}
           className={`category pos-rel ${idx === 3 ? "category-special" : ""}`}
         >
-          <img src={img} alt={categoryName} />
+          <Image src={img} alt={categoryName} />
           <div className="pos-abs category-content flex">
             <h3 className="h2">{categoryName}</h3>
             <p className="fs-m">{description}</p>

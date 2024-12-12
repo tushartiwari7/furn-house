@@ -9,3 +9,4 @@ export { Menu } from "./Menu/Menu";
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { Loader } from "./Loader/Loader";
 export { AddressList } from "./AddressList/AddressList";
+export * from "./atoms/Image/Image";

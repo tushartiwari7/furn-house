@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Orders.css";
 import { useUser } from "context";
+import Image from "components/atoms/Image/Image";
+
 export const Orders = () => {
   const {
     user: { orders },
@@ -13,7 +15,7 @@ export const Orders = () => {
         return (
           <article className="flex gap mx-md" key={order._id}>
             <Link to={`/products/${order.id}`} className="img-container">
-              <img
+              <Image
                 className="order-item-img"
                 src={order.img}
                 alt="order-item"
